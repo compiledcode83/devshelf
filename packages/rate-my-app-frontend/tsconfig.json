@@ -1,32 +1,34 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
+    "lib": ["dom", "dom.iterable", "esnext", "ES2019", "ES2019.Object"],
     "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
+    "moduleResolution": "Node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": true,
+    "module": "esnext",
     "jsx": "preserve"
   },
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out"
-  ],
+  "exclude": ["node_modules", ".next", "out"],
   "include": [
-    "next-env.d.ts",
+    "types/next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js"
+    "next.config.s",
+    "pages/posts/[slug].js"
   ]
 }
