@@ -21,7 +21,20 @@
     "strict": true,
     "noEmit": true,
     "module": "esnext",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCase",
+          "rendererOptions": {
+            "sass": {
+              "includePaths": ["styles"]
+            }
+          }
+        }
+      }
+    ]
   },
   "exclude": ["node_modules", ".next", "out"],
   "include": [
