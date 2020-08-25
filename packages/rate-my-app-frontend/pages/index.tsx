@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
+import whatInput from 'what-input';
+
 export const Home = (): JSX.Element => {
-  useEffect(() => {
-    throw new Error('Test Sentry');
-  }, []);
+  console.log(whatInput.ask());
   return (
     <div className="container">
       <Head>
@@ -21,6 +20,7 @@ export const Home = (): JSX.Element => {
         </p>
 
         <button
+          className="buttoner"
           onClick={() => {
             window.alert('With typescript and Jest');
           }}
