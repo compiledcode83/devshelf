@@ -23,7 +23,7 @@
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "npm run lint",
+      "eslint --fix",
       "npm run format"
     ]
   },
