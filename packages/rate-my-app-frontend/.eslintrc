@@ -19,8 +19,8 @@
   },
   "rules": {
     "react-hooks/exhaustive-deps": ["error"],
-    "jsx-a11y/anchor-is-valid": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    "jsx-a11y/anchor-is-valid": 0,
+    "@typescript-eslint/no-unused-vars": 0,
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react/react-in-jsx-scope": 0,
@@ -30,6 +30,10 @@
     "@typescript-eslint/indent": 0,
     "@typescript-eslint/member-delimiter-style": 0,
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-use-before-define": 0
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "no-undef": 0
   }
 }

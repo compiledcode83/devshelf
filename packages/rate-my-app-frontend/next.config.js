@@ -1,8 +1,9 @@
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 const withImages = require('next-images');
-const withSourceMaps = require('@zeit/next-source-maps')();
+const withSourceMaps = require('@zeit/next-source-maps');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const path = require('path');
 
 const {
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
