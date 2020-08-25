@@ -15,18 +15,18 @@ const MyError = (ctx: PromiseValue<ReturnType<typeof getInitialProps>> & NextPag
 const getInitialProps = async (ctx: NextPageContext) => {
   const errorInitialProps = await NextErrorComponent.getInitialProps(ctx);
 
-  if (ctx.res?.statusCode === 404) {
+  const { res, err, asPath } = ctx;
+
+  if (res?.statusCode === 404) {
     return { statusCode: 404 };
   }
-  if (ctx.err) {
-    Sentry.captureException(ctx.err);
+  if (err) {
+    Sentry.captureException(err);
     await Sentry.flush(2000);
     return errorInitialProps;
   }
 
-  Sentry.captureException(
-    new Error(`_error.js getInitialProps missing data at path: ${ctx.asPath}`),
-  );
+  Sentry.captureException(new Error(`_error.js getInitialProps missing data at path: ${asPath}`));
   await Sentry.flush(2000);
 
   return {
