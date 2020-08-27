@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import whatInput from 'what-input';
+// import axe from 'react-axe';
+
 
 export const Home = (): JSX.Element => {
   console.log(whatInput.ask());

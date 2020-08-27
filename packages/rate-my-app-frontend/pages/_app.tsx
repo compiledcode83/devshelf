@@ -1,10 +1,19 @@
-import * as Sentry from '@sentry/node';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import type { AppProps } from 'next/app';
 import getConfig from 'next/config';
+import * as Sentry from '@sentry/node';
 import { RewriteFrames } from '@sentry/integrations';
 import ErrorBoundary from '../shared/components/errorBoundary/ErrorBoundary';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isBrowser = typeof window !== 'undefined';
+
+if (!isProduction && isBrowser) {
+  const axe = require('react-axe');
+  const AXE_DELAY = 1000;
+  axe(React, ReactDOM, AXE_DELAY);
+}
 
 if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
   const config = getConfig();

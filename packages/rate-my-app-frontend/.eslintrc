@@ -9,7 +9,7 @@
     "plugin:prettier/recommended",
     "prettier/react",
     "prettier/@typescript-eslint",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/strict"
   ],
   "env": {
     "es6": true,

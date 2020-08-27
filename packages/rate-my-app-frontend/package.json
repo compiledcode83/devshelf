@@ -81,6 +81,7 @@
     "lint-staged": "^10.2.11",
     "next-sitemap": "^1.1.4",
     "prettier": "^2.0.2",
+    "react-axe": "^3.5.3",
     "sass": "^1.26.10",
     "typescript": "^3.8.3",
     "typescript-plugin-css-modules": "^2.4.0"
