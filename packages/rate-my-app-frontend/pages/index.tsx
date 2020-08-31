@@ -2,7 +2,6 @@ import Head from 'next/head';
 import whatInput from 'what-input';
 // import axe from 'react-axe';
 
-
 export const Home = (): JSX.Element => {
   console.log(whatInput.ask());
   return (
@@ -35,6 +34,33 @@ export const Home = (): JSX.Element => {
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
+
+          <div>
+            <details className="dropdown details-reset details-overlay d-inline-block">
+              <summary className="btn" aria-haspopup="true">
+                Dropdown
+                <div className="dropdown-caret"></div>
+              </summary>
+
+              <ul className="dropdown-menu dropdown-menu-se">
+                <li>
+                  <a className="dropdown-item" href="#url">
+                    Dropdown item
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#url">
+                    Dropdown item
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#url">
+                    Dropdown item
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </div>
 
           <a href="https://nextjs.org/learn" className="card">
             <h3>Learn &rarr;</h3>
