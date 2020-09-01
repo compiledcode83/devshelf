@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import whatInput from 'what-input';
 // import axe from 'react-axe';
-
+import Navigation from '../components/navigation/Navigation';
 export const Home = (): JSX.Element => {
   console.log(whatInput.ask());
   return (
@@ -10,7 +10,7 @@ export const Home = (): JSX.Element => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navigation />
       <main>
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -81,7 +81,6 @@ export const Home = (): JSX.Element => {
           </a>
         </div>
       </main>
-
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -91,7 +90,6 @@ export const Home = (): JSX.Element => {
           Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
-
       <style jsx>{`
         .container {
           min-height: 100vh;
@@ -222,7 +220,6 @@ export const Home = (): JSX.Element => {
           }
         }
       `}</style>
-
       <style jsx global>{`
         html,
         body {
