@@ -24,8 +24,7 @@
   "lint-staged": {
     "*.{html,js,json,md,mdx,yml,ts,tsx}": [
       "eslint",
-      "npm run format",
-      "git add"
+      "npm run format"
     ]
   },
   "dependencies": {
