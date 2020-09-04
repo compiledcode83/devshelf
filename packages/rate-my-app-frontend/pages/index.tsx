@@ -2,7 +2,9 @@ import Head from 'next/head';
 import whatInput from 'what-input';
 // import axe from 'react-axe';
 import Navigation from '../components/navigation/Navigation';
-export const Home = (): JSX.Element => {
+import PrivacyPolicyModal from '../components/modals/privacyPolicyModal/PrivacyPolicyModal';
+
+const Home = (): JSX.Element => {
   console.log(whatInput.ask());
   return (
     <div className="container">
@@ -79,6 +81,7 @@ export const Home = (): JSX.Element => {
           </a>
         </div>
       </main>
+      <PrivacyPolicyModal />
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

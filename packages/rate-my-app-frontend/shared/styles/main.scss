@@ -2,9 +2,6 @@
 @import 'node_modules/normalize-scss/sass/normalize.scss';
 @include normalize();
 
-// Primer
-@import '@primer/css/index.scss';
-
 // Global
 @import './global.scss';
 
