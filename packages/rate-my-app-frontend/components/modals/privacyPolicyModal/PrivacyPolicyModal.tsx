@@ -14,7 +14,21 @@ const PrivacyPolicyModal = () => {
           <p className={styles.textContentBoxText}>
             Korzystając z tej strony akceptujesz naszą
             <Link href="/">
-              <a className={styles.textContentBoxLink}>politykę prywatności</a>
+              <a className={styles.textContentBoxLink}>
+                politykę prywatności{' '}
+                <svg
+                  className={styles.arrow}
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  aria-hidden="true"
+                >
+                  <g fillRule="evenodd">
+                    <path className={styles.arrowLinePath} d="M0 5h7"></path>
+                    <path className={styles.arrowTipPath} d="M1 1l4 4-4 4"></path>
+                  </g>
+                </svg>
+              </a>
             </Link>
           </p>
         </div>

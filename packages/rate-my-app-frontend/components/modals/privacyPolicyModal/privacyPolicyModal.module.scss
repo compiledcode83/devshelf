@@ -23,6 +23,33 @@
   padding: 8px 0;
 }
 
+.arrow {
+  --arrowHoverTransition: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  --arrowHoverOffset: translateX(3px);
+  position: relative;
+  top: 1px;
+  margin-left: 8px;
+  stroke-width: 2;
+  fill: none;
+  stroke: currentColor;
+}
+
+.arrowLinePath {
+  opacity: 0;
+  transition: opacity var(--hoverTransition, var(--arrowHoverTransition));
+}
+.arrowTipPath {
+  transition: transform var(--hoverTransition, var(--arrowHoverTransition));
+}
+
+[data-whatintent='keyboard'] .arrowLinePath {
+  opacity: 1;
+}
+
+[data-whatintent='keyboard'] .arrowTipPath {
+  transform: var(--arrowHoverOffset);
+}
+
 .textContentBox {
   padding: 16px 0px 16px 0;
 
@@ -38,17 +65,11 @@
     text-decoration: none;
     margin-left: 5px;
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: -10px;
-      right: -2rem;
-      background-image: url(/icons/right-arrow.svg);
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      z-index: 11111;
-      width: 2.4rem;
-      height: 2.4rem;
+    &:hover .arrowLinePath {
+      opacity: 1;
+    }
+    &:hover .arrowTipPath {
+      transform: var(--arrowHoverOffset);
     }
   }
 }
