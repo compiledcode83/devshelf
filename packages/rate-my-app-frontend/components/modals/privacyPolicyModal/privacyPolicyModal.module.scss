@@ -3,7 +3,64 @@
   align-items: flex-end;
   justify-content: flex-end;
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 0rem;
+  right: 0rem;
   width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.card {
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--dark);
+  height: auto;
+  color: var(--white);
+  max-width: 327px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.textContentBox {
+  padding: 16px 0px 16px 0;
+
+  &Text {
+    margin: 0;
+    line-height: calc(1rem * 1.5);
+  }
+
+  &Link {
+    position: relative;
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: -2rem;
+      background-image: url(/icons/right-arrow.svg);
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      z-index: 11111;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: none;
+  margin: 5px;
+  background: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
 }

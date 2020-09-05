@@ -40,7 +40,8 @@
   "typeRoots": [
     "./node_modules/@types",
     "./shared/typings/jsx.d.ts",
-    "./shared/typings/testing-library.d.ts"
+    "./shared/typings/testing-library.d.ts",
+    "./shared/typings/svg.d.ts"
   ],
   "exclude": ["node_modules", ".next", "out", "public"],
   "include": [
