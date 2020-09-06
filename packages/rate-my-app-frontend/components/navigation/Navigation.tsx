@@ -5,7 +5,10 @@ import styles from './navigation.module.scss';
 const Navigation = () => (
   <nav className={styles.wrapper}>
     <div>
-      <input placeholder="Szukaj projektów" />
+      <label htmlFor="search">
+        szukaj
+        <input id="search" placeholder="Szukaj projektów" />
+      </label>
       <Link href="/">
         <a>Jak korzystać</a>
       </Link>

@@ -3,24 +3,26 @@
   align-items: flex-end;
   justify-content: flex-end;
   position: fixed;
-  bottom: 0rem;
-  right: 0rem;
+  bottom: 1rem;
+  right: 2rem;
   width: 100%;
   border: none;
   background-color: transparent;
 }
 
 .card {
+  --cardShadow: 0px 13px 27px -5px rgba(50, 50, 93, 0.25);
   width: 100%;
   border-radius: 8px;
-  background-color: var(--dark);
+  background-color: var(--white);
   height: auto;
-  color: var(--white);
+  color: var(--dark-grey);
   max-width: 327px;
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  padding: 8px 0;
+  padding: 4px 4px 4px 8px;
+  box-shadow: var(--cardShadow);
 }
 
 .arrow {
@@ -32,14 +34,15 @@
   stroke-width: 2;
   fill: none;
   stroke: currentColor;
-}
 
-.arrowLinePath {
-  opacity: 0;
-  transition: opacity var(--hoverTransition, var(--arrowHoverTransition));
-}
-.arrowTipPath {
-  transition: transform var(--hoverTransition, var(--arrowHoverTransition));
+  &LinePath {
+    opacity: 0;
+    transition: opacity var(--hoverTransition, var(--arrowHoverTransition));
+  }
+
+  &TipPath {
+    transition: transform var(--hoverTransition, var(--arrowHoverTransition));
+  }
 }
 
 [data-whatintent='keyboard'] .arrowLinePath {
@@ -55,6 +58,7 @@
 
   &Text {
     margin: 0;
+    font-size: 0.9rem;
     line-height: calc(1rem * 1.5);
   }
 
@@ -79,9 +83,10 @@
   align-items: center;
   justify-content: center;
   border-style: none;
-  margin: 5px;
+  margin-right: 0.5rem;
   background: none;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
+  fill: #425466;
 }

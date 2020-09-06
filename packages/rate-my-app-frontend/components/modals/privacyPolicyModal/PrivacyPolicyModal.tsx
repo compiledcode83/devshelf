@@ -7,7 +7,7 @@ const PrivacyPolicyModal = () => {
   return (
     <dialog open className={styles.wrapper}>
       <div className={styles.card}>
-        <button className={styles.closeButton}>
+        <button className={styles.closeButton} aria-label="Close privacy policy information modal">
           <CloseIcon />
         </button>
         <div className={styles.textContentBox}>
@@ -15,7 +15,7 @@ const PrivacyPolicyModal = () => {
             Korzystając z tej strony akceptujesz naszą
             <Link href="/">
               <a className={styles.textContentBoxLink}>
-                politykę prywatności{' '}
+                politykę prywatności
                 <svg
                   className={styles.arrow}
                   width="10"
