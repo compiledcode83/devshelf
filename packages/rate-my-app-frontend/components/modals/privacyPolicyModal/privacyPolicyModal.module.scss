@@ -17,7 +17,7 @@
   background-color: var(--white);
   height: auto;
   color: var(--dark-grey);
-  max-width: 327px;
+  // max-width: 327px;
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -88,5 +88,8 @@
   width: 2rem;
   height: 2rem;
   cursor: pointer;
-  fill: #425466;
+
+  svg path {
+    fill: #cad2d9;
+  }
 }
