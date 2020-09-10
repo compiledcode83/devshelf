@@ -9,11 +9,6 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint", "plugin:prettier/recommended", "prettier/@typescript-eslint"],
   "rules": {}
 }
