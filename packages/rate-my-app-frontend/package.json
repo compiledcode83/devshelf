@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
+    "@reduxjs/toolkit": "^1.4.0",
     "@sentry/browser": "^5.21.4",
     "@sentry/integrations": "^5.21.4",
     "@sentry/node": "^5.21.4",

@@ -99,6 +99,7 @@ const Home = (): JSX.Element => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          background-color: #e7edf3;
         }
 
         main {
