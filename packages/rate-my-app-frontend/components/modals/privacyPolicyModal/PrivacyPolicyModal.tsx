@@ -5,6 +5,7 @@ import Link from 'next/link';
 const PrivacyPolicyModal = () => {
   return (
     <dialog open className={styles.wrapper}>
+      <div className={styles.backdrop}></div>
       <div className={styles.card}>
         <button className={styles.closeButton} aria-label="Close privacy policy information modal">
           <svg

@@ -22,6 +22,7 @@
   align-items: center;
   padding: 4px 4px 4px 8px;
   box-shadow: var(--cardShadow);
+  position: relative;
 
   @media (min-width: 600px) {
     max-width: 32.7rem;
@@ -98,4 +99,47 @@
 
 .closeButtonIcon {
   fill: var(--grey-icon);
+}
+
+.backdrop {
+  --backdropShadowLight: rgba(10, 37, 64, 0.2);
+  --backdropShadowDark: rgba(10, 37, 64, 0);
+  --backdropShadowMaxHeight: 12.8rem;
+  position: absolute;
+  width: 100%;
+  height: calc(100% + var(--backdropShadowMaxHeight));
+  bottom: 0;
+  right: 0;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, var(--backdropShadowLight)),
+    to(var(--backdropShadowDark))
+  );
+  background: linear-gradient(0deg, var(--backdropShadowLight) 0, var(--backdropShadowDark));
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+
+  @media (min-width: 600px) {
+    max-width: calc(32.7rem * 1.5);
+    -webkit-mask-image: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0, transparent),
+      color-stop(50%, var(--black)),
+      to(var(--black))
+    );
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, var(--black) 50%, var(--black));
+    mask-image: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0, transparent),
+      color-stop(50%, var(--black)),
+      to(var(--black))
+    );
+    mask-image: linear-gradient(90deg, transparent 0, var(--black) 50%, var(--black));
+  }
 }
