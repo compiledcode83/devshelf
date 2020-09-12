@@ -3,11 +3,12 @@
   align-items: flex-end;
   justify-content: flex-end;
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 0;
+  right: 0;
   width: 100%;
   border: none;
   background-color: transparent;
+  padding: 2rem;
 }
 
 .card {
@@ -61,10 +62,14 @@
   padding: 16px 0px 16px 0;
 
   &Text {
-    --textContentBoxTextSize: 1.5rem;
+    --textContentBoxTextSize: 1.3rem;
     margin: 0;
     font-size: var(--textContentBoxTextSize);
     line-height: calc(var(--textContentBoxTextSize) * 1.5);
+
+    @media (min-width: 600px) {
+      --textContentBoxTextSize: 1.5rem;
+    }
   }
 
   &Link {
@@ -112,8 +117,8 @@
   position: absolute;
   width: 100%;
   height: calc(100% + var(--backdropShadowMaxHeight));
-  bottom: -1rem;
-  right: -1rem;
+  bottom: 0rem;
+  right: 0rem;
   background: -webkit-gradient(
     linear,
     left bottom,
@@ -126,6 +131,8 @@
   transform-origin: bottom center;
 
   @media (min-width: 600px) {
+    bottom: -1rem;
+    right: -1rem;
     max-width: calc(32.7rem * 1.5);
     -webkit-mask-image: -webkit-gradient(
       linear,
