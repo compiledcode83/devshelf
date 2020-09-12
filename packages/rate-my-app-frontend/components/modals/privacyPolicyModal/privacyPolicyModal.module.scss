@@ -112,8 +112,8 @@
   position: absolute;
   width: 100%;
   height: calc(100% + var(--backdropShadowMaxHeight));
-  bottom: 0;
-  right: 0;
+  bottom: -1rem;
+  right: -1rem;
   background: -webkit-gradient(
     linear,
     left bottom,
