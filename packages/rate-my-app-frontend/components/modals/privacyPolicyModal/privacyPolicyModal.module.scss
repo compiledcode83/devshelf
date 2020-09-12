@@ -95,6 +95,10 @@
   height: 2rem;
   cursor: pointer;
   padding: 0;
+
+  &:hover .closeButtonIcon {
+    fill: var(--grey-icon-hover);
+  }
 }
 
 .closeButtonIcon {
