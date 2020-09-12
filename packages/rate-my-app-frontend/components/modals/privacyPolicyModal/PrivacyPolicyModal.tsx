@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './privacyPolicyModal.module.scss';
 import Link from 'next/link';
 
-const PrivacyPolicyModal = () => {
+type Props = {
+  onAccept: () => void;
+};
+
+const PrivacyPolicyModal = ({ onAccept }) => {
   return (
-    <dialog open className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <div className={styles.backdrop}></div>
       <div className={styles.card}>
-        <button className={styles.closeButton} aria-label="Close privacy policy information modal">
+        <button
+          onClick={onAccept}
+          className={styles.closeButton}
+          aria-label="Close privacy policy information modal"
+        >
           <svg
             aria-hidden="true"
             width="20"
@@ -47,7 +55,7 @@ const PrivacyPolicyModal = () => {
           </p>
         </div>
       </div>
-    </dialog>
+    </div>
   );
 };
 

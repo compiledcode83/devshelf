@@ -44,6 +44,7 @@
     "next-seo": "^4.7.3",
     "normalize-scss": "^7.0.1",
     "react": "^16.13.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "what-input": "^5.2.10",
     "zod": "^1.10.3"

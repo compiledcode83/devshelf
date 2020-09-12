@@ -1,18 +1,27 @@
 import Head from 'next/head';
 import whatInput from 'what-input';
-// import axe from 'react-axe';
+import { useCookies } from 'react-cookie';
 import Navigation from '../components/navigation/Navigation';
 import PrivacyPolicyModal from '../components/modals/privacyPolicyModal/PrivacyPolicyModal';
+import { useCallback } from 'react';
 
 const Home = (): JSX.Element => {
   console.log(whatInput.ask());
+  const [cookies, setCookie, removeCookie] = useCookies(['cookiepolicy']);
+
+  const handleAcceptPolicy = useCallback(() => {
+    setCookie('cookiepolicy', 'accept', {
+      path: '/',
+    });
+  }, [setCookie]);
+
   return (
     <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PrivacyPolicyModal />
+      {!cookies.cookiepolicy ? <PrivacyPolicyModal onAccept={handleAcceptPolicy} /> : null}
 
       <Navigation />
       <main>
