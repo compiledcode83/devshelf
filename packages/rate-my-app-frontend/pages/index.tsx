@@ -7,10 +7,10 @@ import { useCallback } from 'react';
 
 const Home = (): JSX.Element => {
   console.log(whatInput.ask());
-  const [cookies, setCookie, removeCookie] = useCookies(['cookiepolicy']);
+  const [cookies, setCookie] = useCookies(['cookie_policy']);
 
   const handleAcceptPolicy = useCallback(() => {
-    setCookie('cookiepolicy', 'accept', {
+    setCookie('cookie_policy', 'accepted', {
       path: '/',
     });
   }, [setCookie]);
@@ -21,7 +21,7 @@ const Home = (): JSX.Element => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {!cookies.cookiepolicy ? <PrivacyPolicyModal onAccept={handleAcceptPolicy} /> : null}
+      {!cookies['cookie_policy'] ? <PrivacyPolicyModal onAccept={handleAcceptPolicy} /> : null}
 
       <Navigation />
       <main>
