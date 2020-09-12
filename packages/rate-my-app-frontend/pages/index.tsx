@@ -12,6 +12,8 @@ const Home = (): JSX.Element => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <PrivacyPolicyModal />
+
       <Navigation />
       <main>
         <h1 className="title">LOL SERIO</h1>
@@ -81,7 +83,6 @@ const Home = (): JSX.Element => {
           </a>
         </div>
       </main>
-      <PrivacyPolicyModal />
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

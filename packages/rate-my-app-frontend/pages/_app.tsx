@@ -38,7 +38,7 @@ type Props = AppProps & { err: any };
 
 const App = ({ Component, pageProps, err }: Props) => (
   <ErrorBoundary>
-    <Component {...pageProps} err={err} />;
+    <Component {...pageProps} err={err} />
   </ErrorBoundary>
 );
 export default App;
