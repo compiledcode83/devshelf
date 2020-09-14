@@ -11,9 +11,7 @@
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
-    "test-all": "npm run lint && npm run type-check && npm run test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test-all": "npm run lint && npm run type-check && npm run test"
   },
   "husky": {
     "hooks": {
@@ -50,10 +48,6 @@
     "zod": "^1.10.3"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.0.16",
-    "@storybook/addon-links": "^6.0.16",
-    "@storybook/addons": "^6.0.16",
-    "@storybook/react": "^6.0.16",
     "@testing-library/react": "^10.0.1",
     "@types/classnames": "^2.2.10",
     "@types/jest": "^25.1.4",

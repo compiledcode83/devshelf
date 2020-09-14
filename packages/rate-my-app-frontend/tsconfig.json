@@ -49,6 +49,8 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.s",
-    "pages/posts/[slug].js"
+    "pages/posts/[slug].js",
+    "../**/*.stories.ts",
+    "../**/*.stories.tsx"
   ]
 }
