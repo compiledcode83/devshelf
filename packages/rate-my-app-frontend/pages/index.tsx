@@ -40,6 +40,8 @@ const Home = (): JSX.Element => {
           Test Button
         </button>
 
+        <p>Test test test test</p>
+
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
             <h3>Documentation &rarr;</h3>
