@@ -5,6 +5,8 @@ const withSourceMaps = require('@zeit/next-source-maps');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const path = require('path');
 const { WebpackBundleSizeAnalyzerPlugin } = require('webpack-bundle-size-analyzer');
+const withOptimizedImages = require('next-optimized-images');
+const withPlugins = require('next-compose-plugins');
 require('what-input');
 
 const {
@@ -70,45 +72,42 @@ const withPolyfills = (module.exports = (nextConfig = {}) => {
   });
 });
 
-const config = withSourceMaps(
-  withPolyfills(
-    withImages({
-      serverRuntimeConfig: {
-        rootDir: __dirname,
-      },
-      webpack: (config, options) => {
-        if (!options.isServer) {
-          config.resolve.alias['@sentry/node'] = '@sentry/browser';
-        }
+const config = {
+  webpack: (config, options) => {
+    if (!options.isServer) {
+      config.resolve.alias['@sentry/node'] = '@sentry/browser';
+    }
 
-        if (ANALYZE) {
-          config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
-        }
+    if (ANALYZE) {
+      config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
+    }
 
-        if (
-          SENTRY_DSN &&
-          SENTRY_ORG &&
-          SENTRY_PROJECT &&
-          SENTRY_AUTH_TOKEN &&
-          VERCEL_GITHUB_COMMIT_SHA &&
-          NODE_ENV === 'production'
-        ) {
-          config.plugins.push(
-            new SentryWebpackPlugin({
-              include: '.next',
-              ignore: ['node_modules'],
-              stripPrefix: ['webpack://_N_E/'],
-              urlPrefix: `~${basePath}/_next`,
-              release: VERCEL_GITHUB_COMMIT_SHA,
-            }),
-          );
-        }
-        return config;
-      },
-      basePath,
-    }),
-  ),
-);
+    if (
+      SENTRY_DSN &&
+      SENTRY_ORG &&
+      SENTRY_PROJECT &&
+      SENTRY_AUTH_TOKEN &&
+      VERCEL_GITHUB_COMMIT_SHA &&
+      NODE_ENV === 'production'
+    ) {
+      config.plugins.push(
+        new SentryWebpackPlugin({
+          include: '.next',
+          ignore: ['node_modules'],
+          stripPrefix: ['webpack://_N_E/'],
+          urlPrefix: `~${basePath}/_next`,
+          release: VERCEL_GITHUB_COMMIT_SHA,
+        }),
+      );
+    }
+    return config;
+  },
+  basePath,
+};
+
+config.serverRuntimeConfig = {
+  rootDir: __dirname,
+};
 
 config.pwa = {
   dest: 'public',
@@ -125,4 +124,7 @@ config.experimental = {
   modern: true,
 };
 
-module.exports = config;
+module.exports = withPlugins(
+  [[withSourceMaps], [withPolyfills], [withImages], [withOptimizedImages], [withPWA]],
+  config,
+);
