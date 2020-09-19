@@ -11,7 +11,8 @@
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
-    "test-all": "npm run lint && npm run type-check && npm run test"
+    "test-all": "npm run lint && npm run type-check && npm run test",
+    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt"
   },
   "husky": {
     "hooks": {
@@ -68,6 +69,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-preset-react-app": "^9.1.2",
+    "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
     "cypress": "^5.0.0",
     "eslint": "^6.8.0",
@@ -90,6 +92,7 @@
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
     "typescript": "^3.8.3",
-    "typescript-plugin-css-modules": "^2.4.0"
+    "typescript-plugin-css-modules": "^2.4.0",
+    "webpack-bundle-size-analyzer": "^3.1.0"
   }
 }

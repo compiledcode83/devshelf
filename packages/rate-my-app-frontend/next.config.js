@@ -4,6 +4,7 @@ const withImages = require('next-images');
 const withSourceMaps = require('@zeit/next-source-maps');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const path = require('path');
+const { WebpackBundleSizeAnalyzerPlugin } = require('webpack-bundle-size-analyzer');
 require('what-input');
 
 const {
@@ -13,6 +14,7 @@ const {
   SENTRY_AUTH_TOKEN,
   NODE_ENV,
   VERCEL_GITHUB_COMMIT_SHA,
+  ANALYZE,
 } = process.env;
 
 process.env.SENTRY_DSN = SENTRY_DSN;
@@ -77,6 +79,10 @@ const config = withSourceMaps(
       webpack: (config, options) => {
         if (!options.isServer) {
           config.resolve.alias['@sentry/node'] = '@sentry/browser';
+        }
+
+        if (ANALYZE) {
+          config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
         }
 
         if (
