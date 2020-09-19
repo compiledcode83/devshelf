@@ -1,9 +1,9 @@
-[data-whatintent='mouse'] *:focus {
-  outline: none;
-}
-
 * {
   box-sizing: border-box;
+}
+
+[data-whatintent='mouse'] *:focus {
+  outline: none;
 }
 
 html,

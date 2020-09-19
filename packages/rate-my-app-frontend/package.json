@@ -7,22 +7,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint:ts": "eslint . --ext ts --ext tsx --ext js",
+    "lint:types": "tsc --pretty --noEmit",
     "test": "jest",
-    "test-all": "npm run lint && npm run type-check && npm run test",
+    "test-all": "npm run lint:ts && npm run lint:types && npm run test",
     "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm run type-check"
+      "pre-push": "npm run lint:types"
     }
   },
   "lint-staged": {
-    "*.{html,js,json,md,mdx,yml,ts,tsx}": [
-      "eslint",
+    "*.{ts,tsx}": [
+      "lint:ts",
       "npm run format"
     ]
   },
@@ -91,6 +91,11 @@
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
+    "stylelint": "^13.7.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-declaration-use-variable": "^1.7.2",
+    "stylelint-scss": "^3.18.0",
     "typescript": "^3.8.3",
     "typescript-plugin-css-modules": "^2.4.0",
     "webpack-bundle-size-analyzer": "^3.1.0"
