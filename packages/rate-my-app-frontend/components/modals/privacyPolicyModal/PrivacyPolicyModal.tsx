@@ -10,11 +10,8 @@ const PrivacyPolicyModal = memo<Props>(({ onAccept }) => (
   <div className={styles.wrapper}>
     <div className={styles.backdrop}></div>
     <div className={styles.card}>
-      <button
-        onClick={onAccept}
-        className={styles.closeButton}
-        aria-label="Zamknij komunikat i zaakceptuj politykę prywatności"
-      >
+      <button onClick={onAccept} className={styles.closeButton}>
+        <span className="visually-hidden">Zamknij komunikat i zaakceptuj politykę prywatności</span>
         <svg
           aria-hidden="true"
           width="20"
