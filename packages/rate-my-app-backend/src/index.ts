@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import helmet from 'helmet';
+import compression from 'compression';
 import { PrismaClient } from '@prisma/client';
 
 const app = express();
@@ -9,6 +11,8 @@ const prisma = new PrismaClient();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(helmet());
+app.use(compression());
 
 const PORT = process.env.PORT || 5000;
 
