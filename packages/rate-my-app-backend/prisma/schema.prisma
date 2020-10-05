@@ -24,6 +24,7 @@ model Project {
   description String
   author User  @relation(fields: [authorId], references: [id])
   authorId  Int
+  technology Technology @default(JavaScript)
   feedback Feedback[]
 }
 
@@ -32,4 +33,17 @@ model Feedback {
   content String
   author User  @relation(fields: [authorId], references: [id])
   authorId  Int
+}
+
+enum Technology {
+  JavaScript
+  TypeScript
+  HTML
+  CSS
+  React
+  Angular
+  Vue
+  Express
+  Nest
+  PHP
 }
