@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -13,5 +10,9 @@ generator client {
 model User {
   id      Int      @default(autoincrement()) @id
   email   String   @unique
-  name    String?
+  name    String
+  login   String
+  bio   String
+  createdAt DateTime @default(now())
+  avatarUrl String
 }
