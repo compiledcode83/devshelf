@@ -15,9 +15,10 @@ model User {
   bio   String
   createdAt DateTime @default(now())
   avatarUrl String
+  projects Project[]
 }
 
-model Post {
+model Project {
   id Int @default(autoincrement()) @id
   title String
   description String
