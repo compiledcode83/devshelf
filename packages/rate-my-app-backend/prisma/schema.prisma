@@ -24,4 +24,12 @@ model Project {
   description String
   author User  @relation(fields: [authorId], references: [id])
   authorId  Int
+  feedback Feedback[]
+}
+
+model Feedback {
+  id Int @default(autoincrement()) @id
+  content String
+  author User  @relation(fields: [authorId], references: [id])
+  authorId  Int
 }
