@@ -12,7 +12,9 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm run test",
-    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt"
+    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -36,7 +38,7 @@
     "@zeit/next-source-maps": "0.0.3",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
-    "next": "latest",
+    "next": "^9.5.5",
     "next-compose-plugins": "^2.2.0",
     "next-images": "^1.4.1",
     "next-optimized-images": "^2.6.2",
@@ -51,6 +53,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-essentials": "^6.0.22",
+    "@storybook/addon-links": "^6.0.22",
+    "@storybook/react": "^6.0.22",
     "@testing-library/react": "^10.0.1",
     "@types/classnames": "^2.2.10",
     "@types/jest": "^25.1.4",
@@ -66,6 +72,7 @@
     "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-preset-react-app": "^9.1.2",
     "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
     "cypress": "^5.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
@@ -75,7 +82,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-app": "^6.2.2",
-    "eslint-plugin-react-hooks": "^4.1.0",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "husky": "^4.2.3",
     "jest": "^25.2.3",
     "jest-watch-typeahead": "^0.5.0",
@@ -83,7 +90,10 @@
     "next-sitemap": "^1.1.4",
     "prettier": "^2.0.2",
     "react-axe": "^3.5.3",
+    "react-is": "^16.13.1",
     "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
     "typescript": "^3.8.3",
     "typescript-plugin-css-modules": "^2.4.0",
     "webpack-bundle-size-analyzer": "^3.1.0"

@@ -9,7 +9,8 @@
     "plugin:prettier/recommended",
     "prettier/react",
     "prettier/@typescript-eslint",
-    "plugin:jsx-a11y/strict"
+    "plugin:jsx-a11y/strict",
+    "react-hooks"
   ],
   "env": {
     "es6": true,
@@ -18,11 +19,11 @@
     "node": true
   },
   "rules": {
-    "react-hooks/exhaustive-deps": ["error"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/anchor-is-valid": 0,
     "@typescript-eslint/no-unused-vars": 0,
     "prettier/prettier": "error",
-    "react-hooks/rules-of-hooks": "error",
     "react/react-in-jsx-scope": 0,
     "react/display-name": 0,
     "react/prop-types": 0,
