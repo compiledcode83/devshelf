@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { WithChildren, PropsWithAs } from '../../types/types';
 
-type ContainerProps = {
+type ContainerProps = WithChildren<{
   className?: string;
-} & WithChildren;
+}>;
 
 type Tag = 'div' | 'main' | 'section' | 'article' | 'footer' | 'header';
 

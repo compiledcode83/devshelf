@@ -2,11 +2,11 @@ import React, { memo } from 'react';
 import styles from './privacyPolicyModal.module.scss';
 import Link from 'next/link';
 
-type Props = {
+type PrivacyPolicyModalProps = {
   onAccept: () => void;
 };
 
-const PrivacyPolicyModal = memo<Props>(({ onAccept }) => (
+const PrivacyPolicyModal = memo<PrivacyPolicyModalProps>(({ onAccept }) => (
   <div className={styles.wrapper}>
     <div className={styles.backdrop}></div>
     <div className={styles.card}>
