@@ -25,9 +25,17 @@ model Project {
   createdAt DateTime @default(now())
   author User  @relation(fields: [authorId], references: [id])
   authorId  Int
-  likes      Int     @default(0)
+  likes     Like[]
   category Category
   feedback Feedback[]
+}
+
+model Like { 
+  id Int @default(autoincrement()) @id
+  author User  @relation(fields: [authorId], references: [id])
+  authorId  Int
+  project    Project  @relation(fields: [projectId], references: [id])
+  projectId  Int
 }
 
 model Feedback {
