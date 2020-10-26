@@ -34,44 +34,6 @@ const regexEqual = (x, y) => {
   );
 };
 
-const withPolyfills = (module.exports = (nextConfig = {}) => {
-  return Object.assign({}, nextConfig, {
-    webpack(config, options) {
-      const originalEntry = config.entry;
-      config.entry = function entry() {
-        return Promise.resolve(originalEntry()).then((entries) => {
-          if (entries['main.js'] && !entries['main.js'].includes('./polyfills.ts')) {
-            entries['main.js'].unshift('./polyfills.ts');
-          }
-
-          return entries;
-        });
-      };
-
-      const oneOf = config.module.rules.find((rule) => typeof rule.oneOf === 'object');
-
-      if (oneOf) {
-        const moduleSassRule = oneOf.oneOf.find((rule) =>
-          regexEqual(rule.test, /\.module\.(scss|sass)$/),
-        );
-
-        if (moduleSassRule) {
-          const cssLoader = moduleSassRule.use.find(({ loader }) => loader.includes('css-loader'));
-          if (cssLoader) {
-            cssLoader.options.localsConvention = 'camelCase';
-          }
-        }
-      }
-
-      if (typeof nextConfig.webpack === 'function') {
-        return nextConfig.webpack(config, options);
-      }
-
-      return config;
-    },
-  });
-});
-
 const config = {
   webpack: (config, options) => {
     if (!options.isServer) {
@@ -125,6 +87,6 @@ config.experimental = {
 };
 
 module.exports = withPlugins(
-  [[withSourceMaps], [withPolyfills], [withImages], [withOptimizedImages], [withPWA]],
+  [[withSourceMaps], [withImages], [withOptimizedImages], [withPWA]],
   config,
 );
