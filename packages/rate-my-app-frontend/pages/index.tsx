@@ -4,6 +4,7 @@ import whatInput from 'what-input';
 import Navigation from 'components/navigation/Navigation';
 import PrivacyPolicyModal from 'components/modals/privacyPolicyModal/PrivacyPolicyModal';
 import useLocalStorage from 'shared/hooks/useLocalStorage';
+import Header from 'components/header/Header';
 
 const Home = (): JSX.Element => {
   console.log(whatInput.ask());
@@ -21,7 +22,7 @@ const Home = (): JSX.Element => {
       </Head>
       {storedValue !== 'accepted' ? <PrivacyPolicyModal onAccept={handleAcceptPolicy} /> : null}
 
-      <Navigation />
+      <Header />
       <main>
         <h1 className="title">LOL SERIO</h1>
 

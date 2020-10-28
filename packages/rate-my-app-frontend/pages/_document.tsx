@@ -1,4 +1,4 @@
-import Document, { Main, Head, NextScript, DocumentContext } from 'next/document';
+import Document, { Main, Head, Html, NextScript, DocumentContext } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -8,7 +8,7 @@ class MyDocument extends Document {
   }
   render() {
     return (
-      <html
+      <Html
         lang="pl-PL"
         prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
         itemScope
@@ -16,11 +16,11 @@ class MyDocument extends Document {
       >
         <Head>
           <base href="/" />
-          <meta
+          {/* <meta
             name="viewport"
             content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
           />
-          <meta property="og:type" content="website" />
+          <meta property="og:type" content="website" /> */}
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
@@ -30,7 +30,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
