@@ -12,9 +12,7 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm run test",
-    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt"
   },
   "husky": {
     "hooks": {
