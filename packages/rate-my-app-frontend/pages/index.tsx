@@ -1,19 +1,17 @@
+import { useCallback } from 'react';
 import Head from 'next/head';
 import whatInput from 'what-input';
-import { useCookies } from 'react-cookie';
-import Navigation from '../components/navigation/Navigation';
-import PrivacyPolicyModal from '../components/modals/privacyPolicyModal/PrivacyPolicyModal';
-import { useCallback } from 'react';
+import Navigation from 'components/navigation/Navigation';
+import PrivacyPolicyModal from 'components/modals/privacyPolicyModal/PrivacyPolicyModal';
+import useLocalStorage from 'shared/hooks/useLocalStorage';
 
 const Home = (): JSX.Element => {
   console.log(whatInput.ask());
-  const [cookies, setCookie] = useCookies(['cookie_policy']);
+  const [storedValue, setValue] = useLocalStorage<string>('cookie_policy');
 
   const handleAcceptPolicy = useCallback(() => {
-    setCookie('cookie_policy', 'accepted', {
-      path: '/',
-    });
-  }, [setCookie]);
+    setValue('accepted');
+  }, [setValue]);
 
   return (
     <div className="container">
@@ -21,7 +19,7 @@ const Home = (): JSX.Element => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {!cookies['cookie_policy'] ? <PrivacyPolicyModal onAccept={handleAcceptPolicy} /> : null}
+      {storedValue !== 'accepted' ? <PrivacyPolicyModal onAccept={handleAcceptPolicy} /> : null}
 
       <Navigation />
       <main>

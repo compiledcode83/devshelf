@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import { WithChildren, PropsWithAs } from '../../types/types';
+import { memo } from 'react';
+import { WithChildren, PropsWithAs } from 'shared/types/types';
 
 type ContainerProps = WithChildren<{
   className?: string;

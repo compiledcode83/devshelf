@@ -4,8 +4,8 @@ import type { AppProps } from 'next/app';
 import getConfig from 'next/config';
 import * as Sentry from '@sentry/node';
 import { RewriteFrames } from '@sentry/integrations';
-import ErrorBoundary from '../shared/components/errorBoundary/ErrorBoundary';
-import '../shared/styles/main.scss';
+import ErrorBoundary from 'shared/components/errorBoundary/ErrorBoundary';
+import 'shared/styles/main.scss';
 const isProduction = process.env.NODE_ENV === 'production';
 const isBrowser = typeof window !== 'undefined';
 

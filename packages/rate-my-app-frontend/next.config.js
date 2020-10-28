@@ -1,11 +1,9 @@
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
-const withImages = require('next-images');
 const withSourceMaps = require('@zeit/next-source-maps');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const path = require('path');
 const { WebpackBundleSizeAnalyzerPlugin } = require('webpack-bundle-size-analyzer');
-const withOptimizedImages = require('next-optimized-images');
 const withPlugins = require('next-compose-plugins');
 require('what-input');
 
@@ -86,7 +84,4 @@ config.experimental = {
   modern: true,
 };
 
-module.exports = withPlugins(
-  [[withSourceMaps], [withImages], [withOptimizedImages], [withPWA]],
-  config,
-);
+module.exports = withPlugins([], config);
