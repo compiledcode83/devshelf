@@ -1,11 +1,15 @@
-.container {
+.header {
   width: 100%;
   max-width: 106rem;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
-  background-color: var(--white);
 }
 
 .hamburger {
@@ -21,7 +25,7 @@
   --bottom-line-transform: translateY(4px) rotate(0deg);
 
   &Open {
-    --upper-line-transform: translateY(1px) rotate(45deg);
+    --upper-line-transform: translateY(1.6px) rotate(45deg);
     --bottom-line-transform: translateY(0px) rotate(-45deg);
   }
 
@@ -33,6 +37,7 @@
     width: 2.2rem;
     background-color: var(--black);
     transition: transform 0.15s ease;
+    transform: translate(-50%, -50%);
   }
 
   &::before {

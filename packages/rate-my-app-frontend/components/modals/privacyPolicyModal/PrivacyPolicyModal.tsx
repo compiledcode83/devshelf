@@ -54,4 +54,6 @@ const PrivacyPolicyModal = memo<PrivacyPolicyModalProps>(({ onAccept }) => (
   </div>
 ));
 
+PrivacyPolicyModal.displayName = 'PrivacyPolicyModal';
+
 export default PrivacyPolicyModal;

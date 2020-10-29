@@ -1,0 +1,27 @@
+.wrapper {
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &Item {
+    margin-right: 2rem;
+    font-size: 1.4rem;
+    word-break: keep-all;
+
+    a {
+      word-break: keep-all;
+      color: var(--black);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+  }
+}
