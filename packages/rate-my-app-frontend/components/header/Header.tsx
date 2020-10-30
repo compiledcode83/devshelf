@@ -1,5 +1,5 @@
 import Logo from '../../public/icons/logo.svg';
-import styles from './Header.module.scss';
+import styles from './header.module.scss';
 import { useState } from 'react';
 import cn from 'classnames';
 import Search from 'components/header/search/Search';
