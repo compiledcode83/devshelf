@@ -3,7 +3,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 import Search from 'components/header/search/Search';
 import Navigation from 'components/header/navigation/Navigation';
-import Logo from './logo/Logo';
+import Logo from 'components/header/logo/Logo';
 
 const Header = () => {
   const [isVisible, setVisibility] = useState(false);
