@@ -1,28 +1,29 @@
-import Link from 'next/link';
 import styles from './navigation.module.scss';
+import ActiveLink from './activeLink/ActiveLink';
+
 const Navigation = () => {
   return (
     <nav className={styles.wrapper}>
       <ul className={styles.list}>
         <li className={styles.listItem}>
-          <Link href="/">
+          <ActiveLink href="/" activeClassName={styles.active}>
             <a>Strona główna</a>
-          </Link>
+          </ActiveLink>
         </li>
         <li className={styles.listItem}>
-          <Link href="/">
+          <ActiveLink href="/projects" activeClassName={styles.active}>
             <a>Moje projekty</a>
-          </Link>
+          </ActiveLink>
         </li>
         <li className={styles.listItem}>
-          <Link href="/">
+          <ActiveLink href="/feedback" activeClassName={styles.active}>
             <a>Feedback</a>
-          </Link>
+          </ActiveLink>
         </li>
         <li className={styles.listItem}>
-          <Link href="/">
+          <ActiveLink href="/settings" activeClassName={styles.active}>
             <a>Ustawienia</a>
-          </Link>
+          </ActiveLink>
         </li>
       </ul>
     </nav>

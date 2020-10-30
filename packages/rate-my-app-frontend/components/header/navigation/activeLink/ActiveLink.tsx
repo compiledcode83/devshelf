@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import { Children, cloneElement } from 'react';
+import { Children, cloneElement, ReactElement } from 'react';
 import Link, { LinkProps } from 'next/link';
 import cn from 'classnames';
 
 type ActiveLinkProps = {
   activeClassName: string;
-  children: React.ReactElement<any>;
+  children: ReactElement<HTMLAnchorElement>;
 } & LinkProps;
 
 const ActiveLink = ({ children, activeClassName, href, as, ...props }: ActiveLinkProps) => {
