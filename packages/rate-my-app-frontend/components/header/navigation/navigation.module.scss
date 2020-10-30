@@ -1,6 +1,6 @@
 .wrapper {
   overflow: hidden;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 .list {
@@ -13,19 +13,36 @@
   padding: 0;
 
   &Item {
-    margin-right: 2rem;
     font-size: 1.4rem;
     word-break: keep-all;
+    padding: 1.6rem 1.2rem;
 
-    a {
-      word-break: keep-all;
-      color: var(--black);
-      text-decoration: none;
-      white-space: nowrap;
+    &:first-of-type {
+      padding-left: 0;
     }
   }
 }
 
-.active {
-  font-weight: bold;
+.link {
+  color: #666;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.activeLink {
+  color: black;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 1.6rem;
+
+  &::before {
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 0;
+    bottom: 0;
+    border-bottom: 2px solid black;
+    z-index: 200;
+  }
 }
