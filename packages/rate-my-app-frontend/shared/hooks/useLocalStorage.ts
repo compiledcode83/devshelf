@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 type StorageError = null | Error;
 type SetValue<T> = (value: T) => void;
 
-const useLocalStorage = <T>(key: string, initialValue = '') => {
+const useLocalStorage = <T = string>(key: string, initialValue = '') => {
   const [error, setError] = useState<StorageError>(null);
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {

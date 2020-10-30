@@ -5,7 +5,7 @@ import useLocalStorage from 'shared/hooks/useLocalStorage';
 import Header from 'components/header/Header';
 
 const Home = () => {
-  const [storedValue, setValue] = useLocalStorage<string>('cookie_policy');
+  const [storedValue, setValue] = useLocalStorage('cookie_policy');
 
   const handleAcceptPolicy = useCallback(() => {
     setValue('accepted');

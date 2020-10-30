@@ -44,13 +44,5 @@
     "./shared/typings/svg.d.ts"
   ],
   "exclude": ["node_modules", ".next", "out", "public"],
-  "include": [
-    "types/next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next.config.s",
-    "pages/posts/[slug].js",
-    "../**/*.stories.ts",
-    "../**/*.stories.tsx"
-  ]
+  "include": ["types/next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

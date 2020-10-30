@@ -16,14 +16,10 @@ class MyDocument extends Document {
       >
         <Head>
           <base href="/" />
-          {/* <meta
-            name="viewport"
-            content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
-          />
-          <meta property="og:type" content="website" /> */}
           <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+            as="stylesheet"
           />
         </Head>
         <body>

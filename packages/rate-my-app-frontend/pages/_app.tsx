@@ -1,7 +1,8 @@
+import Head from 'next/head';
+import getConfig from 'next/config';
+import type { AppProps } from 'next/app';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import type { AppProps } from 'next/app';
-import getConfig from 'next/config';
 import * as Sentry from '@sentry/node';
 import { RewriteFrames } from '@sentry/integrations';
 import ErrorBoundary from 'shared/components/errorBoundary/ErrorBoundary';
@@ -37,8 +38,17 @@ if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
 type Props = AppProps & { err: any };
 
 const App = ({ Component, pageProps, err }: Props) => (
-  <ErrorBoundary>
-    <Component {...pageProps} err={err} />
-  </ErrorBoundary>
+  <>
+    <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
+      />
+      <meta property="og:type" content="website" />
+    </Head>
+    <ErrorBoundary>
+      <Component {...pageProps} err={err} />
+    </ErrorBoundary>
+  </>
 );
 export default App;
