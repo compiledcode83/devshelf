@@ -24,6 +24,4 @@ const Header = () => {
   );
 };
 
-Header.displayName = 'MyPage';
-
 export default Header;
