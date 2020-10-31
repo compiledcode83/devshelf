@@ -15,7 +15,6 @@ class MyDocument extends Document {
         itemType="http://schema.org/WebPage"
       >
         <Head>
-          <base href="/" />
           <link
             rel="preload"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"

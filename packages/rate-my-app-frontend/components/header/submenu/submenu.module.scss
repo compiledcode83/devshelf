@@ -1,9 +1,24 @@
 @import 'common';
 
-.wrapper {
+.navigation {
   overflow: hidden;
-  padding: 0 2rem 0 2rem;
   position: relative;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 0 0rem 0 2rem;
+}
+
+.sticky {
+  position: fixed;
+  z-index: 1100;
+  top: 0;
+  left: 0;
+  right: 0;
+  --wrapper-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--wrapper-shadow);
+  background-color: var(--white);
 }
 
 .shadow {
@@ -14,7 +29,7 @@
   width: 2rem;
   --nav-shadow: 4px 0 76px 55px rgba(247, 250, 252, 1);
   box-shadow: var(--nav-shadow);
-  transform: translateX(1.8rem);
+  transform: translateX(2rem);
 
   @include mediaquery('xs') {
     display: none;
@@ -37,6 +52,10 @@
 
     &:first-of-type {
       padding-left: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 2rem;
     }
   }
 }
