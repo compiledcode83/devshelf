@@ -8,17 +8,18 @@ import UserIcon from '../../../public/icons/user.svg';
 import FlagIcon from '../../../public/icons/flag.svg';
 import IdeaIcon from '../../../public/icons/idea.svg';
 import List from './list/List';
+import usePageWidth from '../../../shared/hooks/usePageWidth';
 
 const Navigation = () => {
   const { isMenuVisible } = useHeaderState();
-  const i = 'aa';
+  const pageWidth = usePageWidth();
+  const isNavigationVisible = isMenuVisible || pageWidth > 500;
   return (
     <>
-      {i ? (
+      {isNavigationVisible ? (
         <nav id="navigation" aria-label="Menu główne" className={styles.nav}>
           <div className={styles.listWrapper}>
             <Search />
-            {/* <List /> */}
           </div>
           <div className={styles.profile}>
             <List />
