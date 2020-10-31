@@ -1,3 +1,5 @@
+@import 'common';
+
 .wrapper {
   display: flex;
   align-items: flex-end;
@@ -25,7 +27,7 @@
   box-shadow: var(--cardShadow);
   position: relative;
 
-  @media (min-width: 600px) {
+  @include mediaquery('sm') {
     max-width: 32.7rem;
   }
 }
@@ -67,7 +69,7 @@
     font-size: var(--textContentBoxTextSize);
     line-height: calc(var(--textContentBoxTextSize) * 1.5);
 
-    @media (min-width: 600px) {
+    @include mediaquery('sm') {
       --textContentBoxTextSize: 1.5rem;
     }
   }
@@ -130,7 +132,7 @@
   -webkit-transform-origin: bottom center;
   transform-origin: bottom center;
 
-  @media (min-width: 600px) {
+  @include mediaquery('sm') {
     bottom: -1rem;
     right: -1rem;
     max-width: calc(32.7rem * 1.5);

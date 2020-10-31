@@ -18,7 +18,7 @@ const HamburgerButton = memo<HamburgerButtonProps>(({ isVisible, handleToggleMen
         [styles.hamburgerOpen]: isVisible,
       })}
     >
-      <span className="visually-hidden">{isVisible ? 'Otwórz' : 'Zamknij'} menu</span>
+      <span className="visually-hidden">{isVisible ? 'Zamknij' : 'Otwórz'} menu</span>
     </button>
   );
 });
