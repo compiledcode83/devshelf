@@ -8,15 +8,16 @@ import { HeaderProvider } from './shared/stores/HeaderContext';
 const Header = () => {
   return (
     <HeaderProvider>
-      <header className={styles.header}>
-        <div className={styles.container}>
-          <Logo />
-          <Navigation />
-          <HamburgerButton />
-        </div>
-        <Submenu />
-        {/* <Navigation /> */}
-      </header>
+      <div className={styles.wrapper}>
+        <header className={styles.header}>
+          <div className={styles.container}>
+            <Logo />
+            <HamburgerButton />
+            <Navigation />
+          </div>
+          <Submenu />
+        </header>
+      </div>
     </HeaderProvider>
   );
 };

@@ -1,11 +1,15 @@
+.wrapper {
+  width: 100%;
+  background-color: var(--white);
+}
 .header {
   margin: 0 auto;
   width: 100%;
   max-width: 106rem;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
 }
+
 .container {
   width: 100%;
   display: flex;

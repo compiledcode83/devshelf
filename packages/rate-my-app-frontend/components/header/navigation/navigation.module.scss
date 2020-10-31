@@ -6,7 +6,6 @@
   left: 0;
   right: 0;
   top: var(--header-height);
-  // overflow-y: scroll;
   z-index: 2000;
   padding: 2rem 0 1rem 0;
   background-color: var(--white);
@@ -17,6 +16,10 @@
     align-items: center;
     justify-content: space-between;
   }
+}
+
+.hide {
+  display: none;
 }
 
 .listWrapper {

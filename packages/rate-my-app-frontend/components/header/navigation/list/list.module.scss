@@ -49,11 +49,11 @@
 
   @include mediaquery('xs') {
     background-color: var(--white);
-    padding: 2rem;
+    padding: 1rem 2rem;
     display: none;
     margin-top: 0;
     width: 15rem;
-    height: 28rem;
+    height: 23rem;
     top: 0;
   }
 
@@ -76,23 +76,8 @@
 
   @include mediaquery('xs') {
     padding-left: 0;
+    margin: 0;
   }
-
-  //   @include mediaquery('xs') {
-  //     background-color: var(--white);
-  //     width: 15rem;
-  //     padding: 2rem;
-  //     display: none;
-  //     margin-top: 0;
-  //   }
-
-  //   &Visible {
-  //     display: flex;
-  //     position: absolute;
-  //     --list-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  //     box-shadow: var(--list-shadow);
-  //     border-radius: 6px;
-  //   }
 
   &Item {
     width: 100%;
@@ -102,7 +87,7 @@
     padding: 2rem 0;
 
     @include mediaquery('xs') {
-      padding: 1.5rem 0;
+      padding: 1.2rem 0;
     }
 
     &:last-of-type {

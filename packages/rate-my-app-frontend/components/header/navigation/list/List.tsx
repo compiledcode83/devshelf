@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import Link from 'next/link';
 import styles from './list.module.scss';
 import DocumentIcon from '../../../../public/icons/document.svg';
@@ -8,9 +9,22 @@ import MoreIcon from '../../../../public/icons/more.svg';
 import ArrowUpIcon from '../../../../public/icons/arrow-up.svg';
 import useToggle from '../../../../shared/hooks/useToggle';
 import cn from 'classnames';
+import usePageWidth from 'shared/hooks/usePageWidth';
 
 const List = () => {
   const [isMenuVisible, toogleMenu] = useToggle();
+  const pageWidth = usePageWidth(0);
+  const isPopover = pageWidth > 500;
+
+  /* prettier-ignore */
+  const injectAdditionalListProps = useCallback(() => {
+    if (isPopover) {
+      return {
+        'role': 'menu',
+      };
+    }
+    return null;
+  },[isPopover]);
 
   return (
     <>
@@ -18,9 +32,10 @@ const List = () => {
         onClick={toogleMenu}
         aria-haspopup="true"
         aria-controls="navigationList"
+        aria-expanded={isMenuVisible}
         className={styles.button}
       >
-        <span className="visually-hidden">Zamknij/Otwórz menu</span>
+        <span className="visually-hidden">{isMenuVisible ? 'Zamknij ' : 'Otwórz '} menu</span>
         <MoreIcon aria-hidden="true" />
       </button>
       <div className={styles.popoverWrapper}>
@@ -31,6 +46,9 @@ const List = () => {
           <ul
             className={cn(styles.list, { [styles.listVisible]: isMenuVisible })}
             id="navigationList"
+            aria-label="Dodatkowe informacje"
+            tabIndex={isMenuVisible ? 0 : -1}
+            {...injectAdditionalListProps()}
           >
             <li className={styles.listItem}>
               <Link href="/">
