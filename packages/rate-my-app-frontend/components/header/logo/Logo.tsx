@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import LogoIcon from '../../../public/icons/logo.svg';
 
 const Logo = () => (
   <Link href="/">
     <a>
       <svg
-        aria-hidden="true"
         width="35"
         height="35"
         viewBox="0 0 35 35"
@@ -31,6 +29,7 @@ const Logo = () => (
           </radialGradient>
         </defs>
       </svg>
+      <span className="visually-hidden">Feedback</span>
     </a>
   </Link>
 );
