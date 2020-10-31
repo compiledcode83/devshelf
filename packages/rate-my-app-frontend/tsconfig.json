@@ -44,5 +44,5 @@
     "./shared/typings/svg.d.ts"
   ],
   "exclude": ["node_modules", ".next", "out", "public"],
-  "include": ["types/next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["types/next-env.d.ts", "**/*.ts", "**/*.tsx", "review.txt"]
 }

@@ -1,3 +1,5 @@
+@import 'common';
+
 .hamburger {
   width: 2.4rem;
   height: 4rem;
@@ -9,6 +11,10 @@
   flex-direction: column;
   --upper-line-transform: translateY(-4px) rotate(0deg);
   --bottom-line-transform: translateY(4px) rotate(0deg);
+
+  @include mediaquery('xs') {
+    display: none;
+  }
 
   &Open {
     --upper-line-transform: translateY(1.6px) rotate(45deg);

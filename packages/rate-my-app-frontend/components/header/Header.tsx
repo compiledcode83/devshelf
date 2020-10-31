@@ -11,10 +11,11 @@ const Header = () => {
       <header className={styles.header}>
         <div className={styles.container}>
           <Logo />
+          <Navigation />
           <HamburgerButton />
         </div>
         <Submenu />
-        <Navigation />
+        {/* <Navigation /> */}
       </header>
     </HeaderProvider>
   );
