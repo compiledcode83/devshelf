@@ -45,40 +45,38 @@ const withPolyfills = (module.exports = (nextConfig = {}) => {
 });
 
 const config = withSourceMaps(
-  withPolyfills(
-    withPWA({
-      webpack: (config, options) => {
-        if (!options.isServer) {
-          config.resolve.alias['@sentry/node'] = '@sentry/browser';
-        }
+  withPolyfills({
+    webpack: (config, options) => {
+      if (!options.isServer) {
+        config.resolve.alias['@sentry/node'] = '@sentry/browser';
+      }
 
-        if (ANALYZE) {
-          config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
-        }
+      if (ANALYZE) {
+        config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
+      }
 
-        if (
-          SENTRY_DSN &&
-          SENTRY_ORG &&
-          SENTRY_PROJECT &&
-          SENTRY_AUTH_TOKEN &&
-          VERCEL_GITHUB_COMMIT_SHA &&
-          NODE_ENV === 'production'
-        ) {
-          config.plugins.push(
-            new SentryWebpackPlugin({
-              include: '.next',
-              ignore: ['node_modules'],
-              stripPrefix: ['webpack://_N_E/'],
-              urlPrefix: `~${basePath}/_next`,
-              release: VERCEL_GITHUB_COMMIT_SHA,
-            }),
-          );
-        }
-        return config;
-      },
-      basePath,
-    }),
-  ),
+      if (
+        SENTRY_DSN &&
+        SENTRY_ORG &&
+        SENTRY_PROJECT &&
+        SENTRY_AUTH_TOKEN &&
+        VERCEL_GITHUB_COMMIT_SHA &&
+        NODE_ENV === 'production'
+      ) {
+        config.plugins.push(
+          new SentryWebpackPlugin({
+            include: '.next',
+            ignore: ['node_modules'],
+            stripPrefix: ['webpack://_N_E/'],
+            urlPrefix: `~${basePath}/_next`,
+            release: VERCEL_GITHUB_COMMIT_SHA,
+          }),
+        );
+      }
+      return config;
+    },
+    basePath,
+  }),
 );
 
 config.serverRuntimeConfig = {

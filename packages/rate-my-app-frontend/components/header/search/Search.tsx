@@ -5,7 +5,7 @@ const Search = () => (
     <label htmlFor="search" className="visually-hidden">
       Szukaj projektów
     </label>
-    <input id="search" type="search" placeholder="Szukaj projektów" className={styles.input} />
+    <input id="search" type="search" placeholder="Szukaj projektów..." className={styles.input} />
   </form>
 );
 export default Search;

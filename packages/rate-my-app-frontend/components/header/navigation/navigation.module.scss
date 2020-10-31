@@ -1,48 +1,73 @@
-.wrapper {
-  overflow: hidden;
-  padding: 0 2rem 2rem;
+.nav {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  --header-height: 6rem;
+  top: var(--header-height);
+  overflow-y: scroll;
+  z-index: 2000;
+  padding: 2rem 0 1rem 0;
+  background-color: var(--white);
+}
+
+.listWrapper {
+  padding: 0 2rem;
 }
 
 .list {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  overflow-x: auto;
-  list-style: none;
-  margin: 0;
   padding: 0;
 
   &Item {
-    font-size: 1.4rem;
-    word-break: keep-all;
-    padding: 1.6rem 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem 0;
 
-    &:first-of-type {
-      padding-left: 0;
+    &:last-of-type {
+      padding-bottom: 1rem;
     }
   }
 }
 
 .link {
-  color: #666;
-  font-weight: 400;
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 1.4rem;
   text-decoration: none;
-  white-space: nowrap;
+}
+.icon {
+  margin-right: 1rem;
 }
 
-.activeLink {
-  color: black;
-  font-weight: 500;
-  position: relative;
-  padding-bottom: 1.6rem;
+.profile {
+  width: 100%;
+  border-top: 2px solid #f2f2f2;
+}
 
-  &::before {
-    content: '';
-    width: 100%;
-    position: absolute;
-    height: 0;
-    bottom: 0;
-    border-bottom: 2px solid black;
-    z-index: 200;
-  }
+.userInfo {
+  width: 100%;
+  padding: 1rem 2rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.userText {
+  font-size: 1.6rem;
+  color: #6b7280;
+}
+
+.userImage {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
 }

@@ -1,33 +1,61 @@
 import styles from './navigation.module.scss';
-import ActiveLink from './activeLink/ActiveLink';
+import Search from 'components/header/search/Search';
+import Link from 'next/link';
+import Image from 'next/image';
+import DocumentIcon from '../../../public/icons/document.svg';
+import UserIcon from '../../../public/icons/user.svg';
+import FlagIcon from '../../../public/icons/flag.svg';
+import IdeaIcon from '../../../public/icons/idea.svg';
 
-const Navigation = () => {
-  return (
-    <nav className={styles.wrapper}>
+const Navigation = () => (
+  <nav id="navigation" aria-label="Menu główne" className={styles.nav}>
+    <div className={styles.listWrapper}>
+      <Search />
       <ul className={styles.list}>
         <li className={styles.listItem}>
-          <ActiveLink href="/" activeClassName={styles.activeLink}>
-            <a className={styles.link}>Strona główna</a>
-          </ActiveLink>
+          <Link href="/">
+            <a className={styles.link}>
+              <DocumentIcon className={styles.icon} />
+              Jak korzystać?
+            </a>
+          </Link>
         </li>
         <li className={styles.listItem}>
-          <ActiveLink href="/projects" activeClassName={styles.activeLink}>
-            <a className={styles.link}>Moje projekty</a>
-          </ActiveLink>
+          <Link href="/">
+            <a className={styles.link}>
+              <UserIcon className={styles.icon} />
+              Autorzy
+            </a>
+          </Link>
         </li>
         <li className={styles.listItem}>
-          <ActiveLink href="/feedback" activeClassName={styles.activeLink}>
-            <a className={styles.link}>Feedback</a>
-          </ActiveLink>
+          <Link href="/">
+            <a className={styles.link}>
+              <FlagIcon className={styles.icon} />
+              Polityka prywatności
+            </a>
+          </Link>
         </li>
         <li className={styles.listItem}>
-          <ActiveLink href="/settings" activeClassName={styles.activeLink}>
-            <a className={styles.link}>Ustawienia</a>
-          </ActiveLink>
+          <Link href="/">
+            <a className={styles.link}>
+              <IdeaIcon className={styles.icon} />
+              Kontrybucja
+            </a>
+          </Link>
         </li>
       </ul>
-    </nav>
-  );
-};
+    </div>
+    <div className={styles.profile}>
+      <div className={styles.userInfo}>
+        <Image src="/images/user.png" unsized className={styles.userImage} />
+        <p className={styles.userText}>
+          <span className="visually-hidden">Profil użytkownika</span>
+          Olaf Sulich
+        </p>
+      </div>
+    </div>
+  </nav>
+);
 
 export default Navigation;

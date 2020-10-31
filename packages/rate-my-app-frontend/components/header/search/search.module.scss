@@ -18,6 +18,12 @@
   background-size: 1.4rem 1.4rem;
   padding: 1rem 0;
   padding-left: 3.2rem;
+  border: 2px solid transparent;
+
+  &:focus {
+    border: 2px solid #f2f2f2;
+    outline: none;
+  }
 
   &::placeholder {
     color: #627489;
