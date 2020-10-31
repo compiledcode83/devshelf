@@ -1,6 +1,24 @@
 .wrapper {
   overflow: hidden;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem 0 2rem;
+  position: relative;
+}
+
+@import 'common';
+
+.shadow {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  height: 100%;
+  width: 2rem;
+  --nav-shadow: 4px 0 76px 55px rgba(247, 250, 252, 1);
+  box-shadow: var(--nav-shadow);
+  transform: translateX(1.8rem);
+
+  @include mediaquery('xs') {
+    display: none;
+  }
 }
 
 .list {

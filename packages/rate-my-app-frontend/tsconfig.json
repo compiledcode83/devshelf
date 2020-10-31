@@ -30,7 +30,7 @@
           "classnameTransform": "camelCase",
           "rendererOptions": {
             "sass": {
-              "includePaths": ["styles"]
+              "includePaths": ["shared/styles"]
             }
           }
         }

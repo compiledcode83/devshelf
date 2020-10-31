@@ -4,6 +4,7 @@ import ActiveLink from './activeLink/ActiveLink';
 const Submenu = () => {
   return (
     <nav className={styles.wrapper} aria-label="Menu poboczne">
+      <div className={styles.shadow} />
       <ul className={styles.list}>
         <li className={styles.listItem}>
           <ActiveLink href="/" activeClassName={styles.activeLink}>
