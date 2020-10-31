@@ -1,9 +1,9 @@
 .nav {
-  position: fixed;
+  position: relative;
   width: 100%;
   left: 0;
   right: 0;
-  top: var(--header-height);
+  top: -4.8rem;
   overflow-y: scroll;
   z-index: 2000;
   padding: 2rem 0 1rem 0;

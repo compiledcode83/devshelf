@@ -1,26 +1,23 @@
-import { memo } from 'react';
 import styles from './hamburgerButton.module.scss';
 import cn from 'classnames';
+import { HeaderProvider, useHeaderState } from '../shared/stores/HeaderContext';
 
-type HamburgerButtonProps = {
-  isVisible: boolean;
-  handleToggleMenu: () => void;
-};
+const HamburgerButton = () => {
+  const { isMenuVisible, toogleMenu } = useHeaderState();
 
-const HamburgerButton = memo<HamburgerButtonProps>(({ isVisible, handleToggleMenu }) => {
   return (
     <button
       aria-haspopup="true"
       aria-controls="navigation"
-      aria-expanded={isVisible}
-      onClick={handleToggleMenu}
+      aria-expanded={isMenuVisible}
+      onClick={toogleMenu}
       className={cn(styles.hamburger, {
-        [styles.hamburgerOpen]: isVisible,
+        [styles.hamburgerOpen]: isMenuVisible,
       })}
     >
-      <span className="visually-hidden">{isVisible ? 'Zamknij' : 'Otwórz'} menu</span>
+      <span className="visually-hidden">{isMenuVisible ? 'Zamknij' : 'Otwórz'} menu</span>
     </button>
   );
-});
+};
 
 export default HamburgerButton;

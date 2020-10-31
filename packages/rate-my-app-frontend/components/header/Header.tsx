@@ -3,20 +3,20 @@ import Submenu from 'components/header/submenu/Submenu';
 import Logo from 'components/header/logo/Logo';
 import Navigation from 'components/header/navigation/Navigation';
 import HamburgerButton from './hamburgerButton/HamburgerButton';
-import useToggle from 'shared/hooks/useToggle';
+import { HeaderProvider } from './shared/stores/HeaderContext';
 
 const Header = () => {
-  const { on: isVisible, toggle } = useToggle();
-
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <Logo />
-        <HamburgerButton isVisible={isVisible} handleToggleMenu={toggle} />
-      </div>
-      {isVisible ? <Navigation /> : null}
-      <Submenu />
-    </header>
+    <HeaderProvider>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <Logo />
+          <HamburgerButton />
+        </div>
+        <Submenu />
+        <Navigation />
+      </header>
+    </HeaderProvider>
   );
 };
 

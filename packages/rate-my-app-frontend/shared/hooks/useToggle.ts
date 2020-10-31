@@ -6,7 +6,7 @@ const useToggle = (initialOn = false) => {
     setOn((on) => !on);
   }, []);
 
-  return { on, toggle };
+  return [on, toggle] as const;
 };
 
 export default useToggle;
