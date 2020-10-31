@@ -15,7 +15,7 @@ const Navigation = () => (
         <li className={styles.listItem}>
           <Link href="/">
             <a className={styles.link}>
-              <DocumentIcon className={styles.icon} />
+              <DocumentIcon aria-hidden="true" className={styles.icon} />
               Jak korzystać?
             </a>
           </Link>
@@ -23,7 +23,7 @@ const Navigation = () => (
         <li className={styles.listItem}>
           <Link href="/">
             <a className={styles.link}>
-              <UserIcon className={styles.icon} />
+              <UserIcon aria-hidden="true" className={styles.icon} />
               Autorzy
             </a>
           </Link>
@@ -31,7 +31,7 @@ const Navigation = () => (
         <li className={styles.listItem}>
           <Link href="/">
             <a className={styles.link}>
-              <FlagIcon className={styles.icon} />
+              <FlagIcon aria-hidden="true" className={styles.icon} />
               Polityka prywatności
             </a>
           </Link>
@@ -39,7 +39,7 @@ const Navigation = () => (
         <li className={styles.listItem}>
           <Link href="/">
             <a className={styles.link}>
-              <IdeaIcon className={styles.icon} />
+              <IdeaIcon aria-hidden="true" className={styles.icon} />
               Kontrybucja
             </a>
           </Link>
@@ -48,9 +48,9 @@ const Navigation = () => (
     </div>
     <div className={styles.profile}>
       <div className={styles.userInfo}>
-        <Image src="/images/user.png" unsized className={styles.userImage} />
+        <Image src="/images/user.png" unsized className={styles.userImage} alt="" />
         <p className={styles.userText}>
-          <span className="visually-hidden">Profil użytkownika</span>
+          <span className="visually-hidden">Profil użytkownika </span>
           Olaf Sulich
         </p>
       </div>
