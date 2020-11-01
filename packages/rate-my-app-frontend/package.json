@@ -12,7 +12,9 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm run test",
-    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt"
+    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "husky": {
     "hooks": {
@@ -44,6 +46,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-query": "^2.25.2",
+    "react-query-devtools": "^2.6.0",
     "reakit": "^1.2.5",
     "what-input": "^5.2.10",
     "zod": "^1.10.3"

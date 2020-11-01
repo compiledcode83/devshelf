@@ -5,6 +5,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/node';
 import { RewriteFrames } from '@sentry/integrations';
+import type { ReactQueryConfig } from 'react-query';
+import { ReactQueryCacheProvider, QueryCache, ReactQueryConfigProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query-devtools';
+import type { DehydratedState } from 'react-query/hydration';
+import { Hydrate } from 'react-query/hydration';
 import ErrorBoundary from 'shared/components/errorBoundary/ErrorBoundary';
 import 'shared/styles/main.scss';
 const isProduction = process.env.NODE_ENV === 'production';
@@ -37,18 +42,38 @@ if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
 
 type Props = AppProps & { err: any };
 
-const App = ({ Component, pageProps, err }: Props) => (
-  <>
-    <Head>
-      <meta
-        name="viewport"
-        content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
-      />
-      <meta property="og:type" content="website" />
-    </Head>
-    <ErrorBoundary>
-      <Component {...pageProps} err={err} />
-    </ErrorBoundary>
-  </>
-);
+const queryCache = new QueryCache();
+const reactQueryConfigOverrides: ReactQueryConfig = {
+  queries: {
+    refetchOnWindowFocus: false,
+  },
+  mutations: {
+    throwOnError: true,
+  },
+} as const;
+
+const App = ({ Component, pageProps, err }: Props) => {
+  const { dehydratedState } = pageProps as { readonly dehydratedState?: DehydratedState };
+  return (
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
+      <ReactQueryCacheProvider queryCache={queryCache}>
+        <ReactQueryConfigProvider config={reactQueryConfigOverrides}>
+          <Hydrate state={dehydratedState}>
+            <ErrorBoundary>
+              <Component {...pageProps} err={err} />
+            </ErrorBoundary>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </Hydrate>
+        </ReactQueryConfigProvider>
+      </ReactQueryCacheProvider>
+    </>
+  );
+};
 export default App;
