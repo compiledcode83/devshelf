@@ -54,6 +54,14 @@
     word-break: keep-all;
     padding: 1.6rem 1.2rem;
 
+    @include mediaquery('xs') {
+      padding: 1.6rem;
+    }
+
+    @include mediaquery('sm') {
+      padding: 1.8rem;
+    }
+
     &:first-of-type {
       padding-left: 0;
     }

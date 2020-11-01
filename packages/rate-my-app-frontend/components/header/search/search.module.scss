@@ -9,6 +9,19 @@
 
   @include mediaquery('xs') {
     min-width: 28rem;
+    margin-left: 3rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0%;
+      left: -2.5rem;
+      transform: translateX(50%) rotate(30deg);
+      width: 2px;
+      height: 100%;
+      background-color: #eaeaea;
+    }
   }
 
   @include mediaquery('sm') {
@@ -29,8 +42,10 @@
   background-size: 1.4rem 1.4rem;
   padding: 1rem 0;
   padding-left: 3.2rem;
-  --input-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 2px 6px -3px rgba(0, 0, 0, 0.06) !important;
-  box-shadow: var(--input-shadow);
+
+  @include mediaquery('xl') {
+    font-size: 1.4rem;
+  }
 
   @include placeholder() {
     color: #627489;
