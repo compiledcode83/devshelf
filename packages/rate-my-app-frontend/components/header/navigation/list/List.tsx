@@ -16,16 +16,6 @@ const List = () => {
   const pageWidth = usePageWidth(0);
   const isPopover = pageWidth > 500;
 
-  /* prettier-ignore */
-  const injectAdditionalListProps = useCallback(() => {
-    if (isPopover) {
-      return {
-        'role': 'menu',
-      };
-    }
-    return null;
-  },[isPopover]);
-
   return (
     <>
       <button
@@ -39,17 +29,14 @@ const List = () => {
         <MoreIcon aria-hidden="true" />
       </button>
       <div className={styles.popoverWrapper}>
-        <div className={cn(styles.popoverInner, { [styles.popoverInnerVisible]: isMenuVisible })}>
+        <div
+          className={cn(styles.popoverInner, { [styles.popoverInnerVisible]: isMenuVisible })}
+          tabIndex={-1}
+        >
           <span aria-hidden="true" className={styles.triangle}>
             <ArrowUpIcon />
           </span>
-          <ul
-            className={cn(styles.list, { [styles.listVisible]: isMenuVisible })}
-            id="navigationList"
-            aria-label="Dodatkowe informacje"
-            tabIndex={isMenuVisible ? 0 : -1}
-            {...injectAdditionalListProps()}
-          >
+          <ul className={styles.list} id="navigationList" aria-label="Dodatkowe informacje">
             <li className={styles.listItem}>
               <Link href="/">
                 <a className={styles.link}>
