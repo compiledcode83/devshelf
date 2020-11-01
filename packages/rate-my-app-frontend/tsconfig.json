@@ -43,6 +43,6 @@
     "./shared/typings/testing-library.d.ts",
     "./shared/typings/svg.d.ts"
   ],
-  "exclude": ["node_modules", ".next", "out", "public"],
+  "exclude": ["node_modules", ".next", "out", "public", "cypress"],
   "include": ["types/next-env.d.ts", "**/*.ts", "**/*.tsx", "review.txt"]
 }
