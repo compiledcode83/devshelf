@@ -11,11 +11,11 @@ model User {
   id      Int      @default(autoincrement()) @id
   email   String   @unique
   name    String
-  login   String
-  bio   String
-  createdAt DateTime @default(now())
-  avatarUrl String
-  projects Project[]
+  login   String?
+  bio   String?
+  createdAt DateTime? @default(now())
+  avatarUrl String?
+  projects Project?
 }
 
 model Project {
