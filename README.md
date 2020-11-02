@@ -5,8 +5,7 @@
   <img
     height="80"
     width="80"
-    alt="fish"
-    src="https://i.ibb.co/ckWjST4/logo-1.png"
+    src="https://i.ibb.co/vJkVd69/logo-2.png"
   />
 </a>
 
