@@ -1,6 +1,8 @@
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import type { VerifyFunction } from 'passport-oauth2';
 import { findUserByEmail, createUser } from './user';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const strategyOptions = {
   clientID: process.env.GITHUB_ID as string,
