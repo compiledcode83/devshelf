@@ -1,6 +1,6 @@
 {
   "root": false,
-  "plugins": ["jsx-a11y", "react-app", "react-hooks", "jest-dom", "testing-library", "css-module"],
+  "plugins": ["jsx-a11y", "react-app", "react-hooks", "jest-dom", "testing-library"],
   "extends": [
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
