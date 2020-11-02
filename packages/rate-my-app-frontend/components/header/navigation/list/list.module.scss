@@ -34,15 +34,6 @@
       padding-bottom: 1rem;
     }
 
-    // @include mediaquery('lg') {
-    //   padding: 2rem 0;
-    //   padding-left: 1rem;
-
-    //   &:last-of-type {
-    //     padding-bottom: 2rem;
-    //   }
-    // }
-
     @include mediaquery('lg') {
       padding: 0 2rem;
       padding-left: 1rem;
@@ -59,7 +50,7 @@
   display: flex;
   align-items: center;
   color: #6b7280;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.4rem;
   text-decoration: none;
 
@@ -68,6 +59,10 @@
       color: #000;
     }
   }
+}
+
+.activeLink {
+  font-weight: 600;
 }
 
 .icon {

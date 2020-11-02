@@ -11,13 +11,9 @@
   background-color: var(--white);
 
   @include mediaquery('lg') {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  @include mediaquery('lg') {
     position: static;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
