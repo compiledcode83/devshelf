@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import Link from 'next/link';
 import styles from './list.module.scss';
 import DocumentIcon from '../../../../public/icons/document.svg';
@@ -9,13 +9,12 @@ import MoreIcon from '../../../../public/icons/more.svg';
 import ArrowUpIcon from '../../../../public/icons/arrow-up.svg';
 import useToggle from '../../../../shared/hooks/useToggle';
 import cn from 'classnames';
-import usePageWidth from 'shared/hooks/usePageWidth';
+import useClickOutside from '../../../../shared/hooks/useClickOutside';
 
 const List = () => {
-  const [isMenuVisible, toogleMenu] = useToggle();
-  const pageWidth = usePageWidth(0);
-  const isPopover = pageWidth > 500;
-
+  const [isMenuVisible, toogleMenu, closeMenu] = useToggle();
+  const menuRef = useRef<HTMLDivElement>(null!);
+  useClickOutside(menuRef, () => closeMenu());
   return (
     <>
       <button
@@ -30,6 +29,7 @@ const List = () => {
       </button>
       <div className={styles.popoverWrapper}>
         <div
+          ref={menuRef}
           className={cn(styles.popoverInner, { [styles.popoverInnerVisible]: isMenuVisible })}
           tabIndex={-1}
         >

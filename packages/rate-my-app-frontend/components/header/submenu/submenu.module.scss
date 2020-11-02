@@ -59,7 +59,11 @@
     }
 
     @include mediaquery('sm') {
-      padding: 1.8rem;
+      padding: 1.6rem 1.8rem;
+    }
+
+    @include mediaquery('xl') {
+      padding: 1.6rem 2.6rem;
     }
 
     &:first-of-type {
