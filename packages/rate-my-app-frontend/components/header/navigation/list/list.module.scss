@@ -63,6 +63,12 @@
 
 .activeLink {
   font-weight: 600;
+  text-decoration: underline;
+  svg {
+    path {
+      fill: #6b7280;
+    }
+  }
 }
 
 .icon {
