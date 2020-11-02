@@ -9,7 +9,7 @@ import MoreIcon from '../../../../public/icons/more.svg';
 import ArrowUpIcon from '../../../../public/icons/arrow-up.svg';
 import useToggle from '../../../../shared/hooks/useToggle';
 import cn from 'classnames';
-import useClickOutside from '../../../../shared/hooks/useClickOutside';
+import useClickOutside from 'shared/hooks/useClickOutside';
 
 const List = () => {
   const [isMenuVisible, toogleMenu, closeMenu] = useToggle();
