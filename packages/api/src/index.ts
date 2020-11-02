@@ -14,7 +14,7 @@ app.use(cors());
 app.use(helmet());
 app.use(compression());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 app.use('/', (_, res) => {
   res.status(200).send({ data: 'Hello world!' });
@@ -23,15 +23,15 @@ app.use('/', (_, res) => {
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}!`));
 
 async function main() {
-  const user = await prisma.user.update({
-    where: { id: 1 },
-    data: {
-      name: 'Olaf',
-      email: 'olafsulich@gmail.com',
-    },
-  });
+  // const user = await prisma.user.update({
+  //   where: { id: 1 },
+  //   data: {
+  //     name: 'Olaf',
+  //     email: 'olafsulich@gmail.com',
+  //   },
+  // });
 
-  const users = await prisma.user.findMany({});
-  console.log(users, user);
+  // const users = await prisma.user.findMany({});
+  console.log(prisma.user);
 }
 main();
