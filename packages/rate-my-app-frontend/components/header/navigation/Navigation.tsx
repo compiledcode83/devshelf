@@ -1,8 +1,8 @@
 import styles from './navigation.module.scss';
 import Search from 'components/header/search/Search';
-import Image from 'next/image';
-import { useHeaderState } from '../shared/stores/HeaderContext';
 import List from './list/List';
+import UserProfile from './userProfile/UserProfile';
+import { useHeaderState } from '../shared/stores/HeaderContext';
 import cn from 'classnames';
 
 const Navigation = () => {
@@ -16,13 +16,7 @@ const Navigation = () => {
       >
         <Search />
         <List />
-        <div className={styles.userInfo}>
-          <img src="/images/user.png" className={styles.userImage} alt="" />
-          <p className={styles.userText}>
-            <span className="visually-hidden">Profil użytkownika </span>
-            Olaf Sulich
-          </p>
-        </div>
+        <UserProfile />
       </nav>
     </>
   );

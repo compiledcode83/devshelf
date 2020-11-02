@@ -1,6 +1,6 @@
 import styles from './hamburgerButton.module.scss';
 import cn from 'classnames';
-import { HeaderProvider, useHeaderState } from '../shared/stores/HeaderContext';
+import { useHeaderState } from '../shared/stores/HeaderContext';
 
 const HamburgerButton = () => {
   const { isMenuVisible, toogleMenu } = useHeaderState();
