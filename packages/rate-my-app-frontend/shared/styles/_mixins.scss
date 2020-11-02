@@ -2,8 +2,8 @@
   $breakpoints: (
     'xs': '(min-width: 500px)',
     'sm': '(min-width: 639px)',
-    'lg': '(min-width: 768px)',
-    'xl': '(min-width: 1000px)',
+    'lg': '(min-width: 800px)',
+    'xl': '(min-width: 1050px)',
   );
 
   @if map-has-key($breakpoints, $query) {

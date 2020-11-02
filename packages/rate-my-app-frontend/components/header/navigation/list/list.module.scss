@@ -1,68 +1,13 @@
 @import 'common';
 
-.button {
-  background: none;
-  border: none;
-  display: none;
-  width: 3.8rem;
-  height: 3.8rem;
-  cursor: pointer;
+.wrapper {
+  width: 100%;
 
-  @include mediaquery('xs') {
+  @include mediaquery('lg') {
+    width: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-}
-
-.popoverWrapper {
-  width: 100%;
-  background-color: var(--white);
-  display: flex;
-
-  @include mediaquery('xs') {
-    position: absolute;
-    top: 6rem;
-    left: -5.6rem;
-  }
-}
-
-.triangle {
-  display: none;
-
-  @include mediaquery('xs') {
-    position: absolute;
-    display: block;
-    top: 2rem;
-    top: -1.5rem;
-    left: 50%;
-    right: 50%;
-    transform: translateX(-50%);
-    z-index: 20001;
-    width: 3rem;
-    height: 1.5rem;
-  }
-}
-
-.popoverInner {
-  position: relative;
-
-  @include mediaquery('xs') {
-    background-color: var(--white);
-    padding: 1rem 0;
-    display: none;
-    margin-top: 0;
-    width: 15rem;
-    height: 23rem;
-    top: 0;
-  }
-
-  &Visible {
-    display: flex;
-    position: absolute;
-    --list-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    box-shadow: var(--list-shadow);
-    border-radius: 6px;
+    position: relative;
   }
 }
 
@@ -74,10 +19,8 @@
   align-items: center;
   padding-left: 2rem;
 
-  @include mediaquery('xs') {
-    padding-left: 0;
-    margin: 0;
-    width: 100%;
+  @include mediaquery('lg') {
+    flex-direction: row;
   }
 
   &Item {
@@ -87,13 +30,27 @@
     align-items: center;
     padding: 2rem 0;
 
-    @include mediaquery('xs') {
-      padding: 1.2rem 0;
-      padding-left: 1rem;
-    }
-
     &:last-of-type {
       padding-bottom: 1rem;
+    }
+
+    // @include mediaquery('lg') {
+    //   padding: 2rem 0;
+    //   padding-left: 1rem;
+
+    //   &:last-of-type {
+    //     padding-bottom: 2rem;
+    //   }
+    // }
+
+    @include mediaquery('lg') {
+      padding: 0 2rem;
+      padding-left: 1rem;
+      width: auto;
+
+      &:last-of-type {
+        padding-bottom: 0rem;
+      }
     }
   }
 }
@@ -106,10 +63,7 @@
   font-size: 1.4rem;
   text-decoration: none;
 
-  @include mediaquery('xs') {
-    line-height: calc(1.4rem * 1.5);
-    font-weight: 500;
-
+  @include mediaquery('lg') {
     &:hover {
       color: #000;
     }
@@ -117,9 +71,24 @@
 }
 
 .icon {
+  width: 2rem;
+  height: 2rem;
   margin-right: 1rem;
 
-  @include mediaquery('xs') {
+  @include mediaquery('lg') {
     display: none;
+  }
+
+  @include mediaquery('xl') {
+    display: block;
+  }
+
+  path {
+    fill: #bccbda;
+  }
+
+  &:last-of-type {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 }

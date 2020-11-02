@@ -1,14 +1,30 @@
 @import 'common';
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 2rem;
+  flex: 1;
+
+  @include mediaquery('lg') {
+    align-items: flex-start;
+  }
+}
+
 .form {
   width: 100%;
-  max-width: 36rem;
   min-width: 26rem;
   height: 3.8rem;
   border: none;
 
-  @include mediaquery('xs') {
-    min-width: 28rem;
+  @include mediaquery('lg') {
+    min-width: 22rem;
+    max-width: 32rem;
+  }
+
+  @include mediaquery('xl') {
     margin-left: 3rem;
     position: relative;
 
@@ -22,17 +38,6 @@
       height: 100%;
       background-color: #eaeaea;
     }
-
-    @include mediaquery('xl') {
-      margin-left: 5rem;
-      &::before {
-        left: -3.7rem;
-      }
-    }
-  }
-
-  @include mediaquery('sm') {
-    min-width: 36rem;
   }
 }
 

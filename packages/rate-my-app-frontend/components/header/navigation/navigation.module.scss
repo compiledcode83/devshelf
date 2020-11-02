@@ -10,7 +10,12 @@
   padding: 2rem 0 1rem 0;
   background-color: var(--white);
 
-  @include mediaquery('xs') {
+  @include mediaquery('lg') {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include mediaquery('lg') {
     position: static;
     display: flex;
     align-items: center;
@@ -23,30 +28,6 @@
   display: none;
 }
 
-.listWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 2rem;
-
-  @include mediaquery('xs') {
-    justify-content: space-between;
-    flex-direction: row;
-  }
-}
-
-.profile {
-  width: 100%;
-
-  @include mediaquery('xs') {
-    width: auto;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-}
-
 .userInfo {
   width: 100%;
   padding: 1rem 2rem 0 2rem;
@@ -55,7 +36,7 @@
   justify-content: flex-start;
   border-top: 2px solid #f2f2f2;
 
-  @include mediaquery('xs') {
+  @include mediaquery('lg') {
     width: auto;
     border: none;
     padding: 1rem 0 1rem 2rem;
@@ -66,7 +47,7 @@
   font-size: 1.6rem;
   color: #6b7280;
 
-  @include mediaquery('xs') {
+  @include mediaquery('lg') {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;

@@ -12,7 +12,7 @@
   --upper-line-transform: translateY(-4px) rotate(0deg);
   --bottom-line-transform: translateY(4px) rotate(0deg);
 
-  @include mediaquery('xs') {
+  @include mediaquery('lg') {
     display: none;
   }
 

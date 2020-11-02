@@ -1,5 +1,4 @@
 import styles from './header.module.scss';
-import Submenu from 'components/header/submenu/Submenu';
 import Logo from 'components/header/logo/Logo';
 import Navigation from 'components/header/navigation/Navigation';
 import HamburgerButton from './hamburgerButton/HamburgerButton';
@@ -15,7 +14,6 @@ const Header = () => {
             <HamburgerButton />
             <Navigation />
           </div>
-          <Submenu />
         </header>
       </div>
     </HeaderProvider>

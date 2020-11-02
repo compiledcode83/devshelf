@@ -14,18 +14,14 @@ const Navigation = () => {
         aria-label="Menu główne"
         className={cn(styles.nav, { [styles.hide]: isMenuVisible })}
       >
-        <div className={styles.listWrapper}>
-          <Search />
-        </div>
-        <div className={styles.profile}>
-          <List />
-          <div className={styles.userInfo}>
-            <img src="/images/user.png" className={styles.userImage} alt="" />
-            <p className={styles.userText}>
-              <span className="visually-hidden">Profil użytkownika </span>
-              Olaf Sulich
-            </p>
-          </div>
+        <Search />
+        <List />
+        <div className={styles.userInfo}>
+          <img src="/images/user.png" className={styles.userImage} alt="" />
+          <p className={styles.userText}>
+            <span className="visually-hidden">Profil użytkownika </span>
+            Olaf Sulich
+          </p>
         </div>
       </nav>
     </>
