@@ -1,3 +1,5 @@
+@import 'common';
+
 .wrapper {
   width: 100%;
   background-color: var(--white);
@@ -15,5 +17,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 2rem 0;
+  padding: 2rem;
+
+  @include mediaquery('lg') {
+    padding: 2rem 2rem 0;
+  }
 }

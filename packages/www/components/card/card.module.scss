@@ -1,0 +1,117 @@
+.wrapper {
+  background-color: var(--white);
+  padding: 4rem 1.5rem 0 1.5rem;
+  width: 27rem;
+  height: 26rem;
+  border-radius: 6px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #24292e;
+  margin: 0;
+}
+
+.moreInfo {
+  transform: translateY(-4px);
+}
+
+.description {
+  color: #577594;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: calc(1.4rem * 1.6);
+  margin-bottom: 3rem;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1.4rem;
+  position: relative;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -2rem;
+    z-index: 50;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(-50%);
+    background-color: none;
+    background-image: url('/icons/circle.svg');
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+}
+
+.author {
+  padding: 1rem 0;
+  margin-top: 2rem;
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &Profile {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.authorImage {
+  width: 3rem;
+}
+
+.authorName {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
+
+.postReactions {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  &Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  &Icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    path {
+      fill: #bccbda;
+    }
+  }
+
+  &Count {
+    font-size: 1.4rem;
+    color: #6b7280;
+  }
+}

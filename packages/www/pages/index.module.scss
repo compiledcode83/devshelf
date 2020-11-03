@@ -1,0 +1,23 @@
+.container {
+  margin: 4rem auto;
+  width: 100%;
+  max-width: 106rem;
+}
+
+.mainHeading {
+  color: #718296;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 500;
+  width: 100%;
+  max-width: 27rem;
+  text-align: left;
+}
+
+.projectsWrapper {
+  width: 100%;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-row-gap: 3rem;
+}

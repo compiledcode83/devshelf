@@ -1,20 +1,35 @@
 import { Strategy as GitHubStrategy } from 'passport-github2';
-import type { VerifyFunction } from 'passport-oauth2';
+import type { VerifyCallback } from 'passport-oauth2';
 import { findUserByEmail, createUser } from './user';
 import dotenv from 'dotenv';
+import { getEnvVariable } from '../utils/getEnvVariable';
 dotenv.config();
 
 const strategyOptions = {
-  clientID: process.env.GITHUB_ID as string,
-  clientSecret: process.env.GITHUB_SECRET as string,
-  callbackURL: process.env.GITHUB_CALLBACK_URL as string,
+  clientID: getEnvVariable('GITHUB_ID'),
+  clientSecret: getEnvVariable('GITHUB_SECRET'),
+  callbackURL: getEnvVariable('GITHUB_CALLBACK_URL'),
   profileFields: ['displayName', 'emails'],
 };
 
-//@ts-ignore
-const verifyCallback: VerifyFunction = async (_accessToken, _refreshToken, profile, done) => {
+type VerifyFunction = (
+  accessToken: string,
+  refreshToken: string,
+  results: any,
+  profile: any,
+  verified: VerifyCallback,
+) => void;
+
+const verifyCallback: VerifyFunction = async (
+  _accessToken,
+  _refreshToken,
+  _results,
+  profile,
+  done,
+) => {
   try {
     if (profile && profile.emails && profile.emails[0]) {
+      console.log(_results, profile);
       const username = profile.displayName;
       const email = profile.emails[0].value;
       const user = await findUserByEmail(email);
@@ -24,10 +39,10 @@ const verifyCallback: VerifyFunction = async (_accessToken, _refreshToken, profi
       const createdUser = await createUser(email, username, testLogin);
       return done(null, createdUser);
     } else {
-      return done('There is no provided email', false);
+      return done(new Error(), undefined);
     }
   } catch (error) {
-    return done('Account not created', false);
+    return done(new Error(), undefined);
   }
 };
 
