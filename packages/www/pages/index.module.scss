@@ -1,7 +1,11 @@
 .container {
-  margin: 4rem auto;
+  margin: 2rem auto;
   width: 100%;
   max-width: 106rem;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  padding: 0 2rem;
 }
 
 .mainHeading {
@@ -12,6 +16,7 @@
   width: 100%;
   max-width: 27rem;
   text-align: left;
+  margin-bottom: 2rem;
 }
 
 .projectsWrapper {

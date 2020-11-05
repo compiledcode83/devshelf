@@ -27,11 +27,11 @@ const Card = () => {
         <div className={styles.postReactions}>
           <button className={styles.postReactionsButton}>
             <LikeIcon aria-hidden="true" className={styles.postReactionsIcon} />
-            <span className={styles.postReactionsCount}>12</span>
+            <span className={styles.postReactionsCount}>59</span>
           </button>
           <button className={styles.postReactionsButton}>
             <FeedbackIcon aria-hidden="true" className={styles.postReactionsIcon} />
-            <span className={styles.postReactionsCount}>12</span>
+            <span className={styles.postReactionsCount}>7</span>
           </button>
         </div>
       </div>

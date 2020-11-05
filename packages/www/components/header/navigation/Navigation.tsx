@@ -14,7 +14,7 @@ const Navigation = () => {
         aria-label="Menu główne"
         className={cn(styles.nav, { [styles.hide]: isMenuVisible })}
       >
-        <Search />
+        {/* <Search /> */}
         <List />
         <UserProfile />
       </nav>

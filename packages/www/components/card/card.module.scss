@@ -1,9 +1,12 @@
+@import 'common';
+
 .wrapper {
   background-color: var(--white);
   padding: 4rem 1.5rem 0 1.5rem;
-  width: 27rem;
-  height: 26rem;
+  width: 100%;
+  max-width: 70rem;
   border-radius: 6px;
+  width: 100%;
 }
 
 .header {
@@ -30,6 +33,7 @@
   font-weight: 500;
   line-height: calc(1.4rem * 1.6);
   margin-bottom: 3rem;
+  max-width: 40rem;
 }
 
 .link {
