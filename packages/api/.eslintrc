@@ -4,6 +4,8 @@
     "browser": true,
     "es2021": true
   },
+  "plugins": ["security"],
+  "extends": ["eslint:recommended", "plugin:node/recommended", "plugin:security/recommended"],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/ban-ts-comment": 0

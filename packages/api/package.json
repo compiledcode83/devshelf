@@ -42,6 +42,8 @@
     "@types/passport": "^1.0.4",
     "@types/passport-github2": "^1.2.4",
     "eslint": "^7.8.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-security": "^1.4.0",
     "nodemon": "^2.0.4",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.62"
