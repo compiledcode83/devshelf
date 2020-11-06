@@ -63,10 +63,9 @@
 
 .activeLink {
   font-weight: 600;
-  svg {
-    path {
-      fill: #6b7280;
-    }
+
+  &:hover {
+    color: #6b7280;
   }
 }
 
@@ -77,14 +76,5 @@
 
   @include mediaquery('xl') {
     display: block;
-  }
-
-  path {
-    fill: #a0aec0;
-  }
-
-  &:last-of-type {
-    width: 1.8rem;
-    height: 1.8rem;
   }
 }
