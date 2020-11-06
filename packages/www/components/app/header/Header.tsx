@@ -1,6 +1,6 @@
 import styles from './header.module.scss';
-import Logo from 'components/header/logo/Logo';
-import Navigation from 'components/header/navigation/Navigation';
+import Logo from 'components/app/header/logo/Logo';
+import Navigation from 'components/app/header/navigation/Navigation';
 import HamburgerButton from './hamburgerButton/HamburgerButton';
 import { HeaderProvider } from './shared/stores/HeaderContext';
 

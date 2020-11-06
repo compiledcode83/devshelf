@@ -1,5 +1,5 @@
 import styles from './navigation.module.scss';
-import Search from 'components/header/search/Search';
+import Search from 'components/app/header/search/Search';
 import List from './list/List';
 import UserProfile from './userProfile/UserProfile';
 import { useHeaderState } from '../shared/stores/HeaderContext';

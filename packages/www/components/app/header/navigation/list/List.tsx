@@ -1,9 +1,9 @@
 import { useCallback, useRef } from 'react';
 import Link from 'next/link';
 import styles from './list.module.scss';
-import CommentIcon from '../../../../public/icons/comment.svg';
-import ProjectIcon from '../../../../public/icons/project.svg';
-import HomeIcon from '../../../../public/icons/home.svg';
+import CommentIcon from '../../../../../public/icons/comment.svg';
+import ProjectIcon from '../../../../../public/icons/project.svg';
+import HomeIcon from '../../../../../public/icons/home.svg';
 import ActiveLink from '../activeLink/ActiveLink';
 
 const List = () => {

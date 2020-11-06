@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import PrivacyPolicyModal from 'components/modals/privacyPolicyModal/PrivacyPolicyModal';
-import Header from 'components/header/Header';
-import Card from 'components/card/Card';
+import PrivacyPolicyModal from 'components/app/modals/privacyPolicyModal/PrivacyPolicyModal';
+import Header from 'components/app/header/Header';
+import Card from 'components/app/card/Card';
 import styles from './index.module.scss';
 
 const Home = () => {
