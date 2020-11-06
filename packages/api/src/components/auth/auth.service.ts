@@ -1,8 +1,8 @@
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import type { VerifyCallback } from 'passport-oauth2';
-import { findUserByEmail, createUser } from './user';
+import { findUserByEmail, createUser } from '../user/user.service';
 import dotenv from 'dotenv';
-import { getEnvVariable } from '../utils/getEnvVariable';
+import { getEnvVariable } from '../../utils/getEnvVariable';
 dotenv.config();
 
 const strategyOptions = {

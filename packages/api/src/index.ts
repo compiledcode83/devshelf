@@ -3,18 +3,16 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-// import { PrismaClient } from '@prisma/client';
 import passport from 'passport';
 import Session from 'express-session';
 import CookieParser from 'cookie-parser';
-import { strategy as GitHubStrategy } from './services/passportGitHubStrategy';
-import { findUserByEmail } from './services/user';
+import { strategy as GitHubStrategy } from './components/auth/auth.service';
+import { findUserByEmail } from './components/user/user.service';
 import { router } from './router/router';
 import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
-// const prisma = new PrismaClient();
 passport.use(GitHubStrategy);
 
 app.use(bodyParser.json());
