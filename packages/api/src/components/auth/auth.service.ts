@@ -36,7 +36,7 @@ const verifyCallback: VerifyFunction = async (
       console.log(user);
       if (user) return done(null, user);
       const testLogin = 'aaa';
-      const createdUser = await createUser(email, username, testLogin);
+      const createdUser = await createUser({ email, name: username, login: testLogin });
       return done(null, createdUser);
     } else {
       return done(new Error(), undefined);

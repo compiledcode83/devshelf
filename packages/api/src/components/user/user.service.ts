@@ -8,7 +8,13 @@ export const findUserByEmail = (email: string) => {
   });
 };
 
-export const createUser = (email: string, name: string, login: string) => {
+type CreateUserType = {
+  email: string;
+  name: string;
+  login: string;
+};
+
+export const createUser = ({ email, name, login }: CreateUserType) => {
   return prisma.user.create({
     data: {
       email,
