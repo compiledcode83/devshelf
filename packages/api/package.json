@@ -11,7 +11,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@prisma/client": "^2.10.1",
+    "@prisma/client": "^2.10.2",
     "@sentry/node": "^5.22.3",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -31,7 +31,7 @@
     "pg": "^8.3.3"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.10.1",
+    "@prisma/cli": "^2.10.2",
     "@types/body-parser": "^1.19.0",
     "@types/compression": "^1.7.0",
     "@types/cookie-parser": "^1.4.2",

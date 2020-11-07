@@ -1,14 +1,15 @@
 import { PrismaClient } from '@prisma/client';
+import type { User } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const findUserByEmail = (email: string) => {
+export const findUserByEmail = (email: User['email']) => {
   return prisma.user.findOne({
     where: { email },
   });
 };
 
-export const findUserById = (id: number) => {
+export const findUserById = (id: User['id']) => {
   return prisma.user.findOne({
     where: { id },
   });

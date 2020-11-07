@@ -17,8 +17,6 @@ import { getEnvVariable } from './utils/getEnvVariable';
 dotenv.config();
 const app = express();
 
-passport.use(GitHubStrategy);
-passport.use(GoogleStategy);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ origin: getEnvVariable('ORIGIN') }));
@@ -35,13 +33,19 @@ app.use(CookieParser(getEnvVariable('SESSION_SECRET')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+passport.use(GitHubStrategy);
+passport.use(GoogleStategy);
+
 passport.serializeUser<User, number>((user, done) => {
+  console.log(user);
   done(null, user.id);
 });
 
 passport.deserializeUser<User, number>(async (id, done) => {
   try {
     const user = await findUserById(id);
+    console.log(user);
+
     if (!user) {
       return done(new Error('User not found'));
     }
@@ -56,10 +60,11 @@ app.use('/api', router);
 const PORT = process.env.PORT || 5000;
 
 app.use('/', (_, res) => {
-  res.status(200).send({ data: 'Siema' });
+  res.send("You're not logged in");
 });
 
 app.get('/logout', function (req, res) {
+  req.session = undefined;
   req.logout();
   res.redirect('/');
 });
