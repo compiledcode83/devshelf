@@ -7,28 +7,31 @@ import passport from 'passport';
 import Session from 'express-session';
 import CookieParser from 'cookie-parser';
 import { User } from '@prisma/client';
-import { strategy as GitHubStrategy } from './components/auth/auth.service';
+import { strategy as GitHubStrategy } from './components/auth/services/passportGitHubStategy';
+import { strategy as GoogleStategy } from './components/auth/services/passportGoogleStrategy';
 import { findUserById } from './components/user/user.service';
 import { router } from './router/router';
 import dotenv from 'dotenv';
+import { getEnvVariable } from './utils/getEnvVariable';
 
 dotenv.config();
 const app = express();
-passport.use(GitHubStrategy);
 
+passport.use(GitHubStrategy);
+passport.use(GoogleStategy);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: getEnvVariable('ORIGIN') }));
 app.use(helmet());
 app.use(compression());
 app.use(
   Session({
-    secret: 'secret',
-    resave: true,
+    secret: getEnvVariable('SESSION_SECRET'),
+    resave: false,
     saveUninitialized: false,
   }),
 );
-app.use(CookieParser('secret'));
+app.use(CookieParser(getEnvVariable('SESSION_SECRET')));
 app.use(passport.initialize());
 app.use(passport.session());
 

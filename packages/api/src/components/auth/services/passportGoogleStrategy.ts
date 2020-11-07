@@ -5,16 +5,17 @@ import { getEnvVariable } from '../../../utils/getEnvVariable';
 dotenv.config();
 
 const strategyOptions = {
-  clientID: getEnvVariable('GITHUB_ID'),
-  clientSecret: getEnvVariable('GITHUB_SECRET'),
-  callbackURL: getEnvVariable('GITHUB_CALLBACK_URL'),
+  clientID: getEnvVariable('GOOGLE_CLIENT_ID'),
+  clientSecret: getEnvVariable('GOOGLE_CLIENT_SECRET'),
+  callbackURL: getEnvVariable('GOOGLE_CALLBACK_URL'),
   profileFields: ['displayName', 'emails', 'username'],
 };
 
-export const googleStrategy = new GoogleStrategy(
+export const strategy = new GoogleStrategy(
   strategyOptions,
   async (_accessToken, _refreshToken, profile, done) => {
     if (profile.emails && profile.displayName) {
+      console.log(profile);
       const foundUser = await findUserByEmail(profile.emails[0].value);
       if (!foundUser) {
         const savedUser = await createUser({

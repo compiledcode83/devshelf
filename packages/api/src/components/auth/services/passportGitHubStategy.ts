@@ -36,4 +36,4 @@ const verifyCallback: VerifyFunction = async (_accessToken, _refreshToken, profi
   }
 };
 
-export const gitHubStrategy = new GitHubStrategy(strategyOptions, verifyCallback);
+export const strategy = new GitHubStrategy(strategyOptions, verifyCallback);
