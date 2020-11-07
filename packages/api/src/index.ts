@@ -6,8 +6,9 @@ import compression from 'compression';
 import passport from 'passport';
 import Session from 'express-session';
 import CookieParser from 'cookie-parser';
+import { User } from '@prisma/client';
 import { strategy as GitHubStrategy } from './components/auth/auth.service';
-import { findUserByEmail } from './components/user/user.service';
+import { findUserById } from './components/user/user.service';
 import { router } from './router/router';
 import dotenv from 'dotenv';
 
@@ -31,13 +32,13 @@ app.use(CookieParser('secret'));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser<any, string>((user, done) => {
-  done(null, user.username);
+passport.serializeUser<User, number>((user, done) => {
+  done(null, user.id);
 });
 
-passport.deserializeUser<any, string>(async (email, done) => {
+passport.deserializeUser<User, number>(async (id, done) => {
   try {
-    const user = await findUserByEmail(email);
+    const user = await findUserById(id);
     if (!user) {
       return done(new Error('User not found'));
     }
@@ -61,7 +62,7 @@ app.get('/logout', function (req, res) {
 });
 
 async function main() {
-  const find = await findUserByEmail('test111');
+  const find = await findUserById(1);
   console.log(find);
 }
 main();

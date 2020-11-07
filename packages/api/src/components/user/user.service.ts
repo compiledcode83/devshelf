@@ -8,6 +8,12 @@ export const findUserByEmail = (email: string) => {
   });
 };
 
+export const findUserById = (id: number) => {
+  return prisma.user.findOne({
+    where: { id },
+  });
+};
+
 type CreateUserType = {
   email: string;
   name: string;
