@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { RequestHandler } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -30,8 +30,6 @@ app.use(
   }),
 );
 app.use(CookieParser(getEnvVariable('SESSION_SECRET')));
-app.use(passport.initialize());
-app.use(passport.session());
 
 passport.use(GitHubStrategy);
 passport.use(GoogleStategy);
@@ -55,16 +53,31 @@ passport.deserializeUser<User, number>(async (id, done) => {
   }
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/api', router);
+
+const isLoggedIn: RequestHandler = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+app.get('/', (_req, res) => res.send('Example Home page!'));
+app.get('/failed', (_req, res) => res.send('You Failed to log in!'));
+
+// In this route you can see that if the user is logged in u can acess his info in: req.user
+app.get('/api/auth/good', isLoggedIn, (req, res) => res.send(`Welcome mr ${req.user}!`));
 
 const PORT = process.env.PORT || 5000;
 
-app.use('/', (_, res) => {
-  res.send("You're not logged in");
-});
+// app.use('/', (_, res) => {
+//   res.send("You're not logged in");
+// });
 
 app.get('/logout', function (req, res) {
-  req.session = undefined;
   req.logout();
   res.redirect('/');
 });

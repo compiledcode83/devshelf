@@ -9,6 +9,14 @@ export const findUserByEmail = (email: User['email']) => {
   });
 };
 
+export const findUserBy = <K extends keyof User>(by: K, value: User[K]) => {
+  return prisma.user.findOne({
+    where: {
+      [by]: value,
+    },
+  });
+};
+
 export const findUserById = (id: User['id']) => {
   return prisma.user.findOne({
     where: { id },
