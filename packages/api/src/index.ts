@@ -7,9 +7,8 @@ import passport from 'passport';
 import Session from 'express-session';
 import CookieParser from 'cookie-parser';
 import { User } from '@prisma/client';
-import { strategy as GitHubStrategy } from './components/auth/services/passportGitHubStategy';
-import { strategy as GoogleStategy } from './components/auth/services/passportGoogleStrategy';
-import { findUserById } from './components/user/user.service';
+import { gitHubStrategy, googleStrategy } from './components/auth/services/passportStrategies';
+import { findUserBy } from './components/user/user.service';
 import { router } from './router/router';
 import dotenv from 'dotenv';
 import { getEnvVariable } from './utils/getEnvVariable';
@@ -31,19 +30,16 @@ app.use(
 );
 app.use(CookieParser(getEnvVariable('SESSION_SECRET')));
 
-passport.use(GitHubStrategy);
-passport.use(GoogleStategy);
+passport.use(gitHubStrategy);
+passport.use(googleStrategy);
 
 passport.serializeUser<User, number>((user, done) => {
-  console.log(user);
   done(null, user.id);
 });
 
 passport.deserializeUser<User, number>(async (id, done) => {
   try {
-    const user = await findUserById(id);
-    console.log(user);
-
+    const user = await findUserBy('id', id);
     if (!user) {
       return done(new Error('User not found'));
     }
@@ -68,14 +64,9 @@ const isLoggedIn: RequestHandler = (req, res, next) => {
 app.get('/', (_req, res) => res.send('Example Home page!'));
 app.get('/failed', (_req, res) => res.send('You Failed to log in!'));
 
-// In this route you can see that if the user is logged in u can acess his info in: req.user
 app.get('/api/auth/good', isLoggedIn, (req, res) => res.send(`Welcome mr ${req.user}!`));
 
 const PORT = process.env.PORT || 5000;
-
-// app.use('/', (_, res) => {
-//   res.send("You're not logged in");
-// });
 
 app.get('/logout', function (req, res) {
   req.logout();
@@ -83,7 +74,7 @@ app.get('/logout', function (req, res) {
 });
 
 async function main() {
-  const find = await findUserById(1);
+  const find = await findUserBy('id', 1);
   console.log(find);
 }
 main();

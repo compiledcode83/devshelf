@@ -3,12 +3,6 @@ import type { User } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const findUserByEmail = (email: User['email']) => {
-  return prisma.user.findOne({
-    where: { email },
-  });
-};
-
 export const findUserBy = <K extends keyof User>(by: K, value: User[K]) => {
   return prisma.user.findOne({
     where: {
@@ -17,19 +11,7 @@ export const findUserBy = <K extends keyof User>(by: K, value: User[K]) => {
   });
 };
 
-export const findUserById = (id: User['id']) => {
-  return prisma.user.findOne({
-    where: { id },
-  });
-};
-
-type CreateUserType = {
-  email: string;
-  name: string;
-  login: string;
-};
-
-export const createUser = ({ email, name, login }: CreateUserType) => {
+export const createUser = ({ email, name, login }: Pick<User, 'email' | 'name' | 'login'>) => {
   return prisma.user.create({
     data: {
       email,
