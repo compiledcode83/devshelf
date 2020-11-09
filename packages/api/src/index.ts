@@ -12,7 +12,7 @@ import { findUserBy } from './components/user/user.service';
 import { router } from './router/router';
 import dotenv from 'dotenv';
 import { getEnvVariable } from './utils/getEnvVariable';
-
+import { projectsRouter } from './components/projects/projects.controller';
 dotenv.config();
 const app = express();
 
@@ -52,6 +52,7 @@ passport.deserializeUser<User, number>(async (id, done) => {
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/api', router);
+app.use('/projects', projectsRouter);
 
 const isLoggedIn: RequestHandler = (req, res, next) => {
   if (req.user) {
