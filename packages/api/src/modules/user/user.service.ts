@@ -11,6 +11,14 @@ export const findUserBy = async <K extends keyof User>(by: K, value: User[K]) =>
   });
 };
 
+export const findUserById = async (id: User['id']) => {
+  return await prisma.user.findOne({
+    where: {
+      id,
+    },
+  });
+};
+
 export const createUser = async ({
   email,
   name,
