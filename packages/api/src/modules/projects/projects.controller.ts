@@ -1,9 +1,10 @@
-import { findMany, findOne } from './projects.service';
+import { findMany, findOne, create } from './projects.service';
 import { Router } from 'express';
 
 export const projectsRouter = Router();
 
-projectsRouter.get('/', async (_req, res) => {
+projectsRouter.get('/', async (req, res) => {
+  console.log(req.user);
   const projects = await findMany();
   return res.status(200).json({ data: projects });
 });
@@ -14,7 +15,7 @@ projectsRouter.get('/:id', async (req, res) => {
   return res.status(200).json({ data: project });
 });
 
-// projectsRouter.post('/', async (_req, res) => {
-//   const project = await create().catch((e: unknown) => console.log(e));
-//   return res.status(200).json(project);
-// });
+projectsRouter.post('/', async (req, res) => {
+  const project = await create(req);
+  return res.status(200).json(project);
+});

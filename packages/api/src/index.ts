@@ -26,26 +26,23 @@ app.use(
   Session({
     secret: getEnvVariable('SESSION_SECRET'),
     saveUninitialized: false,
-    resave: true,
-    rolling: true,
+    resave: false,
   }),
 );
 app.use(CookieParser());
 
 passport.serializeUser<User, string>((user, done) => {
-  console.log('serializeUser', user.id);
-  done(null, user.id);
+  done(undefined, user.id);
 });
 
-passport.deserializeUser<User, User>(async (user, done) => {
+passport.deserializeUser<User, string>(async (userId, done) => {
   try {
-    const userId = user as unknown;
-    const foundUser = await findUserBy('id', userId as string);
+    const foundUser = await findUserBy('id', userId);
     if (!foundUser) {
       return done(new Error('User not found'));
     }
-    done(null, user);
-  } catch (e: unknown) {
+    done(undefined, foundUser);
+  } catch (e) {
     done(e);
   }
 });
