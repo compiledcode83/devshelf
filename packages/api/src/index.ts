@@ -32,26 +32,6 @@ app.use(
 );
 app.use(CookieParser());
 
-// passport.use(gitHubStrategy);
-// passport.use(googleStrategy);
-
-// passport.serializeUser<User, number>((user, done) => {
-//   console.log(user);
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser<User, number>(async (id, done) => {
-//   try {
-//     const user = await findUserBy('id', id);
-//     if (!user) {
-//       return done(new Error('User not found'));
-//     }
-//     done(null, user);
-//   } catch (e) {
-//     done(e);
-//   }
-// });
-
 passport.serializeUser<User, string>((user, done) => {
   console.log('serializeUser', user.id);
   done(null, user.id);

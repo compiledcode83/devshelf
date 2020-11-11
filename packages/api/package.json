@@ -50,5 +50,17 @@
     "nodemon": "^2.0.4",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.62"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint",
+      "npm run format"
+    ]
   }
 }

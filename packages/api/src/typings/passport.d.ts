@@ -2,7 +2,7 @@ import type { Handler } from 'express';
 import type { User } from '@prisma/client';
 import type { AuthenticateOptions } from 'passport';
 import type { AuthenticateOptionsGoogle } from 'passport-google-oauth20';
-import { PASSPORT_GOOGLE, PASSPORT_GITHUB } from '../constants/passport';
+import { PASSPORT_GOOGLE, PASSPORT_GITHUB } from '../modules/auth/utils/authConstants';
 
 /* eslint-disable */
 declare module 'passport' {
