@@ -23,12 +23,14 @@ export const createUser = async ({
   email,
   name,
   login,
-}: Pick<User, 'email' | 'name' | 'login'>) => {
+  avatarUrl,
+}: Pick<User, 'email' | 'name' | 'login' | 'avatarUrl'>) => {
   return await prisma.user.create({
     data: {
       email,
       name,
       login,
+      avatarUrl,
     },
   });
 };

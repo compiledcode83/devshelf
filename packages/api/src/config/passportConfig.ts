@@ -3,9 +3,7 @@ import { StrategyOptionsWithRequest } from 'passport-google-oauth20';
 import { getEnvVariable } from '../utils/getEnvVariable';
 dotenv.config();
 
-// const profileFields = ['displayName', 'emails', 'username'] as const;
-
-export const googleStategyOptions: StrategyOptionsWithRequest = {
+export const googleStrategyOptions: StrategyOptionsWithRequest = {
   clientID: getEnvVariable('GOOGLE_CLIENT_ID'),
   clientSecret: getEnvVariable('GOOGLE_CLIENT_SECRET'),
   callbackURL: getEnvVariable('GOOGLE_CALLBACK_URL'),
