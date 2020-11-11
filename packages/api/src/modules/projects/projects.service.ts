@@ -21,14 +21,14 @@ export const findOne = async (id: string) => {
   });
 };
 
-export const create = async () => {
-  return await prisma.project.create({
-    data: {
-      title: 'New awesome project-1',
-      description: 'desc',
-      author: {
-        connect: { id: 12 },
-      },
-    },
-  });
-};
+// export const create = async () => {
+//   return await prisma.project.create({
+//     data: {
+//       title: 'New awesome project-1',
+//       description: 'desc',
+//       author: {
+//         connect: { id: 12 },
+//       },
+//     },
+//   });
+// };

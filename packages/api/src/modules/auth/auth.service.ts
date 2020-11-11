@@ -6,17 +6,18 @@ import {
 } from 'passport-google-oauth20';
 import type { VerifyCallback as GitHubVerifyCallback } from 'passport-oauth2';
 import { findUserBy, createUser } from '../user/user.service';
-import { gitHubStrategyOptions, googleStrategyOptions } from '../../config/passportConfig';
+import { gitHubStrategyOptions, googleStrategyOptions } from './utils/authConfig';
 
 const callback = async (profile: Profile, done: GitHubVerifyCallback | GoogleVerifyCallback) => {
   if (profile.emails && profile.photos) {
-    const { displayName, emails, username, photos } = profile;
+    const { id, displayName, emails, username, photos } = profile;
     const email = emails[0].value;
     const avatarUrl = photos[0].value;
     const foundUser = await findUserBy('email', profile.emails[0].value);
 
     if (!foundUser) {
       const savedUser = await createUser({
+        id,
         name: displayName,
         email,
         login: username || '',

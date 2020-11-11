@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { StrategyOptionsWithRequest } from 'passport-google-oauth20';
-import { getEnvVariable } from '../utils/getEnvVariable';
+import { getEnvVariable } from '../../../utils/getEnvVariable';
 dotenv.config();
 
 export const googleStrategyOptions: StrategyOptionsWithRequest = {

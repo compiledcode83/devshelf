@@ -1,0 +1,114 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "Like",
+      "type": "Like",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "Feedback",
+      "type": "Feedback",
+      "arity": "List"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "id",
+      "type": "String"
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Project",
+      "field": "userId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Project",
+      "field": "authorId"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Project",
+          "field": "author"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "newValue": "[userId]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Like",
+      "field": "userId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Like",
+      "field": "authorId"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Like",
+          "field": "author"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "newValue": "[userId]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Feedback",
+      "field": "userId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Feedback",
+      "field": "authorId"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Feedback",
+          "field": "author"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "newValue": "[userId]"
+    }
+  ]
+}

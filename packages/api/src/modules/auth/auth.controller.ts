@@ -1,23 +1,27 @@
 import { Router } from 'express';
 import passport from 'passport';
+import { PASSPORT_GOOGLE, PASSPORT_GITHUB } from './utils/authConstants';
 
 export const passportRouter = Router();
 
-passportRouter.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+passportRouter.get(
+  '/google',
+  passport.authenticate(PASSPORT_GOOGLE, { scope: ['profile', 'email'] }),
+);
 
 passportRouter.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: '/failed' }),
+  passport.authenticate(PASSPORT_GOOGLE, { failureRedirect: '/failed' }),
   (_req, res) => {
     res.redirect('/good');
   },
 );
 
-passportRouter.get('/github', passport.authenticate('github'));
+passportRouter.get('/github', passport.authenticate(PASSPORT_GITHUB));
 
 passportRouter.get(
   '/github/callback',
-  passport.authenticate('github', { failureRedirect: '/failed' }),
+  passport.authenticate(PASSPORT_GITHUB, { failureRedirect: '/failed' }),
   (_req, res) => {
     res.redirect('/good');
   },

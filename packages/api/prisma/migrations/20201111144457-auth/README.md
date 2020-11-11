@@ -1,42 +1,33 @@
-# Migration `20201109233837-mvp`
+# Migration `20201111144457-auth`
 
-This migration has been generated at 11/10/2020, 12:38:37 AM.
+This migration has been generated at 11/11/2020, 3:44:57 PM.
 You can check out the [state of the schema](./schema.prisma) after the migration.
 
 ## Database Steps
 
 ```sql
-ALTER TABLE "public"."Project" DROP CONSTRAINT "Project_categoryId_fkey"
-
-ALTER TABLE "public"."Project" DROP COLUMN "categoryId",
-ADD COLUMN "category" "Technology"  NOT NULL DEFAULT E'JavaScript'
-
-ALTER TABLE "public"."User" DROP COLUMN "password"
-
-DROP TABLE "public"."Category"
+CREATE SEQUENCE "user_id_seq";
+ALTER TABLE "public"."User" ALTER COLUMN "id" SET DEFAULT nextval('user_id_seq');
+ALTER SEQUENCE "user_id_seq" OWNED BY "public"."User"."id"
 ```
 
 ## Changes
 
 ```diff
 diff --git schema.prisma schema.prisma
-migration 20201002152833-init..20201109233837-mvp
+migration ..20201111144457-auth
 --- datamodel.dml
 +++ datamodel.dml
-@@ -1,34 +1,62 @@
--// This is your Prisma schema file,
--// learn more about it in the docs: https://pris.ly/d/prisma-schema
--
- datasource db {
-   provider = "postgresql"
--  url = "***"
+@@ -1,0 +1,62 @@
++datasource db {
++  provider = "postgresql"
 +  url = "***"
- }
- generator client {
-   provider = "prisma-client-js"
- }
--model Post {
--  id        Int      @default(autoincrement()) @id
++}
++
++generator client {
++  provider = "prisma-client-js"
++}
++
 +model User {
 +  id      Int      @default(autoincrement()) @id
 +  email   String   @unique
@@ -45,29 +36,20 @@ migration 20201002152833-init..20201109233837-mvp
 +  bio   String?
 +  createdAt DateTime? @default(now())
 +  avatarUrl String?
-+  projects Project?
++  projects Project[]
 +}
 +
 +model Project {
 +  id Int @default(autoincrement()) @id
 +  title String
 +  description String
-   createdAt DateTime @default(now())
--  title     String
--  content   String?
--  published Boolean  @default(false)
--  author    User     @relation(fields: [authorId], references: [id])
++  createdAt DateTime @default(now())
 +  author User  @relation(fields: [authorId], references: [id])
-   authorId  Int
++  authorId  Int
 +  likes     Like[]
 +  category Technology @default(JavaScript)
 +  feedback Feedback[]
- }
--model Profile {
--  id     Int     @default(autoincrement()) @id
--  bio    String?
--  user   User    @relation(fields: [userId], references: [id])
--  userId Int     @unique
++}
 +
 +model Like { 
 +  id Int @default(autoincrement()) @id
@@ -75,13 +57,7 @@ migration 20201002152833-init..20201109233837-mvp
 +  authorId  Int
 +  project    Project  @relation(fields: [projectId], references: [id])
 +  projectId  Int
- }
--model User {
--  id      Int      @default(autoincrement()) @id
--  email   String   @unique
--  name    String?
--  posts   Post[]
--  profile Profile?
++}
 +
 +model Feedback {
 +  id Int @default(autoincrement()) @id
@@ -104,7 +80,7 @@ migration 20201002152833-init..20201109233837-mvp
 +  Express
 +  Nest
 +  PHP
- }
++}
 ```
 
 
