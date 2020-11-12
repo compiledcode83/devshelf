@@ -11,7 +11,7 @@ import { ReactQueryDevtools } from 'react-query-devtools';
 import type { DehydratedState } from 'react-query/hydration';
 import { Hydrate } from 'react-query/hydration';
 import ErrorBoundary from 'components/app/shared/components/errorBoundary/ErrorBoundary';
-import 'components/app/shared/styles/main.scss';
+import 'styles/main.scss';
 const isProduction = process.env.NODE_ENV === 'production';
 const isBrowser = typeof window !== 'undefined';
 
