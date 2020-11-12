@@ -1,12 +1,11 @@
 import { findMany, findOne, create } from './projects.service';
 import { Router } from 'express';
+import { User } from '@prisma/client';
 
 export const projectsRouter = Router();
 
 projectsRouter.get('/', async (req, res) => {
-  if (req.user) {
-    console.log(req.user);
-  }
+  console.log(req.user);
   const projects = await findMany();
   return res.status(200).json({ data: projects });
 });
@@ -18,6 +17,6 @@ projectsRouter.get('/:id', async (req, res) => {
 });
 
 projectsRouter.post('/', async (req, res) => {
-  const project = await create(req);
+  const project = await create(req.user as User['id']);
   return res.status(200).json(project);
 });

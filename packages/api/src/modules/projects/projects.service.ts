@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-import { Request } from 'express';
+import { PrismaClient, User } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -22,14 +21,13 @@ export const findOne = async (id: string) => {
   });
 };
 
-export const create = async (req: Request) => {
-  console.log('PROJECT USER', req.user);
+export const create = async (userId: User['id']) => {
   return await prisma.project.create({
     data: {
       title: 'New awesome project-1',
       description: 'desc',
       author: {
-        connect: { id: req.user as string },
+        connect: { id: userId },
       },
     },
   });

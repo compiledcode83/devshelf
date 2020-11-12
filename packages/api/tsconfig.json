@@ -1,15 +1,17 @@
 {
+  "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
-    "target": "es2020",
-    "module": "CommonJS",
-    "noEmit": true,
-    "strict": true,
+    "incremental": false,
+    "alwaysStrict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "resolveJsonModule": true
   },
-  "typeRoots": ["./node_modules/@types", "./src/typings/passport.d.ts"]
+  "typeRoots": [
+    "./node_modules/@types",
+    "./src/typings/passport.d.ts",
+    "./src/typings/express.d.ts"
+  ]
 }
