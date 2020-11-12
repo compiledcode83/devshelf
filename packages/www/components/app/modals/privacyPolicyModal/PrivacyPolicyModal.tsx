@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import styles from './privacyPolicyModal.module.scss';
 import Link from 'next/link';
-import useLocalStorage from 'shared/hooks/useLocalStorage';
+import useLocalStorage from 'components/app/shared/utils/useLocalStorage';
 
 const PrivacyPolicyModal = () => {
   const [storedValue, setValue] = useLocalStorage('cookie_policy');

@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useReducer, useContext } from 'react';
-import useToggle from 'shared/hooks/useToggle';
+import useToggle from 'components/app/shared/utils/useToggle';
 
 type State = {
   isMenuVisible: boolean;

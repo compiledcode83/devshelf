@@ -1,4 +1,4 @@
-import type { Nil } from 'shared/types/types';
+import type { Nil } from 'types/types';
 
 export const updateStyles = (
   el: Nil<HTMLElement>,
