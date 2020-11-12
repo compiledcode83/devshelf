@@ -4,7 +4,9 @@ import { Router } from 'express';
 export const projectsRouter = Router();
 
 projectsRouter.get('/', async (req, res) => {
-  console.log(req.user);
+  if (req.user) {
+    console.log(req.user);
+  }
   const projects = await findMany();
   return res.status(200).json({ data: projects });
 });

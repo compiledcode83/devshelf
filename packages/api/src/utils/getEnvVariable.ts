@@ -7,6 +7,7 @@ type Names = Readonly<{
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
   GOOGLE_CALLBACK_URL: string;
+  COOKIE_EXPIRATION_TIME: string;
 }>;
 
 export const getEnvVariable = <T extends keyof Names>(name: T): Names[T] => {
