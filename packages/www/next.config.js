@@ -89,7 +89,7 @@ config.pwa = {
 };
 
 config.sassOptions = {
-  includePaths: [path.join(__dirname, 'shared/styles')],
+  includePaths: [path.join(__dirname, 'styles')],
 };
 
 config.reactStrictMode = true;
