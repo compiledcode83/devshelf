@@ -1,4 +1,4 @@
-import { PrismaClient, User, Project } from '@prisma/client';
+import { PrismaClient, User, Project, Feedback } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -43,6 +43,26 @@ export const remove = async (id: Project['id']) => {
   return await prisma.project.delete({
     where: {
       id,
+    },
+  });
+};
+
+type NewComment = {
+  content: Feedback['content'];
+  authorId: string;
+  projectId: number;
+};
+
+export const comment = async ({ content, projectId, authorId }: NewComment) => {
+  return await prisma.feedback.create({
+    data: {
+      content,
+      project: {
+        connect: { id: projectId },
+      },
+      author: {
+        connect: { id: authorId },
+      },
     },
   });
 };

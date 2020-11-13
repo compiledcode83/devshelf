@@ -40,7 +40,7 @@ if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
   });
 }
 
-type Props = AppProps & { err: any };
+type AppPageProps = AppProps & { err: any };
 
 const queryCache = new QueryCache();
 const reactQueryConfigOverrides: ReactQueryConfig = {
@@ -52,7 +52,7 @@ const reactQueryConfigOverrides: ReactQueryConfig = {
   },
 } as const;
 
-const App = ({ Component, pageProps, err }: Props) => {
+const App = ({ Component, pageProps, err }: AppPageProps) => {
   const { dehydratedState } = pageProps as { readonly dehydratedState?: DehydratedState };
   return (
     <>
@@ -62,6 +62,7 @@ const App = ({ Component, pageProps, err }: Props) => {
           content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
         />
         <meta property="og:type" content="website" />
+        <meta name="apple-mobile-web-app-title" content="DevFeedback" />
       </Head>
       <ReactQueryCacheProvider queryCache={queryCache}>
         <ReactQueryConfigProvider config={reactQueryConfigOverrides}>

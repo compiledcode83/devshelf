@@ -1,6 +1,6 @@
-import { findMany, findOne, create, remove } from './projects.service';
+import { findMany, findOne, create, remove, comment } from './projects.service';
 import { Router } from 'express';
-import { User } from '@prisma/client';
+import { User, Feedback } from '@prisma/client';
 
 export const projectsRouter = Router();
 
@@ -25,4 +25,12 @@ projectsRouter.post('/', async (req, res) => {
 projectsRouter.delete('/:id', async (req, res) => {
   const deletedProject = remove(Number(req.params.id));
   return res.status(200).json(deletedProject);
+});
+
+projectsRouter.post('/:id/comment', async (req, res) => {
+  const { id: projectId } = req.params;
+  const content = req.body.content as Feedback['content'];
+  const authorId = req.user as User['id'];
+  const newComment = await comment({ content, projectId: Number(projectId), authorId });
+  return res.status(200).json(newComment);
 });
