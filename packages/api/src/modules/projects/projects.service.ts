@@ -1,4 +1,4 @@
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient, User, Project } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -10,10 +10,10 @@ export const findMany = async () => {
   });
 };
 
-export const findOne = async (id: string) => {
+export const findOne = async (id: Project['id']) => {
   return await prisma.project.findOne({
     where: {
-      id: Number(id),
+      id,
     },
     include: {
       author: true,
@@ -29,6 +29,14 @@ export const create = async (userId: User['id']) => {
       author: {
         connect: { id: userId },
       },
+    },
+  });
+};
+
+export const remove = async (id: string) => {
+  return await prisma.project.delete({
+    where: {
+      id: Number(id),
     },
   });
 };

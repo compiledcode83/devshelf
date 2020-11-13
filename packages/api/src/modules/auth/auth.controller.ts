@@ -27,9 +27,11 @@ passportRouter.get(
   },
 );
 
+passportRouter.get('/me', (req, res) => {
+  res.json(req.user);
+});
+
 passportRouter.get('/logout', (req, res) => {
-  // @ts-ignore
-  req.session = null;
   req.logout();
   res.redirect('/');
 });
