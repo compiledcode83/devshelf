@@ -19,13 +19,9 @@ export const findUserById = async (id: User['id']) => {
   });
 };
 
-export const createUser = async ({
-  id,
-  email,
-  name,
-  login,
-  avatarUrl,
-}: Pick<User, 'id' | 'email' | 'name' | 'login' | 'avatarUrl'>) => {
+type CreateUser = Pick<User, 'id' | 'email' | 'name' | 'login' | 'avatarUrl' | 'provider'>;
+
+export const createUser = async ({ id, email, name, login, avatarUrl, provider }: CreateUser) => {
   return await prisma.user.create({
     data: {
       id,
@@ -33,6 +29,7 @@ export const createUser = async ({
       name,
       login,
       avatarUrl,
+      provider,
     },
   });
 };

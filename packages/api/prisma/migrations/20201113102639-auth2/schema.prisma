@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -9,13 +9,12 @@ generator client {
 
 model User {
   id        String     @id
-  email     String     @unique
+  email     String     
   name      String
   login     String?
   bio       String?
   createdAt DateTime?  @default(now())
   avatarUrl String?
-  provider String?
   projects  Project[]
   Like      Like[]
   Feedback  Feedback[]

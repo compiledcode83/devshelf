@@ -21,22 +21,28 @@ export const findOne = async (id: Project['id']) => {
   });
 };
 
-export const create = async (userId: User['id']) => {
+type NewProject = {
+  title: Project['title'];
+  description: Project['description'];
+  authorId: User['id'];
+};
+
+export const create = async ({ title, description, authorId }: NewProject) => {
   return await prisma.project.create({
     data: {
-      title: 'New awesome project-1',
-      description: 'desc',
+      title,
+      description,
       author: {
-        connect: { id: userId },
+        connect: { id: authorId },
       },
     },
   });
 };
 
-export const remove = async (id: string) => {
+export const remove = async (id: Project['id']) => {
   return await prisma.project.delete({
     where: {
-      id: Number(id),
+      id,
     },
   });
 };

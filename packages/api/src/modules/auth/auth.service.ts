@@ -9,25 +9,34 @@ import { findUserBy, createUser } from '../user/user.service';
 import { gitHubStrategyOptions, googleStrategyOptions } from './utils/authConfig';
 
 const callback = async (profile: Profile, done: GitHubVerifyCallback | GoogleVerifyCallback) => {
-  if (profile.emails && profile.photos) {
-    const { id, displayName, emails, username, photos } = profile;
-    const email = emails[0].value;
-    const avatarUrl = photos[0].value;
-    const foundUser = await findUserBy('email', profile.emails[0].value);
+  try {
+    if (profile.emails && profile.photos) {
+      const { id, displayName, emails, username, photos, provider } = profile;
+      const email = emails[0].value;
+      const avatarUrl = photos[0].value;
+      const foundUser = await findUserBy('email', profile.emails[0].value);
 
-    if (!foundUser) {
-      const savedUser = await createUser({
-        id,
-        name: displayName,
-        email,
-        login: username || '',
-        avatarUrl,
-      });
-      return done(undefined, savedUser);
+      if (foundUser && foundUser?.provider !== provider) {
+        return done(new Error('User already created with another provider'), false);
+      }
+
+      if (!foundUser) {
+        const savedUser = await createUser({
+          id,
+          name: displayName,
+          email,
+          login: username || '',
+          avatarUrl,
+          provider,
+        });
+        return done(undefined, savedUser);
+      }
+
+      return done(undefined, foundUser);
     }
+  } catch (error) {
+    return done(new Error('Account not created'), false);
   }
-
-  return done(undefined, profile);
 };
 
 export const gitHubStrategy = new GitHubStrategy(

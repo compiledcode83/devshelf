@@ -26,7 +26,7 @@ app.use(
   Session({
     secret: getEnvVariable('SESSION_SECRET'),
     saveUninitialized: false,
-    resave: true,
+    resave: false,
     cookie: {
       maxAge: Number(getEnvVariable('COOKIE_EXPIRATION_TIME')),
       httpOnly: true,
