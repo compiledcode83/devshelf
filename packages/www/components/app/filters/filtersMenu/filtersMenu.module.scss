@@ -1,0 +1,49 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #718296;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+.list {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  width: 100%;
+}
+
+.button {
+  font-size: 1.4rem;
+  color: #313f4e;
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.7rem 0;
+}

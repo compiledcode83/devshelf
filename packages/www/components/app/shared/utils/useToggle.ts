@@ -6,11 +6,11 @@ const useToggle = (initialOn = false) => {
     setOn((on) => !on);
   }, []);
 
-  const closeMenu = useCallback(() => {
+  const off = useCallback(() => {
     setOn(false);
   }, []);
 
-  return [on, toggle, closeMenu] as const;
+  return [on, toggle, off] as const;
 };
 
 export default useToggle;
