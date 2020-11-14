@@ -1,0 +1,49 @@
+.wrapper {
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.resource {
+  width: 100%;
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #718296;
+  margin: 1rem 0 2rem 0;
+  padding: 0;
+}
+
+.list {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  margin-right: 3rem;
+}
+
+.userImage {
+}
+
+.username {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
