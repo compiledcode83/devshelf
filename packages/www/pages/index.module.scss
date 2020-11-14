@@ -1,7 +1,11 @@
-.container {
-  margin: 2rem auto;
+.mainWrapper {
   width: 100%;
   max-width: 106rem;
+  margin: 2rem auto;
+}
+
+.container {
+  width: 100%;
   display: grid;
   align-content: center;
   justify-content: center;
@@ -25,4 +29,8 @@
   align-content: center;
   justify-content: center;
   grid-row-gap: 3rem;
+}
+
+.popularWrapper {
+  padding: 0 2rem;
 }

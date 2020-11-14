@@ -4,7 +4,7 @@ import FiltersMenu from './filtersMenu/filtersMenu';
 import useToggle from 'components/app/shared/utils/useToggle';
 
 const Filters = () => {
-  const [on, toggle, off] = useToggle();
+  const [on, toggle] = useToggle();
   return (
     <div className={styles.wrapper}>
       <div className={styles.filters}>

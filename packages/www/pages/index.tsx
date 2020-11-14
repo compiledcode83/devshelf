@@ -4,30 +4,24 @@ import Header from 'components/app/header/Header';
 import Card from 'components/app/card/Card';
 import styles from './index.module.scss';
 import Filters from '../components/app/filters/Filters';
-
+import PopularResources from '../components/app/popularResources/PopularResources';
 const Home = () => {
   return (
     <>
-      <PrivacyPolicyModal />
+      {/* <PrivacyPolicyModal /> */}
       <Header />
       <main>
-        <div>
+        <div className={styles.mainWrapper}>
           <div className={styles.container}>
             <Filters />
             <div className={styles.projectsWrapper}>
               <Card />
               <Card />
               <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
             </div>
           </div>
-          <div>
-            <aside></aside>
-            <aside></aside>
+          <div className={styles.popularWrapper}>
+            <PopularResources />
           </div>
         </div>
       </main>
