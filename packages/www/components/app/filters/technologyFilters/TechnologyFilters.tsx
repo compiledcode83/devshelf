@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import styles from './technologyFilters.module.scss';
 
 type TechnologyFiltersProps = {
   isActive: boolean;
 };
 
-const TechnologyFilters = ({ isActive }: TechnologyFiltersProps) => {
+const TechnologyFilters = memo<TechnologyFiltersProps>(({ isActive }) => {
   return (
     <section className={styles.wrapper}>
       <h2 id="technology-filters" className={styles.heading}>
@@ -26,6 +27,6 @@ const TechnologyFilters = ({ isActive }: TechnologyFiltersProps) => {
       </ul>
     </section>
   );
-};
+});
 
 export default TechnologyFilters;

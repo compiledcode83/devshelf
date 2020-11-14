@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './filtersButton.module.scss';
 import ArrowIcon from '../../../../public/icons/arrow-down.svg';
 
@@ -5,7 +6,7 @@ type FiltersButtonProps = {
   label: string;
 };
 
-const FiltersButton = ({ label }: FiltersButtonProps) => {
+const FiltersButton = memo<FiltersButtonProps>(({ label }) => {
   return (
     <button className={styles.button}>
       <span className={styles.filter}>{label}</span>
@@ -14,6 +15,6 @@ const FiltersButton = ({ label }: FiltersButtonProps) => {
       </span>
     </button>
   );
-};
+});
 
 export default FiltersButton;
