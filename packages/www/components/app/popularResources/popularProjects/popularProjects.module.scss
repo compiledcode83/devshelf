@@ -1,3 +1,5 @@
+@import 'common';
+
 .wrapper {
   width: 100%;
   padding: 2rem 1.5rem;
@@ -8,6 +10,14 @@
   background-color: #fff;
   border-radius: 8px;
   margin-top: 2rem;
+
+  @include mediaquery('lg') {
+    padding: 2rem 1.5rem 2rem 1.5rem;
+  }
+
+  @include mediaquery('xl') {
+    padding: 2rem 2rem 2rem 2rem;
+  }
 }
 
 .resource {
@@ -18,7 +28,6 @@
   font-size: 1.6rem;
   font-weight: 500;
   color: #718296;
-  margin: 1rem 0 2rem 0;
   padding: 0;
 }
 
