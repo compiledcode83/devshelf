@@ -11,7 +11,11 @@
   border-radius: 8px;
 
   @include mediaquery('lg') {
-    padding: 3rem 1.5rem 1rem 1.5rem;
+    padding: 2rem 1.5rem 1rem 1.5rem;
+  }
+
+  @include mediaquery('xl') {
+    padding: 2rem 2rem 1rem 2rem;
   }
 }
 
@@ -25,6 +29,8 @@
   color: #718296;
   margin: 1rem 0 2rem 0;
   padding: 0;
+
+  margin-bottom: 3rem;
 }
 
 .list {
@@ -45,9 +51,11 @@
 
 .listItem {
   margin-right: 3rem;
+  margin-bottom: 3rem;
+
   @include mediaquery('lg') {
     margin-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   a {
@@ -58,7 +66,7 @@
     @include mediaquery('lg') {
       width: 100%;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
     }
   }
@@ -75,9 +83,11 @@
   width: 1px;
 
   @include mediaquery('lg') {
+    position: static !important;
     width: auto;
     height: auto;
-    clip: none;
-    position: static;
+    font-size: 1.4rem;
+    color: #313f4e;
+    margin-left: 1.5rem;
   }
 }

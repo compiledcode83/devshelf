@@ -8,6 +8,10 @@
   border-radius: 6px;
   width: 100%;
   margin-bottom: 3rem;
+
+  @include mediaquery('lg') {
+    padding: 4rem 2rem 0 2rem;
+  }
 }
 
 .header {
@@ -22,6 +26,18 @@
   font-weight: 600;
   color: #24292e;
   margin: 0;
+
+  @include mediaquery('xs') {
+    font-size: 1.8rem;
+  }
+
+  @include mediaquery('lg') {
+    font-size: 2.2rem;
+  }
+
+  @include mediaquery('xl') {
+    font-size: 2.8rem;
+  }
 }
 
 .moreInfo {
@@ -35,6 +51,16 @@
   line-height: calc(1.4rem * 1.6);
   margin-bottom: 3rem;
   max-width: 40rem;
+
+  @include mediaquery('xs') {
+    font-size: 1.5rem;
+    line-height: calc(1.5rem * 1.6);
+  }
+
+  @include mediaquery('lg') {
+    font-size: 1.6rem;
+    line-height: calc(1.6rem * 1.6);
+  }
 }
 
 .link {
@@ -44,6 +70,10 @@
   position: relative;
   margin-left: 2rem;
   margin-bottom: 1.5rem;
+
+  @include mediaquery('lg') {
+    font-size: 1.6rem;
+  }
 
   &::before {
     content: '';
@@ -70,6 +100,10 @@
   align-items: center;
   justify-content: space-between;
 
+  @include mediaquery('lg') {
+    padding: 1.5rem 1rem;
+  }
+
   &Profile {
     width: 50%;
     display: flex;
@@ -91,6 +125,15 @@
   padding: 0;
   position: absolute !important;
   width: 1px;
+
+  @include mediaquery('lg') {
+    position: static !important;
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
+    color: #000;
+    margin-left: 1rem;
+  }
 }
 
 .postReactions {
@@ -104,6 +147,10 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
+
+    @include mediaquery('lg') {
+      margin-right: 1rem;
+    }
   }
 
   &Icon {
@@ -113,10 +160,20 @@
     path {
       fill: #bccbda;
     }
+
+    @include mediaquery('lg') {
+      width: 1.6rem;
+      height: 1.5rem;
+      margin-right: 1rem;
+    }
   }
 
   &Count {
     font-size: 1.4rem;
     color: #6b7280;
+
+    @include mediaquery('lg') {
+      font-size: 1.6rem;
+    }
   }
 }
