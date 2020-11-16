@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-top: 2px solid #f2f2f2;
+  border-top: 2px solid var(--light-200);
 
   @include mediaquery('lg') {
     width: auto;
@@ -17,7 +17,7 @@
 
 .text {
   font-size: 1.6rem;
-  color: #6b7280;
+  color: var(--gray-300);
 
   @include mediaquery('lg') {
     border: 0;
