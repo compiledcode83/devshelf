@@ -19,7 +19,7 @@
   border-radius: 8px;
   background-color: var(--white);
   height: auto;
-  color: var(--dark-grey);
+  color: var(--dark-300);
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -104,12 +104,12 @@
   padding: 0;
 
   &:hover .closeButtonIcon {
-    fill: #7a98b6;
+    fill: var(--gray-400);
   }
 }
 
 .closeButtonIcon {
-  fill: #bccbda;
+  fill: var(--light-500);
 }
 
 .backdrop {
