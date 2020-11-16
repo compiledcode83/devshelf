@@ -2,11 +2,12 @@ import Card from 'components/app/card/Card';
 import Header from 'components/app/header/Header';
 import Filters from '../components/app/filters/Filters';
 import PopularResources from '../components/app/popularResources/PopularResources';
+import PrivacyPolicyModal from '../components/app/modals/privacyPolicyModal/PrivacyPolicyModal';
 import styles from './index.module.scss';
 const Home = () => {
   return (
     <>
-      {/* <PrivacyPolicyModal /> */}
+      <PrivacyPolicyModal />
       <Header />
       <main className={styles.container}>
         <div className={styles.mainWrapper}>
