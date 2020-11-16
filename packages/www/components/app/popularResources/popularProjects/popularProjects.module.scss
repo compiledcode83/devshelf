@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 8px;
   margin-top: 2rem;
 
@@ -32,7 +32,7 @@
 .heading {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #718296;
+  color: var(--gray-400);
   padding: 0;
 }
 
@@ -67,13 +67,13 @@
 
 .projectName {
   font-size: 1.4rem;
-  color: #313f4e;
+  color: var(--dark-100);
 }
 
 .likes {
   font-size: 1.5rem;
-  color: #6b7280;
-  background-color: #e2e8f0;
+  color: var(--gray-300);
+  background-color: var(--light-200);
   border-radius: 4px;
   padding: 0.4rem 0.8rem;
   text-align: center;
