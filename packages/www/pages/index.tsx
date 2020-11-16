@@ -10,15 +10,18 @@ const Home = () => {
     <>
       {/* <PrivacyPolicyModal /> */}
       <Header />
-      <main>
+      <main className={styles.container}>
         <div className={styles.mainWrapper}>
-          <div className={styles.container}>
+          <div className={styles.filters}>
             <Filters />
-            <div className={styles.projectsWrapper}>
-              <Card />
-              <Card />
-              <Card />
+          </div>
+          <div className={styles.projectsWrapper}>
+            <div className={styles.projectsFilters}>
+              <Filters />
             </div>
+            <Card />
+            <Card />
+            <Card />
           </div>
           <div className={styles.popularWrapper}>
             <PopularResources />

@@ -1,3 +1,5 @@
+@import 'common';
+
 .wrapper {
   width: 100%;
   padding: 2rem 1.5rem;
@@ -7,6 +9,10 @@
   flex-direction: column;
   background-color: #fff;
   border-radius: 8px;
+
+  @include mediaquery('lg') {
+    padding: 3rem 1.5rem 1rem 1.5rem;
+  }
 }
 
 .resource {
@@ -28,13 +34,34 @@
   align-items: center;
   list-style: none;
   padding: 0;
+
+  @include mediaquery('lg') {
+    align-items: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+  }
 }
 
 .listItem {
   margin-right: 3rem;
-}
+  @include mediaquery('lg') {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
 
-.userImage {
+  a {
+    text-decoration: none;
+    color: #313f4e;
+    font-size: 1.4rem;
+
+    @include mediaquery('lg') {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  }
 }
 
 .username {
@@ -46,4 +73,11 @@
   padding: 0;
   position: absolute !important;
   width: 1px;
+
+  @include mediaquery('lg') {
+    width: auto;
+    height: auto;
+    clip: none;
+    position: static;
+  }
 }

@@ -1,0 +1,66 @@
+.wrapper {
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.resource {
+  width: 100%;
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #718296;
+  margin: 1rem 0 2rem 0;
+  padding: 0;
+}
+
+.list {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  width: 100%;
+}
+
+.link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  text-decoration: none;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
+.projectName {
+  font-size: 1.4rem;
+  color: #313f4e;
+}
+
+.likes {
+  font-size: 1.5rem;
+  color: #6b7280;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+}

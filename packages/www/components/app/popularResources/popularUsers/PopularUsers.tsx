@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './popularUser.module.scss';
+import styles from './popularUsers.module.scss';
 
 const PopularUsers = () => {
   return (

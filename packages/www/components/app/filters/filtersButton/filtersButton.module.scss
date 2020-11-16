@@ -1,3 +1,5 @@
+@import 'common';
+
 .button {
   width: 100%;
   display: flex;
@@ -5,25 +7,31 @@
   justify-content: space-between;
   padding: 0;
   margin: 1rem 0;
+
+  @include mediaquery('xl') {
+    display: none;
+  }
 }
 
 .filter {
-  width: 80%;
-  height: 3rem;
-  font-size: 1.4rem;
+  width: 100%;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   border-radius: 4px 0px 0px 4px;
   background-color: #cbd5e0;
   color: #1a202c;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.5rem;
   box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
   width: 20%;
-  height: 3rem;
+  max-width: 8rem;
+  height: 3.5rem;
   background-color: #e2e8f0;
   padding: 1rem;
   display: flex;
