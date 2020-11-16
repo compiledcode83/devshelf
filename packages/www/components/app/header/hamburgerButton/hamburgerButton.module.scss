@@ -1,6 +1,8 @@
 @import 'common';
 
 .hamburger {
+  --upper-line-transform: translateY(-4px) rotate(0deg);
+  --bottom-line-transform: translateY(4px) rotate(0deg);
   width: 2.4rem;
   height: 4rem;
   display: flex;
@@ -9,8 +11,6 @@
   background-color: transparent;
   border: none;
   flex-direction: column;
-  --upper-line-transform: translateY(-4px) rotate(0deg);
-  --bottom-line-transform: translateY(4px) rotate(0deg);
 
   @include mediaquery('lg') {
     display: none;

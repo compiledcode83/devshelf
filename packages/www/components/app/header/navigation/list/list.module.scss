@@ -49,14 +49,14 @@
 .link {
   display: flex;
   align-items: center;
-  color: #6b7280;
+  color: var(--gray-300);
   font-weight: 500;
   font-size: 1.4rem;
   text-decoration: none;
 
   @include mediaquery('lg') {
     &:hover {
-      color: #000;
+      color: var(--black);
     }
   }
 }
@@ -65,7 +65,7 @@
   font-weight: 600;
 
   &:hover {
-    color: #6b7280;
+    color: var(--gray-300);
   }
 }
 
