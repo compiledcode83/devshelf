@@ -22,13 +22,13 @@
 }
 
 .heading {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #24292e;
   margin: 0;
 
   @include mediaquery('xs') {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   @include mediaquery('lg') {
@@ -162,7 +162,7 @@
     }
 
     @include mediaquery('lg') {
-      width: 1.6rem;
+      width: 1.5rem;
       height: 1.5rem;
       margin-right: 1rem;
     }
@@ -173,7 +173,7 @@
     color: #6b7280;
 
     @include mediaquery('lg') {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
   }
 }

@@ -16,7 +16,12 @@
   }
 
   @include mediaquery('xl') {
+    margin-top: 3rem;
     padding: 2rem 2rem 2rem 2rem;
+  }
+
+  @include mediaquery('xxl') {
+    margin-top: 4rem;
   }
 }
 

@@ -1,10 +1,8 @@
-import Head from 'next/head';
-import PrivacyPolicyModal from 'components/app/modals/privacyPolicyModal/PrivacyPolicyModal';
-import Header from 'components/app/header/Header';
 import Card from 'components/app/card/Card';
-import styles from './index.module.scss';
+import Header from 'components/app/header/Header';
 import Filters from '../components/app/filters/Filters';
 import PopularResources from '../components/app/popularResources/PopularResources';
+import styles from './index.module.scss';
 const Home = () => {
   return (
     <>
@@ -15,14 +13,15 @@ const Home = () => {
           <div className={styles.filters}>
             <Filters />
           </div>
-          <div className={styles.projectsWrapper}>
+          <section className={styles.projectsWrapper}>
+            <h1 className={styles.heading}>STRONA GŁÓWNA</h1>
             <div className={styles.projectsFilters}>
               <Filters />
             </div>
             <Card />
             <Card />
             <Card />
-          </div>
+          </section>
           <div className={styles.popularWrapper}>
             <PopularResources />
           </div>

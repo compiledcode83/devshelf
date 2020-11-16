@@ -1,7 +1,7 @@
 import MoreIcon from '../../../public/icons/more.svg';
 import styles from './card.module.scss';
 import LikeIcon from '../../../public/icons/like.svg';
-import FeedbackIcon from '../../../public/icons/comment.svg';
+import FeedbackIcon from '../../../public/icons/cardComment.svg';
 
 const Card = () => {
   return (

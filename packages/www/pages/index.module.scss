@@ -13,9 +13,10 @@
   grid-template-columns: 1fr;
   align-items: center;
   justify-content: center;
+  margin-top: 4rem;
 
   @include mediaquery('lg') {
-    margin-top: 4rem;
+    margin-top: 8rem;
     grid-column-gap: 4rem;
 
     align-items: start;
@@ -25,8 +26,12 @@
   }
 
   @include mediaquery('xl') {
-    grid-column-gap: 8rem;
+    grid-column-gap: 6rem;
     grid-template-columns: 1fr 2.2fr 1fr;
+  }
+
+  @include mediaquery('xxl') {
+    grid-template-columns: 1fr 2.6fr 1fr;
   }
 }
 
@@ -64,6 +69,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
 
 .popularWrapper {
@@ -72,4 +78,22 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+}
+
+.heading {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  color: #718296;
+  font-size: 1.6rem;
+
+  @include mediaquery('lg') {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  @include mediaquery('xl') {
+    position: absolute;
+    top: -5rem;
+  }
 }
