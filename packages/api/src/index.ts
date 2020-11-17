@@ -36,17 +36,17 @@ app.use(
 );
 app.use(CookieParser());
 
-passport.serializeUser<User, string>((user, done) => {
-  done(undefined, user.id);
+passport.serializeUser<User, User>((user, done) => {
+  done(undefined, user);
 });
 
-passport.deserializeUser<string, string>(async (userId, done) => {
+passport.deserializeUser<User, User>(async (user, done) => {
   try {
-    const foundUser = await findUserBy('id', userId);
+    const foundUser = await findUserBy('id', user.id);
     if (!foundUser) {
       return done(new Error('User not found'));
     }
-    done(undefined, foundUser.id);
+    done(undefined, foundUser);
   } catch (e) {
     done(e);
   }
