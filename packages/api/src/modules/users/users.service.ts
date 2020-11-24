@@ -49,3 +49,11 @@ export const getUserProjects = async (userId: User['id']) => {
     },
   });
 };
+
+export const findOne = async (userId: User['id']) => {
+  return await prisma.user.findOne({
+    where: {
+      id: userId,
+    },
+  });
+};
