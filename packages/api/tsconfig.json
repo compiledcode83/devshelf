@@ -9,9 +9,5 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true
   },
-  "typeRoots": [
-    "./node_modules/@types",
-    "./src/typings/passport.d.ts",
-    "./src/typings/express.d.ts"
-  ]
+  "typeRoots": ["./node_modules/@types"]
 }
