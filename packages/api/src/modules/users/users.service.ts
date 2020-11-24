@@ -41,3 +41,11 @@ export const deleteUser = async (id: User['id']) => {
     },
   });
 };
+
+export const getUserProjects = async (userId: User['id']) => {
+  return await prisma.project.findMany({
+    where: {
+      authorId: userId,
+    },
+  });
+};
