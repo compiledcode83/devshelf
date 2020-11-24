@@ -50,6 +50,10 @@ export const getUserProjects = async (userId: User['id']) => {
   });
 };
 
+export const getUsers = async () => {
+  return await prisma.user.findMany();
+};
+
 export const findOne = async (userId: User['id']) => {
   return await prisma.user.findOne({
     where: {

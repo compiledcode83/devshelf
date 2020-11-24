@@ -1,5 +1,4 @@
 import express, { RequestHandler } from 'express';
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -17,8 +16,7 @@ import { passportRouter } from './modules/auth/auth.controller';
 dotenv.config();
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cors({ origin: getEnvVariable('ORIGIN') }));
 app.use(helmet());
 app.use(compression());
@@ -28,7 +26,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: Number(getEnvVariable('COOKIE_EXPIRATION_TIME')),
+      maxAge: parseInt(getEnvVariable('COOKIE_EXPIRATION_TIME')),
       httpOnly: true,
       sameSite: 'lax',
     },
