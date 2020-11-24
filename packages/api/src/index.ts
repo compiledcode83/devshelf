@@ -7,7 +7,7 @@ import passport from 'passport';
 import Session from 'express-session';
 import CookieParser from 'cookie-parser';
 import { User } from '@prisma/client';
-import { findUserBy } from './modules/user/user.service';
+import { findUserBy } from './modules/users/users.service';
 import dotenv from 'dotenv';
 import { getEnvVariable } from './utils/getEnvVariable';
 import { projectsRouter } from './modules/projects/projects.controller';

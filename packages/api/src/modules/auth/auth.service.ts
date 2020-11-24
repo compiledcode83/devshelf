@@ -5,7 +5,7 @@ import {
   VerifyCallback as GoogleVerifyCallback,
 } from 'passport-google-oauth20';
 import type { VerifyCallback as GitHubVerifyCallback } from 'passport-oauth2';
-import { findUserBy, createUser } from '../user/user.service';
+import { findUserBy, createUser } from '../users/users.service';
 import { gitHubStrategyOptions, googleStrategyOptions } from './config/passportConfig';
 
 const passportAuthCallback = async (

@@ -10,8 +10,8 @@ projectsRouter.get('/', async (_req, res) => {
 });
 
 projectsRouter.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const project = await findOne(Number(id));
+  const projectId = Number(req.params.id);
+  const project = await findOne(projectId);
   return res.status(200).json({ ...project });
 });
 
@@ -23,14 +23,15 @@ projectsRouter.post('/', async (req, res) => {
 });
 
 projectsRouter.delete('/:id', async (req, res) => {
-  const deletedProject = remove(Number(req.params.id));
+  const projectId = Number(req.params.id);
+  const deletedProject = remove(projectId);
   return res.status(200).json(deletedProject);
 });
 
 projectsRouter.post('/:id/comment', async (req, res) => {
-  const { id: projectId } = req.params;
   const content = req.body.content as Feedback['content'];
   const authorId = req.user as User['id'];
-  const newComment = await comment({ content, projectId: Number(projectId), authorId });
+  const projectId = Number(req.params.id);
+  const newComment = await comment({ content, projectId, authorId });
   return res.status(200).json(newComment);
 });
