@@ -22,4 +22,8 @@
 
 .hide {
   display: none;
+
+  @include mediaquery('lg') {
+    display: flex;
+  }
 }

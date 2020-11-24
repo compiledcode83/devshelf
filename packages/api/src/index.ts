@@ -9,9 +9,10 @@ import { User } from '@prisma/client';
 import { findUserBy } from './modules/users/users.service';
 import dotenv from 'dotenv';
 import { getEnvVariable } from './utils/getEnvVariable';
-import { projectsRouter } from './modules/projects/projects.controller';
 import { gitHubStrategy, googleStrategy } from './modules/auth/auth.service';
 import { passportRouter } from './modules/auth/auth.controller';
+import { projectsRouter } from './modules/projects/projects.controller';
+import { usersRouter } from './modules/users/user.controller';
 
 dotenv.config();
 const app = express();
@@ -78,5 +79,5 @@ app.get('/good', isLoggedIn, (req, res) => {
 
 app.use('/', passportRouter);
 app.use('/projects', projectsRouter);
-
+app.use('/users', usersRouter);
 app.listen(5000, () => console.log(`Server is listening on port ${5000}!`));
