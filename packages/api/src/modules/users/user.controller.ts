@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUsers, findOne, getFeedback } from './users.service';
+import { getUsers, findOne, getFeedback, getProjects } from './users.service';
 
 export const usersRouter = Router();
 
@@ -18,4 +18,10 @@ usersRouter.get('/:id/feedback', async (req, res) => {
   const userId = req.params.id;
   const feedback = await getFeedback(userId);
   return res.status(200).json({ feedback });
+});
+
+usersRouter.get('/:id/projects', async (req, res) => {
+  const userId = req.params.id;
+  const projects = await getProjects(userId);
+  return res.status(200).json({ projects });
 });
