@@ -10,6 +10,7 @@
 
   @include mediaquery('lg') {
     padding: 4rem 2rem 0 2rem;
+    margin-bottom: 5rem;
   }
 }
 
@@ -94,7 +95,7 @@
   padding: 1rem 0;
   margin-top: 2rem;
   width: 100%;
-  border-top: 1px solid var(--light-300);
+  border-top: 1px solid #eaeaea;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -130,7 +131,7 @@
     width: auto;
     height: auto;
     font-size: 1.5rem;
-    color: #000;
+    color: var(--black);
     margin-left: 1rem;
   }
 }
@@ -157,7 +158,7 @@
     height: 1.5rem;
     margin-right: 0.5rem;
     path {
-      fill: var(--light-200);
+      fill: var(--gray-200);
     }
 
     @include mediaquery('lg') {

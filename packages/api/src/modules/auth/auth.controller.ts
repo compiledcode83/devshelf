@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { PASSPORT_GOOGLE, PASSPORT_GITHUB } from './utils/authConstants';
+import { PASSPORT_GOOGLE, PASSPORT_GITHUB } from './constants/passportConstants';
 
 export const passportRouter = Router();
 
