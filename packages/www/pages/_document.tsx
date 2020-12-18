@@ -1,4 +1,5 @@
 import Document, { Main, Head, Html, NextScript, DocumentContext } from 'next/document';
+import { Layout } from 'components/app/layout/Layout';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -75,8 +76,10 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="DevFeedback" />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+          <Layout>
+            <Main />
+            <NextScript />
+          </Layout>
         </body>
       </Html>
     );

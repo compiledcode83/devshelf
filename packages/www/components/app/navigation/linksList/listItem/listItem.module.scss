@@ -1,7 +1,7 @@
 @import 'common';
 
 .item {
-  margin-right: 4rem;
+  margin-right: 6rem;
   margin-bottom: 2.2rem;
 
   @include mediaquery('lg') {
@@ -14,8 +14,8 @@
 }
 
 .link {
-  font-size: 1.6rem;
-  color: var(--black);
+  font-size: 1.8rem;
+  color: var(--gray);
   text-decoration: none;
   position: relative;
 
@@ -39,13 +39,21 @@
   }
 
   @include mediaquery('sm') {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  @include mediaquery('lg') {
+    font-size: 2.2rem;
+  }
+  @include mediaquery('xl') {
+    font-size: 2.4rem;
   }
 }
 
 .activeLink {
   position: relative;
   font-weight: 600;
+  color: var(--blue);
 
   &:hover,
   &:focus {
