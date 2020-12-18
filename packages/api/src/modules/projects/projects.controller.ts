@@ -29,7 +29,7 @@ projectsRouter.delete('/:id', async (req, res) => {
   return res.status(200).json(deletedProject);
 });
 
-projectsRouter.post('/:id/comment', async (req, res) => {
+projectsRouter.post('/:id/feedback', async (req, res) => {
   const content = req.body.content as Feedback['content'];
   const authorId = req.user as User['id'];
   const projectId = parseInt(req.params.id);
