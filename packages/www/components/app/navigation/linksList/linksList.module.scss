@@ -1,9 +1,6 @@
 @import 'common';
 
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.wrapper {
   border-radius: 0 0 1.2rem 1.2rem;
   display: none;
   flex-direction: column;
@@ -13,6 +10,22 @@
   top: 5rem;
   left: 0;
   z-index: 1000;
+
+  @include mediaquery('lg') {
+    display: flex;
+    border-radius: 1.2rem;
+    flex-direction: row;
+    position: static;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
 
   @include mediaquery('lg') {
     display: flex;

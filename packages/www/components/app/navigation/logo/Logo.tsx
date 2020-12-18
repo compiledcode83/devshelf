@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from './logo.module.scss';
 
@@ -14,7 +13,7 @@ export const Logo = () => {
           />
           <img src="/images/logo.png" alt="" width="35" height="35" className={styles.logo} />
         </picture>
-        <span className="visually-hidden">Frontlive.pl by Olaf Sulich</span>
+        <span className="visually-hidden">DevFeedback</span>
       </a>
     </Link>
   );
