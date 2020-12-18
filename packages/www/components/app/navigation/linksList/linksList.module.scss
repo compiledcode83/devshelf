@@ -1,0 +1,38 @@
+@import 'common';
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 1.2rem 1.2rem;
+  background-color: var(--gray-100);
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  z-index: 1000;
+
+  @include mediaquery('lg') {
+    display: flex;
+    border-radius: 1.2rem;
+    flex-direction: row;
+    position: static;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.active {
+  display: flex;
+}
+
+.list {
+  padding: 3rem 3rem 0 3rem;
+
+  @include mediaquery('lg') {
+    padding: 0;
+  }
+}
