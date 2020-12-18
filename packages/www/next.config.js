@@ -1,5 +1,3 @@
-const withPWA = require('next-pwa');
-const runtimeCaching = require('next-pwa/cache');
 const withSourceMaps = require('@zeit/next-source-maps');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const path = require('path');
@@ -44,49 +42,38 @@ const withPolyfills = (module.exports = (nextConfig = {}) => {
   });
 });
 
-const config = withSourceMaps(
-  withPolyfills({
-    webpack: (config, options) => {
-      if (!options.isServer) {
-        config.resolve.alias['@sentry/node'] = '@sentry/browser';
-      }
+const config = withPolyfills({
+  webpack: (config, options) => {
+    if (!options.isServer) {
+      config.resolve.alias['@sentry/node'] = '@sentry/browser';
+    }
 
-      if (ANALYZE) {
-        config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
-      }
+    if (ANALYZE) {
+      config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
+    }
 
-      if (
-        SENTRY_DSN &&
-        SENTRY_ORG &&
-        SENTRY_PROJECT &&
-        SENTRY_AUTH_TOKEN &&
-        VERCEL_GITHUB_COMMIT_SHA &&
-        NODE_ENV === 'production'
-      ) {
-        config.plugins.push(
-          new SentryWebpackPlugin({
-            include: '.next',
-            ignore: ['node_modules'],
-            stripPrefix: ['webpack://_N_E/'],
-            urlPrefix: `~${basePath}/_next`,
-            release: VERCEL_GITHUB_COMMIT_SHA,
-          }),
-        );
-      }
-      return config;
-    },
-    basePath,
-  }),
-);
-
-config.serverRuntimeConfig = {
-  rootDir: __dirname,
-};
-
-config.pwa = {
-  dest: 'public',
-  runtimeCaching,
-};
+    if (
+      SENTRY_DSN &&
+      SENTRY_ORG &&
+      SENTRY_PROJECT &&
+      SENTRY_AUTH_TOKEN &&
+      VERCEL_GITHUB_COMMIT_SHA &&
+      NODE_ENV === 'production'
+    ) {
+      config.plugins.push(
+        new SentryWebpackPlugin({
+          include: '.next',
+          ignore: ['node_modules'],
+          stripPrefix: ['webpack://_N_E/'],
+          urlPrefix: `~${basePath}/_next`,
+          release: VERCEL_GITHUB_COMMIT_SHA,
+        }),
+      );
+    }
+    return config;
+  },
+  basePath,
+});
 
 config.sassOptions = {
   includePaths: [path.join(__dirname, 'styles')],

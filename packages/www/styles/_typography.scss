@@ -1,15 +1,45 @@
+@font-face {
+  font-family: 'Criteria';
+  src: url('/fonts/CriteriaCFBold.woff') format('woff'),
+    url('/fonts/CriteriaCFBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Criteria Demi';
+  src: url('/fonts/CriteriaCFDemibold.woff') format('woff'),
+    url('/fonts/CriteriaCFDemibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 a,
 p,
-li {
+li,
+code {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
 
 body {
   font-family: 'Inter', sans-serif;
+}
+
+.font-loaded-1 h1 {
+  font-family: 'Helvetica Neue';
+}
+
+.fonts-loaded-2 h1 {
+  font-family: 'Criteria Demi';
+}
+
+h1 {
+  font-size: 8rem;
 }

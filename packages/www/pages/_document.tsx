@@ -17,7 +17,41 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+            href="/fonts/CriteriaCFBold.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="/fonts/CriteriaCFDemibold.woff"
+            type="font/woff"
+            as="font"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="/fonts/CriteriaCFBold.ttf"
+            type="font/ttf"
+            as="font"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="/fonts/CriteriaCFDemibold.ttf"
+            type="font/ttf"
+            as="font"
+            crossOrigin=""
+          />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap"
+            as="stylesheet"
+          />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@600&display=swap"
             as="stylesheet"
           />
           <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png" />
