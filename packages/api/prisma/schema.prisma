@@ -9,3 +9,16 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Book {
+  id    Int    @id @default(autoincrement())
+  title String
+}
+
+model User {
+  id        String   @id
+  email     String
+  createdAt DateTime  @default(now())
+  avatarUrl String
+  books     Book[]
+}
