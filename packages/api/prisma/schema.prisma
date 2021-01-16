@@ -11,14 +11,29 @@ generator client {
 }
 
 model Book {
-  id    Int    @id @default(autoincrement())
+  id Int @id @default(autoincrement())
   title String
+  description String
+  author String
+  publishedDate DateTime
+  category String
+  averageRating Int?
+  ratingsCount Int
+  thumbnail String
+  language String
+  linkToRead String
+  isPublic Boolean
+}
+
+enum UserRole {
+  USER
+  ADMIN
 }
 
 model User {
-  id        String   @id
-  email     String
-  createdAt DateTime  @default(now())
-  avatarUrl String
-  books     Book[]
+  id String @id
+  email String
+  createdAt DateTime @default(now())
+  role UserRole @default(USER)
+  books Book[]
 }
