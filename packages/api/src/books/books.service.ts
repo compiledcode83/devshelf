@@ -32,7 +32,9 @@ export class BooksService {
     return this.prisma.book.update(params);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  async remove(where: Prisma.BookWhereUniqueInput) {
+    return this.prisma.book.delete({
+      where,
+    });
   }
 }
