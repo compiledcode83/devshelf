@@ -6,8 +6,10 @@ import { PrismaService } from '../prisma/prisma.service';
 export class BooksService {
   constructor(private prisma: PrismaService) {}
 
-  create(book: any) {
-    return 'This action adds a new book';
+  async create(data: Prisma.BookCreateInput) {
+    return this.prisma.book.create({
+      data,
+    });
   }
 
   async findAll(params?: {

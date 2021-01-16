@@ -1,13 +1,14 @@
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Book, Prisma } from '@prisma/client';
 import { BooksService } from './books.service';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
-  @Post()
-  create(@Body() createBookDto: any) {
-    return this.booksService.create(createBookDto);
+  @Post('/')
+  create(@Body() newBook: Prisma.BookCreateInput) {
+    return this.booksService.create(newBook);
   }
 
   @Get('/')
