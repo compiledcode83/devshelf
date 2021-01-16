@@ -28,8 +28,8 @@ export class BooksService {
     });
   }
 
-  update(id: number, updateBookDto: any) {
-    return `This action updates a #${id} book`;
+  async update(params: { where: Prisma.BookWhereUniqueInput; data: Prisma.BookUpdateInput }) {
+    return this.prisma.book.update(params);
   }
 
   remove(id: number) {

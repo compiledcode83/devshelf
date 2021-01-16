@@ -22,8 +22,8 @@ export class BooksController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateBookDto: any) {
-    return this.booksService.update(+id, updateBookDto);
+  update(@Param('id') id: string, @Body() bookUpdateInput: Prisma.BookUpdateInput) {
+    return this.booksService.update({ where: { id: +id }, data: bookUpdateInput });
   }
 
   @Delete(':id')
