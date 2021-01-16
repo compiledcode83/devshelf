@@ -22,8 +22,10 @@ export class BooksService {
     return this.prisma.book.findMany(params);
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} book`;
+  async findOne(bookWhereUniqueInput: Prisma.BookWhereUniqueInput) {
+    return this.prisma.book.findUnique({
+      where: bookWhereUniqueInput,
+    });
   }
 
   update(id: number, updateBookDto: any) {

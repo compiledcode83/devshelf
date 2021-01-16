@@ -16,9 +16,9 @@ export class BooksController {
     return this.booksService.findAll();
   }
 
-  @Get(':id')
+  @Get('/:id')
   async findOne(@Param('id') id: string) {
-    return this.booksService.findOne(+id);
+    return this.booksService.findOne({ id: +id });
   }
 
   @Put(':id')
