@@ -11,12 +11,12 @@ export class BooksController {
   }
 
   @Get('/')
-  findAll() {
+  async findAll() {
     return this.booksService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.booksService.findOne(+id);
   }
 

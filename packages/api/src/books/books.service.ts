@@ -6,21 +6,21 @@ import { PrismaService } from '../prisma/prisma.service';
 export class BooksService {
   constructor(private prisma: PrismaService) {}
 
-  create(createBookDto: any) {
+  create(book: any) {
     return 'This action adds a new book';
   }
 
-  findAll(params?: {
+  async findAll(params?: {
     skip?: number;
     take?: number;
     cursor?: Prisma.BookWhereUniqueInput;
     where?: Prisma.BookWhereInput;
     orderBy?: Prisma.BookOrderByInput;
   }) {
-    return this.prisma.book.findMany();
+    return this.prisma.book.findMany(params);
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} book`;
   }
 
