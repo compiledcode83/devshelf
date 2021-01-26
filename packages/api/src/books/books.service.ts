@@ -6,7 +6,7 @@ import { CreateBookDto } from './dto/createBook.dto';
 
 @Injectable()
 export class BooksService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async create({ title, authorId, linkToRead }: CreateBookDto) {
     return this.prisma.book.create({
