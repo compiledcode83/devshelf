@@ -1,14 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { Book, Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { BookDto } from './dto/book.dto';
+import { CreateBookDto } from './dto/createBook.dto';
 
 @Injectable()
 export class BooksService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: Prisma.BookCreateInput) {
+  async create({ title, authorId, linkToRead }: CreateBookDto) {
     return this.prisma.book.create({
-      data,
+      data: {
+        title,
+        linkToRead,
+        author: {
+          connect: { id: authorId },
+        },
+      },
     });
   }
 
@@ -28,7 +36,7 @@ export class BooksService {
     });
   }
 
-  async update(params: { where: Prisma.BookWhereUniqueInput; data: Prisma.BookUpdateInput }) {
+  async update(params: { where: Prisma.BookWhereUniqueInput; data: BookDto }) {
     return this.prisma.book.update(params);
   }
 

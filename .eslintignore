@@ -83,3 +83,4 @@ jspm_packages/
 
 *.tsbuildinfo
 
+packages/types/types.ts

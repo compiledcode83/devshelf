@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Book" ALTER COLUMN "description" DROP NOT NULL,
+ALTER COLUMN "publishedDate" DROP NOT NULL,
+ALTER COLUMN "ratingsCount" DROP NOT NULL,
+ALTER COLUMN "thumbnail" DROP NOT NULL,
+ALTER COLUMN "language" DROP NOT NULL,
+ALTER COLUMN "isPublic" SET DEFAULT false,
+ALTER COLUMN "categoryId" DROP NOT NULL;

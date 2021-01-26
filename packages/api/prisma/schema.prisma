@@ -13,16 +13,41 @@ generator client {
 model Book {
   id Int @id @default(autoincrement())
   title String
-  description String
-  author String
-  publishedDate DateTime
-  category String
-  averageRating Int?
-  ratingsCount Int
-  thumbnail String
-  language String
+  description String?
+  author Author @relation(fields: [authorId], references: [id])
+  authorId Int
+  publishedDate DateTime?
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  averageRating Float?
+  ratingsCount Int?
+  thumbnail String?
+  language String?
   linkToRead String
-  isPublic Boolean
+  isPublic Boolean @default(false)
+}
+
+model Author {
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  books Book[]
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  content String
+  rating Int
+  book Book @relation(fields: [bookId], references: [id])
+  bookId Int
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
+model Category{
+  id Int @id @default(autoincrement())
+  name String
+  books Book[]
 }
 
 enum UserRole {
@@ -31,9 +56,10 @@ enum UserRole {
 }
 
 model User {
-  id String @id
-  email String
+  id Int @id
+  email String @unique
   createdAt DateTime @default(now())
   role UserRole @default(USER)
   books Book[]
+  reviews Review[]
 }
