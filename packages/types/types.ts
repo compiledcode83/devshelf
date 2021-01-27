@@ -13,6 +13,12 @@ export interface paths {
     put: operations['BooksController_update'];
     delete: operations['BooksController_remove'];
   };
+  '/categories': {
+    get: operations['CategoriesController_findAll'];
+  };
+  '/categories/{id}': {
+    get: operations['CategoriesController_findOne'];
+  };
 }
 
 export interface operations {
@@ -73,6 +79,26 @@ export interface operations {
       };
     };
   };
+  CategoriesController_findAll: {
+    parameters: {};
+    responses: {
+      200: {
+        'application/json': components['schemas']['CategoryDto'][];
+      };
+    };
+  };
+  CategoriesController_findOne: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        'application/json': components['schemas']['CategoryDto'];
+      };
+    };
+  };
 }
 
 export interface components {
@@ -94,6 +120,10 @@ export interface components {
       language: string;
       linkToRead: string;
       isPublic: boolean;
+    };
+    CategoryDto: {
+      title: string;
+      description: string;
     };
   };
 }

@@ -1,11 +1,12 @@
 import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes } from '@nestjs/common';
-import { ApiBody, ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { BookDto } from './dto/book.dto';
 import { CreateBookDto } from './dto/createBook.dto';
 import { ValidationPipe } from '../pipes/validationPipe';
 import { createBookSchema } from './books.schema';
 
+@ApiTags('books')
 @Controller('books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
