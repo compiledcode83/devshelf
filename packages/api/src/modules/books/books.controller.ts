@@ -3,8 +3,9 @@ import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swa
 import { BooksService } from './books.service';
 import { BookDto } from './dto/book.dto';
 import { CreateBookDto } from './dto/createBook.dto';
-import { ValidationPipe } from '../pipes/validationPipe';
+import { ValidationPipe } from '../../common/pipes/validation.pipe';
 import { createBookSchema } from './books.schema';
+import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 
 @ApiTags('books')
 @Controller('books')
@@ -27,17 +28,20 @@ export class BooksController {
 
   @Get('/:id')
   @ApiOkResponse({ type: BookDto })
-  async findOne(@Param('id') id: string) {
-    return this.booksService.findOne({ id: +id });
+  async findOne(@Param('id', new ParseIntPipe()) id: number) {
+    return this.booksService.findOne({ id });
   }
 
+  @Get('/:id/reviews')
+  async findAllReviews() {}
+
   @Put('/:id')
-  update(@Param('id') id: string, @Body() bookUpdateInput: BookDto) {
-    return this.booksService.update({ where: { id: +id }, data: bookUpdateInput });
+  update(@Param('id', new ParseIntPipe()) id: number, @Body() bookUpdateInput: BookDto) {
+    return this.booksService.update({ where: { id }, data: bookUpdateInput });
   }
 
   @Delete('/:id')
-  remove(@Param('id') id: string) {
-    return this.booksService.remove({ id: +id });
+  remove(@Param('id', new ParseIntPipe()) id: number) {
+    return this.booksService.remove({ id });
   }
 }

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { BooksModule } from './books/books.module';
-import { CategoriesModule } from './categories/categories.module';
+import { BooksModule } from 'src/modules/books/books.module';
+import { CategoriesModule } from 'src/modules/categories/categories.module';
 
 @Module({
   imports: [BooksModule, CategoriesModule],

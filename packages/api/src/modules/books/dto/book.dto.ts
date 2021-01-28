@@ -3,35 +3,35 @@ import { Book, Prisma } from '@prisma/client';
 
 export class BookDto {
   @ApiProperty()
-  title: Book['title'];
+  title!: Book['title'];
 
   @ApiProperty()
-  description: Book['description'];
+  description?: Book['description'];
 
   @ApiProperty()
-  authorId: Book['authorId'];
+  authorId!: Book['authorId'];
 
   @ApiProperty()
-  publishedDate: Book['publishedDate'];
+  publishedDate?: Book['publishedDate'];
 
   @ApiProperty()
-  categoryId: Book['categoryId'];
+  categoryId?: Book['categoryId'];
 
   @ApiProperty()
   averageRating?: Book['averageRating'];
 
   @ApiProperty()
-  ratingsCount: Book['ratingsCount'];
+  ratingsCount?: Book['ratingsCount'];
 
   @ApiProperty()
-  thumbnail: Book['thumbnail'];
+  thumbnail?: Book['thumbnail'];
 
   @ApiProperty()
-  language: Book['language'];
+  language?: Book['language'];
 
   @ApiProperty()
-  linkToRead: Book['linkToRead'];
+  linkToRead!: Book['linkToRead'];
 
   @ApiProperty()
-  isPublic: Book['isPublic'];
+  isPublic!: Book['isPublic'];
 }
