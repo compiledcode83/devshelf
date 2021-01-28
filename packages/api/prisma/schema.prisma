@@ -25,6 +25,7 @@ model Book {
   language String?
   linkToRead String
   isPublic Boolean @default(false)
+  reviews Review[]
 }
 
 model Author {

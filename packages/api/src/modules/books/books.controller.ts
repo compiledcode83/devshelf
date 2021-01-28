@@ -32,9 +32,6 @@ export class BooksController {
     return this.booksService.findOne({ id });
   }
 
-  @Get('/:id/reviews')
-  async findAllReviews() {}
-
   @Put('/:id')
   update(@Param('id', new ParseIntPipe()) id: number, @Body() bookUpdateInput: BookDto) {
     return this.booksService.update({ where: { id }, data: bookUpdateInput });

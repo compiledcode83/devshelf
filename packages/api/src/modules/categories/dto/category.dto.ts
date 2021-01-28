@@ -3,8 +3,8 @@ import { Book } from '@prisma/client';
 
 export class CategoryDto {
   @ApiProperty()
-  title: Book['title'];
+  title!: Book['title'];
 
   @ApiProperty()
-  description: Book['description'];
+  books!: Book[];
 }

@@ -43,7 +43,7 @@ export interface operations {
   BooksController_findOne: {
     parameters: {
       path: {
-        id: string;
+        id: number;
       };
     };
     responses: {
@@ -55,7 +55,7 @@ export interface operations {
   BooksController_update: {
     parameters: {
       path: {
-        id: string;
+        id: number;
       };
     };
     requestBody: {
@@ -70,7 +70,7 @@ export interface operations {
   BooksController_remove: {
     parameters: {
       path: {
-        id: string;
+        id: number;
       };
     };
     responses: {
@@ -90,7 +90,7 @@ export interface operations {
   CategoriesController_findOne: {
     parameters: {
       path: {
-        id: string;
+        id: number;
       };
     };
     responses: {
@@ -110,20 +110,20 @@ export interface components {
     };
     BookDto: {
       title: string;
-      description: string;
+      description?: string;
       authorId: number;
-      publishedDate: string;
-      categoryId: number;
+      publishedDate?: string;
+      categoryId?: number;
       averageRating?: number;
-      ratingsCount: number;
-      thumbnail: string;
-      language: string;
+      ratingsCount?: number;
+      thumbnail?: string;
+      language?: string;
       linkToRead: string;
       isPublic: boolean;
     };
     CategoryDto: {
       title: string;
-      description: string;
+      books: { [key: string]: any }[];
     };
   };
 }

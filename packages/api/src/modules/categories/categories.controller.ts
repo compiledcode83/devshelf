@@ -2,6 +2,7 @@ import { Controller, Get, Body, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { CategoryDto } from './dto/category.dto';
+import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 
 @ApiTags('categories')
 @Controller('categories')
@@ -16,7 +17,7 @@ export class CategoriesController {
 
   @Get('/:id')
   @ApiOkResponse({ type: CategoryDto })
-  findOne(@Param('id') id: string) {
-    return this.categoriesService.findOne({ id: +id });
+  findOne(@Param('id', new ParseIntPipe()) id: number) {
+    return this.categoriesService.findOne({ id });
   }
 }
