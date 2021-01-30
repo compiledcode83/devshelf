@@ -1,22 +1,20 @@
 import { ImATeapotException, Injectable, NotFoundException } from '@nestjs/common';
 import * as crypto from 'crypto';
 import * as bcrypt from 'bcrypt';
+import * as dayjs from 'dayjs';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/modules/users/users.service';
 import { RegisterDto } from './dto/register.dto';
+import { SessionService } from '../session/session.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly usersService: UsersService,
+    private readonly sessionService: SessionService,
   ) {}
-
-  generateToken() {
-    const token = crypto.randomBytes(64).toString('hex');
-    return token;
-  }
 
   async hashPassword(password: string) {
     const SALT_ROUNDS = 10;
@@ -29,11 +27,11 @@ export class AuthService {
     const hashedPassword = await this.hashPassword(password);
     const isPasswordMatch = bcrypt.compare(foundUser && foundUser.password, hashedPassword);
 
-    if (!foundUser && !isPasswordMatch) {
+    if (!foundUser || !isPasswordMatch) {
       throw new NotFoundException('Invalid credentials');
     }
 
-    const token = this.generateToken();
+    return this.sessionService.create(foundUser.id);
   }
 
   async register({ username, email, password }: RegisterDto) {
