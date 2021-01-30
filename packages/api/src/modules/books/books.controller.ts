@@ -1,5 +1,13 @@
 import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes } from '@nestjs/common';
-import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { BookDto } from './dto/book.dto';
 import { CreateBookDto } from './dto/createBook.dto';
@@ -15,29 +23,38 @@ export class BooksController {
   @Post('/')
   @UsePipes(new ValidationPipe(createBookSchema))
   @ApiBody({ type: CreateBookDto })
-  @ApiCreatedResponse({ description: 'The record has been successfully created.' })
+  @ApiOperation({ summary: 'Create new book' })
+  @ApiCreatedResponse({ description: 'The book has been successfully created.' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
   create(@Body() newBook: CreateBookDto) {
     return this.booksService.create(newBook);
   }
 
   @Get('/')
+  @ApiOperation({ summary: 'Get all books' })
   @ApiOkResponse({ type: [BookDto] })
+  @ApiNotFoundResponse({ description: 'There is no book with this id' })
   async findAll() {
     return this.booksService.findAll();
   }
 
   @Get('/:id')
+  @ApiOperation({ summary: 'Get book' })
   @ApiOkResponse({ type: BookDto })
   async findOne(@Param('id', new ParseIntPipe()) id: number) {
     return this.booksService.findOne({ id });
   }
 
   @Put('/:id')
+  @ApiOperation({ summary: 'Update a book' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
   update(@Param('id', new ParseIntPipe()) id: number, @Body() bookUpdateInput: BookDto) {
     return this.booksService.update({ where: { id }, data: bookUpdateInput });
   }
 
   @Delete('/:id')
+  @ApiOperation({ summary: 'Delete a book' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
   remove(@Param('id', new ParseIntPipe()) id: number) {
     return this.booksService.remove({ id });
   }

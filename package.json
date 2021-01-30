@@ -2,7 +2,7 @@
   "name": "devshelf",
   "private": true,
   "author": "Olaf Sulich",
-  "license": "MIT",
+  "license": " AGPL-3.0",
   "scripts": {
     "dev": "lerna bootstrap && lerna run dev --parallel",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",

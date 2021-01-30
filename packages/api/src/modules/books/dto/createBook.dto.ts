@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Book, Prisma } from '@prisma/client';
+import type { Book } from '@prisma/client';
 
 export class CreateBookDto {
   @ApiProperty()

@@ -1,6 +1,7 @@
 {
   "name": "@devshelf/types",
   "version": "1.0.0-alpha.0",
+  "license": "AGPL-3.0",
   "private": true,
   "scripts": {
     "generate-api-types": "wait-on tcp:5000 --interval 5000 && npx openapi-typescript http://localhost:5000/swagger-json --output types.ts --prettier-config ../../.prettierrc"
