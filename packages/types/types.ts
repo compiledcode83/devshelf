@@ -28,8 +28,10 @@ export interface operations {
       'application/json': components['schemas']['CreateBookDto'];
     };
     responses: {
-      /** The record has been successfully created. */
+      /** The book has been successfully created. */
       201: unknown;
+      /** Forbidden. */
+      403: unknown;
     };
   };
   BooksController_findAll: {
@@ -38,6 +40,8 @@ export interface operations {
       200: {
         'application/json': components['schemas']['BookDto'][];
       };
+      /** There is no book with this id */
+      404: unknown;
     };
   };
   BooksController_findOne: {
@@ -65,6 +69,8 @@ export interface operations {
       200: {
         'application/json': { [key: string]: any };
       };
+      /** Forbidden. */
+      403: unknown;
     };
   };
   BooksController_remove: {
@@ -77,6 +83,8 @@ export interface operations {
       200: {
         'application/json': { [key: string]: any };
       };
+      /** Forbidden. */
+      403: unknown;
     };
   };
   CategoriesController_findAll: {
@@ -110,14 +118,14 @@ export interface components {
     };
     BookDto: {
       title: string;
-      description?: string;
+      description?: { [key: string]: any };
       authorId: number;
-      publishedDate?: string;
-      categoryId?: number;
-      averageRating?: number;
-      ratingsCount?: number;
-      thumbnail?: string;
-      language?: string;
+      publishedDate?: { [key: string]: any };
+      categoryId?: { [key: string]: any };
+      averageRating?: { [key: string]: any };
+      ratingsCount?: { [key: string]: any };
+      thumbnail?: { [key: string]: any };
+      language?: { [key: string]: any };
       linkToRead: string;
       isPublic: boolean;
     };
