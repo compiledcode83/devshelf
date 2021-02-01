@@ -1,7 +1,5 @@
 import { ImATeapotException, Injectable, NotFoundException } from '@nestjs/common';
-import * as crypto from 'crypto';
 import * as bcrypt from 'bcrypt';
-import * as dayjs from 'dayjs';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/modules/users/users.service';
