@@ -5,7 +5,7 @@ import { AnySchema, ValidationError } from 'yup';
 export class ValidationPipe implements PipeTransform {
   constructor(private readonly schema: AnySchema) {}
 
-  async transform(value: unknown, metadata: ArgumentMetadata) {
+  async transform(value: unknown) {
     try {
       await this.schema.validate(value, { abortEarly: false });
     } catch (err) {

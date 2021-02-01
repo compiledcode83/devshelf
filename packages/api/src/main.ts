@@ -15,13 +15,13 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   app.use(cookieParser());
   app.use(helmet());
-  app.use(
-    session({
-      secret: getConfig('SESSION_SECRET'),
-      resave: false,
-      saveUninitialized: false,
-    }),
-  );
+  // app.use(
+  //   session({
+  //     secret: getConfig('SESSION_SECRET'),
+  //     resave: false,
+  //     saveUninitialized: false,
+  //   }),
+  // );
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('DevBooks')
@@ -32,6 +32,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('swagger', app, document);
 
-  await app.listen(5000);
+  await app.listen(3002);
 }
 bootstrap();

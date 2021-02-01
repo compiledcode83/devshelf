@@ -3,9 +3,9 @@ import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/co
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
   catch(exception: HttpException, host: ArgumentsHost) {
-    const ctx = host.switchToHttp();
-    const response = ctx.getResponse();
-    const request = ctx.getRequest();
+    const { getResponse, getRequest } = host.switchToHttp();
+    const response = getResponse();
+    const request = getRequest();
     const statusCode = exception.getStatus();
 
     response.status(statusCode).json({
