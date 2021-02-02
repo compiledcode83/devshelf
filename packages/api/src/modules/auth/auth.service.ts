@@ -5,6 +5,7 @@ import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/modules/users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { SessionService } from '../session/session.service';
+import { CookiesType } from 'src/common/types/types';
 
 @Injectable()
 export class AuthService {

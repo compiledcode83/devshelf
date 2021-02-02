@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import * as crypto from 'crypto';
 import * as dayjs from 'dayjs';
 import { PrismaService } from '../prisma/prisma.service';
@@ -10,6 +10,19 @@ export class SessionService {
   generateToken() {
     const token = crypto.randomBytes(64).toString('hex');
     return token;
+  }
+
+  async findOne(token: string) {
+    const session = await this.prisma.session.findUnique({
+      where: { token },
+    });
+    const isSessionExpired = dayjs().isAfter(dayjs(session!.expiration));
+
+    if (!session || isSessionExpired) {
+      throw new ForbiddenException();
+    }
+
+    return session;
   }
 
   async create(id: number) {

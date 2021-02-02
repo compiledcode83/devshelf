@@ -1,11 +1,10 @@
 import { Controller, Body, Post, Req, Res } from '@nestjs/common';
-import { SetCookies, SignedCookies } from '@nestjsplus/cookies';
-import { RequestWithCookies } from 'src/common/types/types';
+import { SetCookies, Cookies } from '@nestjsplus/cookies';
+import type { RequestWithCookies, CookiesType } from 'src/common/types/types';
 import { CookiesService } from 'src/modules/cookies/cookies.service';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
-import { Cookies } from '@nestjsplus/cookies/index';
 
 @Controller('auth')
 export class AuthController {
@@ -17,21 +16,13 @@ export class AuthController {
   @Post('/login')
   @SetCookies()
   async login(
-    @Req() req: any,
-    @Res({ passthrough: true }) res: any,
+    @Req() req: RequestWithCookies,
     @Body() { email, password }: LoginDto,
-    @Cookies() cookies: any,
-    @SignedCookies() signed: any,
+    @Cookies() cookies: CookiesType,
   ) {
     const { token } = await this.authService.login({ email, password });
     await this.cookiesService.setTokenInCookies(req, token);
     await console.log('cookies: ', cookies);
-    await console.log('signed cookies: ', cookies);
-    await console.log('Got cookies:', req.cookies);
-    await console.log('Got cookies:', req._cookies);
-    await console.log('cookie', req.signedCookies);
-    await console.log('cookie', signed);
-     await console.log('cookie',req.headers.cookie);
   }
 
   @Post('/register')

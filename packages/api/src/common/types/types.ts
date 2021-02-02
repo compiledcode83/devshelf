@@ -10,6 +10,6 @@ export type RequestWithCookies = {
 
 type Cookie = {
   token: string;
-}
+};
 
-export type Cookies = Cookie | Cookies[];
+export type CookiesType = Cookie;
