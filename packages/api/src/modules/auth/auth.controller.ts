@@ -15,6 +15,7 @@ export class AuthController {
   ) {}
 
   @Post('/login')
+  @SetCookies()
   async login(
     @Req() req: any,
     @Res({ passthrough: true }) res: any,
@@ -23,12 +24,14 @@ export class AuthController {
     @SignedCookies() signed: any,
   ) {
     const { token } = await this.authService.login({ email, password });
-    await this.cookiesService.setTokenInCookies(res, token);
+    await this.cookiesService.setTokenInCookies(req, token);
     await console.log('cookies: ', cookies);
     await console.log('signed cookies: ', cookies);
     await console.log('Got cookies:', req.cookies);
     await console.log('Got cookies:', req._cookies);
     await console.log('cookie', req.signedCookies);
+    await console.log('cookie', signed);
+     await console.log('cookie',req.headers.cookie);
   }
 
   @Post('/register')

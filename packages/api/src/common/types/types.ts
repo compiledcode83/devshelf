@@ -7,3 +7,9 @@ export type RequestWithCookies = {
     options?: CookieOptions;
   }[];
 } & Request;
+
+type Cookie = {
+  token: string;
+}
+
+export type Cookies = Cookie | Cookies[];
