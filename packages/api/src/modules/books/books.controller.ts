@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+  UsePipes,
+  Req,
+  Res,
+} from '@nestjs/common';
 import {
   ApiBody,
   ApiCreatedResponse,
@@ -40,6 +51,7 @@ export class BooksController {
     console.log('Got cookies:', cookies);
     console.log('Got cookies:', req.cookies);
     console.log('Got cookies:', req._cookies);
+    console.log('cookie', req.signedCookies);
     return this.booksService.findAll();
   }
 
