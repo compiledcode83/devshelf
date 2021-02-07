@@ -32,6 +32,7 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Post('/')
+  @UseGuards(AuthGuard)
   @UsePipes(new ValidationPipe(createBookSchema))
   @ApiBody({ type: CreateBookDto })
   @ApiOperation({ summary: 'Create new book' })
@@ -42,7 +43,6 @@ export class BooksController {
   }
 
   @Get('/')
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Get all books' })
   @ApiOkResponse({ type: [BookDto] })
   @ApiNotFoundResponse({ description: 'There is no book with this id' })
