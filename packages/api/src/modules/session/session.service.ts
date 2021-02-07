@@ -16,13 +16,19 @@ export class SessionService {
     const session = await this.prisma.session.findUnique({
       where: { token },
     });
-    const isSessionExpired = dayjs().isAfter(dayjs(session!.expiration));
+    // const isSessionExpired = dayjs().isAfter(dayjs(session!.expiration));
 
-    if (!session || isSessionExpired) {
+    if (session === null) {
       throw new ForbiddenException();
     }
 
     return session;
+  }
+
+  async isSessionValid(token: string) {
+    const session = await this.findOne(token);
+
+    return dayjs().isBefore(dayjs(session!.expiration));
   }
 
   async create(id: number) {

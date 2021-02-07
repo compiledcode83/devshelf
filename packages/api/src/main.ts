@@ -12,7 +12,7 @@ dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.use(cookieParser('secret'));
+  app.use(cookieParser('mysecrect'));
   app.use(helmet());
 
   const swaggerConfig = new DocumentBuilder()
