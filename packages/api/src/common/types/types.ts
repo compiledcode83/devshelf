@@ -1,4 +1,5 @@
 import type { CookieOptions } from '@nestjsplus/cookies';
+import type { Request } from 'express';
 
 export type RequestWithCookies = {
   _cookies: {

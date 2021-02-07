@@ -1,20 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import type { RequestWithCookies } from 'src/common/types/types';
+import type { Response } from 'express';
 
 @Injectable()
 export class CookiesService {
-  async setTokenInCookies(req: RequestWithCookies, token: string) {
-    req._cookies = [
-      {
-        name: 'token',
-        value: token,
-        options: {
-          domain: '.devshelf.localhost',
-          httpOnly: true,
-          secure: true,
-          sameSite: 'Lax',
-        },
-      },
-    ];
+  async setTokenInCookies(res: Response, token: string) {
+    res.cookie('token', token, {
+      domain: 'api.devshelf.localhost',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production' ? true : false,
+      sameSite: 'lax',
+    });
   }
 }

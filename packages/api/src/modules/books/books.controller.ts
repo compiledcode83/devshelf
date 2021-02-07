@@ -7,8 +7,6 @@ import {
   Param,
   Delete,
   UsePipes,
-  Req,
-  Res,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -26,18 +24,12 @@ import { CreateBookDto } from './dto/createBook.dto';
 import { ValidationPipe } from '../../common/pipes/validation.pipe';
 import { createBookSchema } from './books.schema';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
-import { RequestWithCookies } from 'src/common/types/types';
-import { Cookies, SignedCookies, CookieSettings } from '@nestjsplus/cookies/index';
-import { SessionService } from '../session/session.service';
 import { AuthGuard } from 'src/common/guards/auth.guard';
 
 @ApiTags('books')
 @Controller('books')
 export class BooksController {
-  constructor(
-    private readonly booksService: BooksService,
-    private readonly sessionService: SessionService,
-  ) {}
+  constructor(private readonly booksService: BooksService) {}
 
   @Post('/')
   @UsePipes(new ValidationPipe(createBookSchema))
@@ -54,9 +46,7 @@ export class BooksController {
   @ApiOperation({ summary: 'Get all books' })
   @ApiOkResponse({ type: [BookDto] })
   @ApiNotFoundResponse({ description: 'There is no book with this id' })
-  async findAll(@Req() req: any, @Cookies() cookies: CookieSettings | CookieSettings[]) {
-    console.log('books cookies', cookies);
-    console.log('req.cookies', req.cookies);
+  async findAll() {
     return this.booksService.findAll();
   }
 
