@@ -5,7 +5,6 @@ import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/modules/users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { SessionService } from '../session/session.service';
-import { CookiesType } from 'src/common/types/types';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +21,7 @@ export class AuthService {
   }
 
   async login({ email, password }: LoginDto) {
-    const foundUser = await this.usersService.findUserBy<'email'>({ by: 'email', value: email });
+    const foundUser = await this.usersService.findBy<'email'>({ by: 'email', value: email });
     const hashedPassword = await this.hashPassword(password);
     const isPasswordMatch = bcrypt.compare(foundUser && foundUser.password, hashedPassword);
 
@@ -34,7 +33,7 @@ export class AuthService {
   }
 
   async register({ username, email, password }: RegisterDto) {
-    const foundUser = await this.usersService.findUserBy<'email'>({ by: 'email', value: email });
+    const foundUser = await this.usersService.findBy<'email'>({ by: 'email', value: email });
     if (foundUser) {
       throw new ImATeapotException('Account already exists');
     }

@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiBody,
+  ApiCookieAuth,
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiNotFoundResponse,
@@ -35,6 +36,7 @@ export class BooksController {
   @UseGuards(AuthGuard)
   @UsePipes(new ValidationPipe(createBookSchema))
   @ApiBody({ type: CreateBookDto })
+  @ApiCookieAuth()
   @ApiOperation({ summary: 'Create new book' })
   @ApiCreatedResponse({ description: 'The book has been successfully created.' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })

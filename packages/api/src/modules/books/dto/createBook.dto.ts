@@ -3,11 +3,11 @@ import type { Book } from '@prisma/client';
 
 export class CreateBookDto {
   @ApiProperty()
-  title!: Book['title'];
+  title!: string;
 
   @ApiProperty()
-  authorId!: Book['authorId'];
+  authorId!: number;
 
   @ApiProperty()
-  linkToRead!: Book['linkToRead'];
+  linkToRead!: string;
 }

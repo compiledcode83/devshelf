@@ -11,43 +11,44 @@ generator client {
 }
 
 model Book {
-  id Int @id @default(autoincrement())
-  title String
-  description String?
-  author Author @relation(fields: [authorId], references: [id])
-  authorId Int
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String?
+  author        Author    @relation(fields: [authorId], references: [id])
+  authorId      Int
   publishedDate DateTime?
-  category Category? @relation(fields: [categoryId], references: [id])
-  categoryId Int?
+  category      Category? @relation(fields: [categoryId], references: [id])
+  categoryId    Int?
   averageRating Float?
-  ratingsCount Int?
-  thumbnail String?
-  language String?
-  linkToRead String
-  isPublic Boolean @default(false)
-  reviews Review[]
+  ratingsCount  Int?
+  thumbnail     String?
+  language      String?
+  linkToRead    String
+  isPublic      Boolean   @default(false)
+  reviews       Review[]
+  savedBy       User[]
 }
 
 model Author {
-  id Int @id @default(autoincrement())
-  name String
+  id          Int    @id @default(autoincrement())
+  name        String
   description String
-  books Book[]
+  books       Book[]
 }
 
 model Review {
-  id Int @id @default(autoincrement())
-  content String
-  rating Int
-  book Book @relation(fields: [bookId], references: [id])
-  bookId Int
-  author User @relation(fields: [authorId], references: [id])
+  id       Int    @id @default(autoincrement())
+  content  String
+  rating   Int
+  book     Book   @relation(fields: [bookId], references: [id])
+  bookId   Int
+  author   User   @relation(fields: [authorId], references: [id])
   authorId Int
 }
 
-model Category{
-  id Int @id @default(autoincrement())
-  name String
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
   books Book[]
 }
 
@@ -56,23 +57,22 @@ enum UserRole {
   ADMIN
 }
 
-
 model Session {
-  id         Int       @id @default(autoincrement())
-  token String @unique
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
   expiration DateTime
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  username String
-  email String @unique
-  password String
+  id        Int      @id @default(autoincrement())
+  username  String
+  email     String   @unique
+  password  String
   createdAt DateTime @default(now())
-  role UserRole @default(USER)
-  books Book[]
-  reviews Review[]
-  token Session?
+  role      UserRole @default(USER)
+  library     Book[]
+  reviews   Review[]
+  token     Session?
 }

@@ -12,15 +12,17 @@ dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.use(cookieParser('mysecrect'));
+  app.use(cookieParser(getConfig('SESSION_SECRET')));
   app.use(helmet());
 
   const swaggerConfig = new DocumentBuilder()
+    .addCookieAuth('token')
     .setTitle('DevBooks')
     .setDescription('DevBooks API description')
     .setVersion('1.0')
     .addTag('books')
     .build();
+
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('swagger', app, document);
 

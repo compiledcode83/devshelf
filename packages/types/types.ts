@@ -19,6 +19,18 @@ export interface paths {
   '/categories/{id}': {
     get: operations['CategoriesController_findOne'];
   };
+  '/auth/sessions': {
+    post: operations['AuthController_login'];
+  };
+  '/auth/users': {
+    post: operations['AuthController_register'];
+  };
+  '/session/me': {
+    get: operations['SessionController_findOne'];
+  };
+  '/users/{id}': {
+    get: operations['UsersController_findOne'];
+  };
 }
 
 export interface operations {
@@ -107,6 +119,42 @@ export interface operations {
       };
     };
   };
+  AuthController_login: {
+    parameters: {};
+    requestBody: {
+      'application/json': components['schemas']['LoginDto'];
+    };
+    responses: {
+      201: unknown;
+    };
+  };
+  AuthController_register: {
+    parameters: {};
+    requestBody: {
+      'application/json': components['schemas']['RegisterDto'];
+    };
+    responses: {
+      201: unknown;
+    };
+  };
+  SessionController_findOne: {
+    parameters: {};
+    responses: {
+      200: unknown;
+    };
+  };
+  UsersController_findOne: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        'application/json': components['schemas']['UserDto'];
+      };
+    };
+  };
 }
 
 export interface components {
@@ -118,20 +166,42 @@ export interface components {
     };
     BookDto: {
       title: string;
-      description?: { [key: string]: any };
+      description?: string;
       authorId: number;
-      publishedDate?: { [key: string]: any };
-      categoryId?: { [key: string]: any };
-      averageRating?: { [key: string]: any };
-      ratingsCount?: { [key: string]: any };
-      thumbnail?: { [key: string]: any };
-      language?: { [key: string]: any };
+      publishedDate?: string;
+      categoryId?: number;
+      averageRating?: number;
+      ratingsCount?: number;
+      thumbnail?: string;
+      language?: string;
       linkToRead: string;
       isPublic: boolean;
     };
     CategoryDto: {
       title: string;
-      books: { [key: string]: any }[];
+      books: components['schemas']['BookDto'][];
+    };
+    LoginDto: {
+      email: string;
+      password: string;
+    };
+    RegisterDto: {
+      username: string;
+      email: string;
+      password: string;
+    };
+    ReviewDto: {
+      content: string;
+      rating: string;
+      bookId: number;
+      authorId: number;
+    };
+    UserDto: {
+      username: string;
+      email: string;
+      role: 'ADMIN' | 'USER';
+      library?: components['schemas']['BookDto'][];
+      reviews?: components['schemas']['ReviewDto'][];
     };
   };
 }

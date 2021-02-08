@@ -1,37 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
-import type { Book } from '@prisma/client';
 
 export class BookDto {
   @ApiProperty()
-  title!: Book['title'];
+  title!: string;
 
   @ApiProperty()
-  description?: Book['description'];
+  description?: string;
 
   @ApiProperty()
-  authorId!: Book['authorId'];
+  authorId!: number;
 
   @ApiProperty()
-  publishedDate?: Book['publishedDate'];
+  publishedDate?: Date;
 
   @ApiProperty()
-  categoryId?: Book['categoryId'];
+  categoryId?: number;
 
   @ApiProperty()
-  averageRating?: Book['averageRating'];
+  averageRating?: number;
 
   @ApiProperty()
-  ratingsCount?: Book['ratingsCount'];
+  ratingsCount?: number;
 
   @ApiProperty()
-  thumbnail?: Book['thumbnail'];
+  thumbnail?: string;
 
   @ApiProperty()
-  language?: Book['language'];
+  language?: string;
 
   @ApiProperty()
-  linkToRead!: Book['linkToRead'];
+  linkToRead!: string;
 
   @ApiProperty()
-  isPublic!: Book['isPublic'];
+  isPublic!: boolean;
 }

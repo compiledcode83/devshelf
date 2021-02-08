@@ -6,7 +6,9 @@ import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { loginSchema, registerSchema } from './auth.schema';
 import { ValidationPipe } from 'src/common/pipes/validation.pipe';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -15,6 +17,7 @@ export class AuthController {
   ) {}
 
   @Post('/sessions')
+  @ApiOperation({ summary: 'Login' })
   @UsePipes(new ValidationPipe(loginSchema))
   async login(@Res({ passthrough: true }) res: Response, @Body() { email, password }: LoginDto) {
     const { token } = await this.authService.login({ email, password });
@@ -22,6 +25,7 @@ export class AuthController {
   }
 
   @Post('/users')
+  @ApiOperation({ summary: 'Create new account' })
   @UsePipes(new ValidationPipe(registerSchema))
   async register(@Body() { username, email, password }: RegisterDto) {
     return await this.authService.register({ email, password, username });

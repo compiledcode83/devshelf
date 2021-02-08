@@ -1,4 +1,4 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Cookies } from '@nestjsplus/cookies';
 import { SessionService } from './session.service';
 import { CookiesType } from 'src/common/types/types';
@@ -15,7 +15,7 @@ export class SessionController {
   @Get('/me')
   async findOne(@Cookies() cookies: CookiesType) {
     const token = await this.sessionService.findOne(cookies.token);
-    const { id, username, email } = (await this.userService.findUserBy<'id'>({
+    const { id, username, email } = (await this.userService.findBy<'id'>({
       by: 'id',
       value: token!.userId,
     })) as User;
