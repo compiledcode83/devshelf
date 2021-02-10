@@ -47,7 +47,6 @@ export class BooksController {
   @Get('/')
   @ApiOperation({ summary: 'Get all books' })
   @ApiOkResponse({ type: [BookDto] })
-  @ApiNotFoundResponse({ description: 'There is no book with this id' })
   async findAll() {
     return this.booksService.findAll();
   }
@@ -55,6 +54,7 @@ export class BooksController {
   @Get('/:id')
   @ApiOperation({ summary: 'Get book' })
   @ApiOkResponse({ type: BookDto })
+  @ApiNotFoundResponse({ description: 'There is no book with this id' })
   async findOne(@Param('id', new ParseIntPipe()) id: number) {
     return this.booksService.findOne({ id });
   }
