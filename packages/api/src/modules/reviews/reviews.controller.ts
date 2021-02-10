@@ -24,8 +24,8 @@ export class ReviewsController {
   @UsePipes(new ValidationPipe(createReviewSchema))
   @ApiBody({ type: ReviewDto })
   @ApiCookieAuth()
-  @ApiOperation({ summary: 'Create new book' })
-  @ApiCreatedResponse({ description: 'The book has been successfully created.' })
+  @ApiOperation({ summary: 'Create new review' })
+  @ApiCreatedResponse({ description: 'The review has been successfully created.' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
   create(@Body() newReview: ReviewDto) {
     return this.reviewsService.create(newReview);
