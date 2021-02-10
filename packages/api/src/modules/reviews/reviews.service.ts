@@ -1,11 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ReviewDto } from './dto/review.dto';
+import type { Request } from 'express';
+import { UsersService } from '../users/users.service';
+import { SessionService } from '../session/session.service';
 
 @Injectable()
 export class ReviewsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly usersService: UsersService,
+    private readonly sessionService: SessionService,
+  ) {}
 
   async create({ content, rating, authorId, bookId }: ReviewDto) {
     return this.prisma.review.create({
@@ -34,5 +41,22 @@ export class ReviewsService {
     orderBy?: Prisma.ReviewOrderByInput;
   }) {
     return this.prisma.review.findMany(params);
+  }
+
+  async remove(req: Request, id: number) {
+    const token = req.cookies.token as string;
+    const { userId } = await this.sessionService.findOne(token);
+
+    const review = await this.prisma.review.delete({
+      where: {
+        id,
+      },
+    });
+
+    if (review.authorId !== userId) {
+      throw new ForbiddenException();
+    }
+
+    return review;
   }
 }

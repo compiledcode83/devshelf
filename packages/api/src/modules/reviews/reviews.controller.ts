@@ -1,7 +1,19 @@
-import { Controller, Get, Param, Post, UseGuards, UsePipes, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+  UsePipes,
+  Body,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { ReviewDto } from 'src/modules/reviews/dto/review.dto';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
+import type { Request } from 'express';
+
 import {
   ApiOperation,
   ApiOkResponse,
@@ -44,5 +56,12 @@ export class ReviewsController {
   @ApiNotFoundResponse({ description: 'There is no review with this id' })
   async findOne(@Param('id', new ParseIntPipe()) id: number) {
     return this.reviewsService.findOne({ id });
+  }
+
+  @Delete('/:id')
+  @ApiOperation({ summary: 'Delete a book' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
+  remove(@Req() req: Request, @Param('id', new ParseIntPipe()) id: number) {
+    return this.reviewsService.remove(req, id);
   }
 }
