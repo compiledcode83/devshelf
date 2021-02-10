@@ -5,7 +5,7 @@ export class ReviewDto {
   content!: string;
 
   @ApiProperty()
-  rating!: string;
+  rating!: number;
 
   @ApiProperty()
   bookId!: number;
