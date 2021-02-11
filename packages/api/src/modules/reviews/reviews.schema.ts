@@ -6,3 +6,8 @@ export const createReviewSchema = yup.object().shape({
   bookId: yup.number().required(),
   authorId: yup.number().required(),
 });
+
+export const updateReviewSchema = yup.object().shape({
+  content: yup.string().required(),
+  rating: yup.number().required(),
+});

@@ -24,7 +24,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { AuthGuard } from 'src/common/guards/auth.guard';
-import { createReviewSchema } from './reviews.schema';
+import { createReviewSchema, updateReviewSchema } from './reviews.schema';
 import { ValidationPipe } from '../../common/pipes/validation.pipe';
 
 @ApiTags('reviews')
@@ -61,6 +61,7 @@ export class ReviewsController {
 
   @Delete('/:id')
   @UseGuards(AuthGuard)
+  @UsePipes(new ValidationPipe(updateReviewSchema))
   @ApiCookieAuth()
   @ApiOperation({ summary: 'Delete a book' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
