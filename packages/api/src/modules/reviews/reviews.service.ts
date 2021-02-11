@@ -5,6 +5,7 @@ import { ReviewDto } from './dto/review.dto';
 import type { Request } from 'express';
 import { UsersService } from '../users/users.service';
 import { SessionService } from '../session/session.service';
+import { UpdateReviewDto } from './dto/updateReview.dto';
 
 @Injectable()
 export class ReviewsService {
@@ -41,6 +42,21 @@ export class ReviewsService {
     orderBy?: Prisma.ReviewOrderByInput;
   }) {
     return this.prisma.review.findMany(params);
+  }
+
+  async update({ req, id, data }: { req: Request; id: number; data: UpdateReviewDto }) {
+    const token = req.cookies.token as string;
+    const { userId } = await this.sessionService.findOne(token);
+    const review = await this.findOne({ id });
+
+    if (review && review.authorId !== userId) {
+      throw new ForbiddenException();
+    }
+
+    return this.prisma.review.update({
+      where: { id },
+      data,
+    });
   }
 
   async remove(req: Request, id: number) {

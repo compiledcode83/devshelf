@@ -8,6 +8,7 @@ import {
   Body,
   Delete,
   Req,
+  Put,
 } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { ReviewDto } from 'src/modules/reviews/dto/review.dto';
@@ -26,6 +27,7 @@ import {
 import { AuthGuard } from 'src/common/guards/auth.guard';
 import { createReviewSchema, updateReviewSchema } from './reviews.schema';
 import { ValidationPipe } from '../../common/pipes/validation.pipe';
+import { UpdateReviewDto } from './dto/updateReview.dto';
 
 @ApiTags('reviews')
 @Controller('reviews')
@@ -59,11 +61,24 @@ export class ReviewsController {
     return this.reviewsService.findOne({ id });
   }
 
-  @Delete('/:id')
+  @Put('/:id')
   @UseGuards(AuthGuard)
   @UsePipes(new ValidationPipe(updateReviewSchema))
   @ApiCookieAuth()
-  @ApiOperation({ summary: 'Delete a book' })
+  @ApiOperation({ summary: 'Update review' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
+  update(
+    @Req() req: Request,
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() data: UpdateReviewDto,
+  ) {
+    return this.reviewsService.update({ req, id, data });
+  }
+
+  @Delete('/:id')
+  @UseGuards(AuthGuard)
+  @ApiCookieAuth()
+  @ApiOperation({ summary: 'Delete review' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
   remove(@Req() req: Request, @Param('id', new ParseIntPipe()) id: number) {
     return this.reviewsService.remove(req, id);
