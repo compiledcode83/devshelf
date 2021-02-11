@@ -28,6 +28,14 @@ export interface paths {
   '/session/me': {
     get: operations['SessionController_findOne'];
   };
+  '/reviews': {
+    post: operations['ReviewsController_create'];
+    get: operations['ReviewsController_findAll'];
+  };
+  '/reviews/{id}': {
+    get: operations['ReviewsController_findOne'];
+    delete: operations['ReviewsController_remove'];
+  };
   '/users/{id}': {
     get: operations['UsersController_findOne'];
   };
@@ -52,8 +60,6 @@ export interface operations {
       200: {
         'application/json': components['schemas']['BookDto'][];
       };
-      /** There is no book with this id */
-      404: unknown;
     };
   };
   BooksController_findOne: {
@@ -66,6 +72,8 @@ export interface operations {
       200: {
         'application/json': components['schemas']['BookDto'];
       };
+      /** There is no book with this id */
+      404: unknown;
     };
   };
   BooksController_update: {
@@ -143,6 +151,54 @@ export interface operations {
       200: unknown;
     };
   };
+  ReviewsController_create: {
+    parameters: {};
+    requestBody: {
+      'application/json': components['schemas']['ReviewDto'];
+    };
+    responses: {
+      /** The review has been successfully created. */
+      201: unknown;
+      /** Forbidden. */
+      403: unknown;
+    };
+  };
+  ReviewsController_findAll: {
+    parameters: {};
+    responses: {
+      200: {
+        'application/json': components['schemas']['ReviewDto'][];
+      };
+    };
+  };
+  ReviewsController_findOne: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        'application/json': components['schemas']['ReviewDto'];
+      };
+      /** There is no review with this id */
+      404: unknown;
+    };
+  };
+  ReviewsController_remove: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        'application/json': { [key: string]: any };
+      };
+      /** Forbidden. */
+      403: unknown;
+    };
+  };
   UsersController_findOne: {
     parameters: {
       path: {
@@ -192,7 +248,7 @@ export interface components {
     };
     ReviewDto: {
       content: string;
-      rating: string;
+      rating: number;
       bookId: number;
       authorId: number;
     };

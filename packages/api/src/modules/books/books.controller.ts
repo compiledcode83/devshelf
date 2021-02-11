@@ -26,6 +26,7 @@ import { ValidationPipe } from '../../common/pipes/validation.pipe';
 import { createBookSchema } from './books.schema';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 import { AuthGuard } from 'src/common/guards/auth.guard';
+import { AdminGuard } from 'src/common/guards/admin.guard';
 
 @ApiTags('books')
 @Controller('books')
@@ -34,6 +35,7 @@ export class BooksController {
 
   @Post('/')
   @UseGuards(AuthGuard)
+  @UseGuards(AdminGuard)
   @UsePipes(new ValidationPipe(createBookSchema))
   @ApiBody({ type: CreateBookDto })
   @ApiCookieAuth()
@@ -60,6 +62,9 @@ export class BooksController {
   }
 
   @Put('/:id')
+  @UseGuards(AuthGuard)
+  @UseGuards(AdminGuard)
+  @ApiCookieAuth()
   @ApiOperation({ summary: 'Update a book' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
   update(@Param('id', new ParseIntPipe()) id: number, @Body() bookUpdateInput: BookDto) {
@@ -67,6 +72,9 @@ export class BooksController {
   }
 
   @Delete('/:id')
+  @UseGuards(AuthGuard)
+  @UseGuards(AdminGuard)
+  @ApiCookieAuth()
   @ApiOperation({ summary: 'Delete a book' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
   remove(@Param('id', new ParseIntPipe()) id: number) {

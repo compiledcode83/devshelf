@@ -46,17 +46,16 @@ export class ReviewsService {
   async remove(req: Request, id: number) {
     const token = req.cookies.token as string;
     const { userId } = await this.sessionService.findOne(token);
+    const review = await this.findOne({ id });
 
-    const review = await this.prisma.review.delete({
+    if (review && review.authorId !== userId) {
+      throw new ForbiddenException();
+    }
+
+    return this.prisma.review.delete({
       where: {
         id,
       },
     });
-
-    if (review.authorId !== userId) {
-      throw new ForbiddenException();
-    }
-
-    return review;
   }
 }

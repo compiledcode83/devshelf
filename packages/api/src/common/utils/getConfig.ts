@@ -12,5 +12,5 @@ export function getConfig(name: keyof Names): Names[keyof Names] {
     throw new Error(`Cannot find environmental variable: ${name}`);
   }
 
-  return val;
+  return val as Names[keyof Names];
 }

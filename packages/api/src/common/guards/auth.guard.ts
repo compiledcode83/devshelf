@@ -5,8 +5,8 @@ import { SessionService } from 'src/modules/session/session.service';
 export class AuthGuard implements CanActivate {
   constructor(private readonly sessionService: SessionService) {}
 
-  canActivate(context: ExecutionContext): Promise<boolean> {
+  canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest();
-    return this.sessionService.isSessionValid(request.cookies.token);
+    return this.sessionService.isSessionValid(request.cookies.token as string);
   }
 }

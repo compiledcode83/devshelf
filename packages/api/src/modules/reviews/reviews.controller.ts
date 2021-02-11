@@ -13,7 +13,6 @@ import { ReviewsService } from './reviews.service';
 import { ReviewDto } from 'src/modules/reviews/dto/review.dto';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 import type { Request } from 'express';
-
 import {
   ApiOperation,
   ApiOkResponse,
@@ -22,11 +21,13 @@ import {
   ApiBody,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 import { AuthGuard } from 'src/common/guards/auth.guard';
 import { createReviewSchema } from './reviews.schema';
 import { ValidationPipe } from '../../common/pipes/validation.pipe';
 
+@ApiTags('reviews')
 @Controller('reviews')
 export class ReviewsController {
   constructor(private readonly reviewsService: ReviewsService) {}
@@ -59,6 +60,8 @@ export class ReviewsController {
   }
 
   @Delete('/:id')
+  @UseGuards(AuthGuard)
+  @ApiCookieAuth()
   @ApiOperation({ summary: 'Delete a book' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
   remove(@Req() req: Request, @Param('id', new ParseIntPipe()) id: number) {
