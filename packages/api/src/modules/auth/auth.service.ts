@@ -23,9 +23,9 @@ export class AuthService {
   async login({ email, password }: LoginDto) {
     const foundUser = await this.usersService.findBy<'email'>({ by: 'email', value: email });
     const hashedPassword = await this.hashPassword(password);
-    const isPasswordMatch = bcrypt.compare(foundUser && foundUser.password, hashedPassword);
+    const isPasswordValid = bcrypt.compare(foundUser && foundUser.password, hashedPassword);
 
-    if (!foundUser || !isPasswordMatch) {
+    if (!foundUser || !isPasswordValid) {
       throw new NotFoundException('Invalid credentials');
     }
 

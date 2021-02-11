@@ -34,6 +34,7 @@ export interface paths {
   };
   '/reviews/{id}': {
     get: operations['ReviewsController_findOne'];
+    put: operations['ReviewsController_update'];
     delete: operations['ReviewsController_remove'];
   };
   '/users/{id}': {
@@ -185,6 +186,23 @@ export interface operations {
       404: unknown;
     };
   };
+  ReviewsController_update: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    requestBody: {
+      'application/json': components['schemas']['UpdateReviewDto'];
+    };
+    responses: {
+      200: {
+        'application/json': { [key: string]: any };
+      };
+      /** Forbidden. */
+      403: unknown;
+    };
+  };
   ReviewsController_remove: {
     parameters: {
       path: {
@@ -251,6 +269,10 @@ export interface components {
       rating: number;
       bookId: number;
       authorId: number;
+    };
+    UpdateReviewDto: {
+      content: string;
+      rating: number;
     };
     UserDto: {
       username: string;

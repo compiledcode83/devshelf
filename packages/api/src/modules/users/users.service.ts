@@ -24,8 +24,6 @@ export class UsersService {
         username: true,
         email: true,
         role: true,
-        library: true,
-        reviews: true,
       },
     });
   }
