@@ -1,8 +1,10 @@
 type Nil<T> = T | undefined | null;
 
 type Names = {
-  readonly SESSION_SECRET: string;
+  readonly COOKIE_SECRET: string;
+  readonly COOKIE_DOMAIN: string;
   readonly SENTRY_DSN: string;
+  readonly ORIGIN: string;
 };
 
 export function getConfig<T extends keyof Names>(name: T): Names[T];

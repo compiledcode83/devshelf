@@ -1,5 +1,5 @@
 import { Layout } from 'components/app/layout/Layout';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigation } from '../components/app/navigation/Navigation';
 
 const Home = () => {

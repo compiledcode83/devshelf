@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from './users.service';
-import { ParseIntPipe } from 'src/common/pipes/parseInt.pipe';
+import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 import { UserDto } from './dto/user.dto';
 
 @ApiTags('users')

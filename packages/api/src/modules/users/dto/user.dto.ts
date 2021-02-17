@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ReviewDto } from 'src/modules/reviews/dto/review.dto';
-import { BookDto } from 'src/modules/books/dto/book.dto';
+import { ReviewDto } from '../../reviews/dto/review.dto';
+import { BookDto } from '../../books/dto/book.dto';
 
 enum UserRole {
   ADMIN = 'ADMIN',

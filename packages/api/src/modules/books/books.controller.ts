@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import {
   ApiBody,
@@ -27,6 +28,7 @@ import { createBookSchema, updateBookSchema } from './books.schema';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 import { AuthGuard } from 'src/common/guards/auth.guard';
 import { AdminGuard } from 'src/common/guards/admin.guard';
+import type { Request } from 'express';
 
 @ApiTags('books')
 @Controller('books')
@@ -49,7 +51,8 @@ export class BooksController {
   @Get('/')
   @ApiOperation({ summary: 'Get all books' })
   @ApiOkResponse({ type: [BookDto] })
-  async findAll() {
+  async findAll(@Req() req: Request) {
+    console.log(req.cookies);
     return this.booksService.findAll();
   }
 
@@ -64,6 +67,7 @@ export class BooksController {
   @Put('/:id')
   @UseGuards(AuthGuard)
   @UseGuards(AdminGuard)
+  @UsePipes(new ValidationPipe(updateBookSchema))
   @ApiCookieAuth()
   @ApiOperation({ summary: 'Update a book' })
   @ApiForbiddenResponse({ description: 'Forbidden.' })

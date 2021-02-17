@@ -21,8 +21,9 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(new SentryInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.use(cookieParser(getConfig('SESSION_SECRET')));
+  app.use(cookieParser(getConfig('COOKIE_SECRET')));
   app.use(helmet());
+  app.enableCors({ credentials: true, origin: getConfig('ORIGIN') });
 
   const swaggerConfig = new DocumentBuilder()
     .addCookieAuth('token')

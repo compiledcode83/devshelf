@@ -28,6 +28,7 @@
     "@nestjs/swagger": "^4.7.11",
     "@nestjsplus/cookies": "^1.1.1",
     "@prisma/client": "^2.14.0",
+    "@devshelf/types": "1.0.0-alpha.0",
     "@sentry/node": "^6.1.0",
     "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
