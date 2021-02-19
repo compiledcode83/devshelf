@@ -7,11 +7,9 @@ import { UsersModule } from './users.module';
 describe('Users', () => {
   let app: INestApplication;
 
-  const EMAIL_PATTERN = /^\S+@\S+\.\S+$/;
-
   const user = {
-    username: expect.any(String),
-    email: expect.stringMatching(EMAIL_PATTERN),
+    username: 'test',
+    email: 'test@test.com',
     role: 'USER',
   };
 
