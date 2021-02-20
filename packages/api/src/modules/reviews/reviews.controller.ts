@@ -11,7 +11,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
-import { ReviewDto } from 'src/modules/reviews/dto/review.dto';
+import { ReviewDto } from '../reviews/dto/review.dto';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 import type { Request } from 'express';
 import {
@@ -24,7 +24,7 @@ import {
   ApiForbiddenResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { AuthGuard } from 'src/common/guards/auth.guard';
+import { AuthGuard } from '../../common/guards/auth.guard';
 import { createReviewSchema, updateReviewSchema } from './reviews.schema';
 import { ValidationPipe } from '../../common/pipes/validation.pipe';
 import { UpdateReviewDto } from './dto/updateReview.dto';

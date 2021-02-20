@@ -1,5 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { SessionService } from 'src/modules/session/session.service';
+import { SessionService } from '../../modules/session/session.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
