@@ -13,18 +13,25 @@ describe('CategoriesService', () => {
     categoriesService = module.get<CategoriesService>(CategoriesService);
   });
 
-  it('returns all categories', async () => {
-    const categories = [{ id: 1, name: 'test' }];
+  describe('findAll', () => {
+    it('returns all categories', async () => {
+      const categories = [{ id: 1, name: 'test' }];
 
-    jest.spyOn(categoriesService, 'findAll').mockImplementation(() => Promise.resolve(categories));
-    expect(await categoriesService.findAll()).toEqual(categories);
+      jest
+        .spyOn(categoriesService, 'findAll')
+        .mockImplementation(() => Promise.resolve(categories));
+
+      expect(await categoriesService.findAll()).toEqual(categories);
+    });
   });
 
-  it('returns a category with given id', async () => {
-    const categoryId = 1;
-    const category = { id: categoryId, name: 'test' };
+  describe('findOne', () => {
+    it('returns a category with given id', async () => {
+      const categoryId = 1;
+      const category = { id: categoryId, name: 'test' };
 
-    jest.spyOn(categoriesService, 'findOne').mockImplementation(() => Promise.resolve(category));
-    expect(await categoriesService.findOne({ id: categoryId })).toEqual(category);
+      jest.spyOn(categoriesService, 'findOne').mockImplementation(() => Promise.resolve(category));
+      expect(await categoriesService.findOne({ id: categoryId })).toEqual(category);
+    });
   });
 });

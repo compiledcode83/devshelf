@@ -26,8 +26,8 @@ import { CreateBookDto } from './dto/createBook.dto';
 import { ValidationPipe } from '../../common/pipes/validation.pipe';
 import { createBookSchema, updateBookSchema } from './books.schema';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
-import { AuthGuard } from 'src/common/guards/auth.guard';
-import { AdminGuard } from 'src/common/guards/admin.guard';
+import { AuthGuard } from '../../common/guards/auth.guard';
+import { AdminGuard } from '../../common/guards/admin.guard';
 import type { Request } from 'express';
 
 @ApiTags('books')
