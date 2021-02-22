@@ -1,20 +1,46 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CategoriesController } from './categories.controller';
+import { Test } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
+import * as request from 'supertest';
 import { CategoriesService } from './categories.service';
+import { CategoriesModule } from './categories.module';
 
-describe('CategoriesController', () => {
-  let controller: CategoriesController;
+describe('Categories', () => {
+  let app: INestApplication;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [CategoriesController],
-      providers: [CategoriesService],
-    }).compile();
+  const category = {
+    id: 1,
+    name: 'test',
+  };
 
-    controller = module.get<CategoriesController>(CategoriesController);
+  const categoriesService = {
+    findOne: () => category,
+    findAll: () => [category],
+  };
+
+  beforeAll(async () => {
+    const moduleRef = await Test.createTestingModule({
+      imports: [CategoriesModule],
+    })
+
+      .overrideProvider(CategoriesService)
+      .useValue(categoriesService)
+      .compile();
+
+    app = moduleRef.createNestApplication();
+    await app.init();
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  afterAll(async () => {
+    await app.close();
+  });
+
+  it(`/GET categories/`, async () => {
+    const response = await request(app.getHttpServer()).get('/categories').expect(200);
+    expect(response.body).toEqual(categoriesService.findAll());
+  });
+
+  it(`/GET categories/:id `, async () => {
+    const response = await request(app.getHttpServer()).get('/categories/1').expect(200);
+    expect(response.body).toEqual(categoriesService.findOne());
   });
 });
