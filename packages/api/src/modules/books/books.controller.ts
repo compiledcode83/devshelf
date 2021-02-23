@@ -36,14 +36,14 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Post('/')
-  @UseGuards(AuthGuard)
-  @UseGuards(AdminGuard)
+  // @UseGuards(AuthGuard)
+  // @UseGuards(AdminGuard)
   @UsePipes(new ValidationPipe(createBookSchema))
   @ApiBody({ type: CreateBookDto })
-  @ApiCookieAuth()
+  // @ApiCookieAuth()
   @ApiOperation({ summary: 'Create new book' })
   @ApiCreatedResponse({ description: 'The book has been successfully created.' })
-  @ApiForbiddenResponse({ description: 'Forbidden.' })
+  // @ApiForbiddenResponse({ description: 'Forbidden.' })
   create(@Body() newBook: CreateBookDto) {
     return this.booksService.create(newBook);
   }

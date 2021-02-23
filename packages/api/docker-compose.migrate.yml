@@ -1,15 +1,5 @@
 version: '3.7'
 services:
-  prisma-migrate:
-    container_name: prisma-migrate
-    build:
-      context: prisma
-      dockerfile: Dockerfile
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres:12
     container_name: postgres
@@ -20,6 +10,16 @@ services:
       - .env
     volumes:
       - postgres:/var/lib/postgresql/data
+
+  prisma-migrate:
+    container_name: prisma-migrate
+    build:
+      context: prisma
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - postgres
 
 volumes:
   postgres:
