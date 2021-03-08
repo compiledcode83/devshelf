@@ -9,7 +9,6 @@
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
