@@ -51,8 +51,6 @@ export interface operations {
     responses: {
       /** The book has been successfully created. */
       201: unknown;
-      /** Forbidden. */
-      403: unknown;
     };
   };
   BooksController_findAll: {
