@@ -1,8 +1,9 @@
-import { Controller, Get, Body, Param } from '@nestjs/common';
+import { Controller, Get, Body, Param, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { CategoryDto } from './dto/category.dto';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
+import { Prisma } from '@prisma/client';
 
 @ApiTags('categories')
 @Controller('categories')
@@ -12,8 +13,22 @@ export class CategoriesController {
   @Get('/')
   @ApiOperation({ summary: 'Get all categories' })
   @ApiOkResponse({ type: [CategoryDto] })
-  findAll() {
-    return this.categoriesService.findAll();
+  findAll(
+    @Query('search') search?: string,
+    @Query('sortBy') sortBy?: keyof Prisma.CategoryOrderByInput,
+    @Query('orderBy') orderBy?: Prisma.SortOrder,
+    @Query('page') page?: string,
+  ) {
+    const PER_PAGE = 1;
+    const PAGE_QUERY = page ? parseInt(page) : undefined;
+    return this.categoriesService.findAll({
+      skip: PAGE_QUERY && PAGE_QUERY * PER_PAGE - PER_PAGE,
+      take: PAGE_QUERY && PER_PAGE,
+      where: {
+        name: { contains: search },
+      },
+      orderBy: sortBy ? { [sortBy]: orderBy || 'asc' } : undefined,
+    });
   }
 
   @Get('/:id')
