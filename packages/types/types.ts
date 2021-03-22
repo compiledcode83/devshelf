@@ -51,10 +51,18 @@ export interface operations {
     responses: {
       /** The book has been successfully created. */
       201: unknown;
+      /** Forbidden. */
+      403: unknown;
     };
   };
   BooksController_findAll: {
-    parameters: {};
+    parameters: {
+      query: {
+        search: string;
+        orderBy: string;
+        page: string;
+      };
+    };
     responses: {
       200: {
         'application/json': components['schemas']['BookDto'][];
@@ -107,7 +115,13 @@ export interface operations {
     };
   };
   CategoriesController_findAll: {
-    parameters: {};
+    parameters: {
+      query: {
+        search: string;
+        orderBy: string;
+        page: string;
+      };
+    };
     responses: {
       200: {
         'application/json': components['schemas']['CategoryDto'][];
@@ -132,7 +146,9 @@ export interface operations {
       'application/json': components['schemas']['LoginDto'];
     };
     responses: {
-      201: unknown;
+      201: {
+        'application/json': { [key: string]: any };
+      };
     };
   };
   AuthController_register: {
@@ -141,7 +157,9 @@ export interface operations {
       'application/json': components['schemas']['RegisterDto'];
     };
     responses: {
-      201: unknown;
+      201: {
+        'application/json': { [key: string]: any };
+      };
     };
   };
   SessionController_findOne: {
@@ -240,7 +258,7 @@ export interface components {
       title: string;
       description?: string;
       authorId: number;
-      publishedDate?: string;
+      publishedDate?: { [key: string]: any };
       categoryId?: number;
       averageRating?: number;
       ratingsCount?: number;
