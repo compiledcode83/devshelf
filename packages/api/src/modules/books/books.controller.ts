@@ -9,6 +9,7 @@ import {
   UsePipes,
   UseGuards,
   Req,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBody,
@@ -20,6 +21,8 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+import type { Prisma } from '@prisma/client';
+import type { Request } from 'express';
 import { BooksService } from './books.service';
 import { BookDto } from './dto/book.dto';
 import { CreateBookDto } from './dto/createBook.dto';
@@ -28,7 +31,6 @@ import { createBookSchema, updateBookSchema } from './books.schema';
 import { ParseIntPipe } from '../../common/pipes/parseInt.pipe';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { AdminGuard } from '../../common/guards/admin.guard';
-import type { Request } from 'express';
 
 @ApiTags('books')
 @Controller('books')
@@ -36,14 +38,13 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Post('/')
-  // @UseGuards(AuthGuard)
-  // @UseGuards(AdminGuard)
+  @UseGuards(AuthGuard)
   @UsePipes(new ValidationPipe(createBookSchema))
   @ApiBody({ type: CreateBookDto })
-  // @ApiCookieAuth()
+  @ApiCookieAuth()
   @ApiOperation({ summary: 'Create new book' })
   @ApiCreatedResponse({ description: 'The book has been successfully created.' })
-  // @ApiForbiddenResponse({ description: 'Forbidden.' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
   create(@Body() newBook: CreateBookDto) {
     return this.booksService.create(newBook);
   }
@@ -51,9 +52,22 @@ export class BooksController {
   @Get('/')
   @ApiOperation({ summary: 'Get all books' })
   @ApiOkResponse({ type: [BookDto] })
-  async findAll(@Req() req: Request) {
-    console.log(req.cookies);
-    return this.booksService.findAll();
+  async findAll(
+    @Query('search') search?: string,
+    @Query('sortBy') sortBy?: keyof Prisma.BookOrderByInput,
+    @Query('orderBy') orderBy?: Prisma.SortOrder,
+    @Query('page') page?: string,
+  ) {
+    const PER_PAGE = 1;
+    const PAGE_QUERY = page ? parseInt(page) : undefined;
+    return this.booksService.findAll({
+      skip: PAGE_QUERY && PAGE_QUERY * PER_PAGE - PER_PAGE,
+      take: PAGE_QUERY && PER_PAGE,
+      where: {
+        title: { contains: search },
+      },
+      orderBy: sortBy ? { [sortBy]: orderBy || 'asc' } : undefined,
+    });
   }
 
   @Get('/:id')

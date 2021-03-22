@@ -1,11 +1,12 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Prisma, Review, Session } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ReviewDto } from './dto/review.dto';
 import type { Request } from 'express';
 import { UsersService } from '../users/users.service';
 import { SessionService } from '../session/session.service';
 import { UpdateReviewDto } from './dto/updateReview.dto';
+import { Nil } from '@devshelf/types';
 
 @Injectable()
 export class ReviewsService {
@@ -44,12 +45,20 @@ export class ReviewsService {
     return this.prisma.review.findMany(params);
   }
 
+  private isUserOwnership(review: Nil<Review>, session: Nil<Session>) {
+    if (!review || !session) {
+      return false;
+    }
+
+    return review && review.authorId !== session.userId;
+  }
+
   async update({ req, id, data }: { req: Request; id: number; data: UpdateReviewDto }) {
     const token = req.cookies.token as string;
-    const { userId } = await this.sessionService.findOne(token);
+    const session = await this.sessionService.findOne(token);
     const review = await this.findOne({ id });
 
-    if (review && review.authorId !== userId) {
+    if (!session || this.isUserOwnership(review, session)) {
       throw new ForbiddenException();
     }
 
@@ -61,10 +70,10 @@ export class ReviewsService {
 
   async remove(req: Request, id: number) {
     const token = req.cookies.token as string;
-    const { userId } = await this.sessionService.findOne(token);
+    const session = await this.sessionService.findOne(token);
     const review = await this.findOne({ id });
 
-    if (review && review.authorId !== userId) {
+    if (!session || this.isUserOwnership(review, session)) {
       throw new ForbiddenException();
     }
 

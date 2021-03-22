@@ -1,12 +1,12 @@
-import { Controller, Body, Post, Res, UsePipes } from '@nestjs/common';
+import { Controller, Body, Post, Res, UsePipes, Req } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
-import type { Response } from 'express';
-import { CookiesService } from 'src/modules/cookies/cookies.service';
+import type { Response, Request } from 'express';
+import { CookiesService } from '../../modules/cookies/cookies.service';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { loginSchema, registerSchema } from './auth.schema';
-import { ValidationPipe } from 'src/common/pipes/validation.pipe';
+import { ValidationPipe } from '../../common/pipes/validation.pipe';
 
 @ApiTags('auth')
 @Controller('auth')

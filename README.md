@@ -2,14 +2,16 @@
 
 <h1 align="center">DevFeedback</h1>
 
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
 Project still in development 🚧
 
-## Technologies 
+## Technologies
 
 - Next.js(React)
-- TypeScript 
+- TypeScript
 - Express
-- PostrgreSQL 
+- PostrgreSQL
 - Prisma 2.0
-- Sentry 
+- Sentry
 - Lerna(Monorepo)

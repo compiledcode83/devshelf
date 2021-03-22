@@ -2,7 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext", "ES2019", "ES2019.Object"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "ES2019",
+      "ES2019.Object"
+    ],
     "skipLibCheck": true,
     "allowJs": false,
     "allowUnreachableCode": false,
@@ -29,12 +35,15 @@
           "classnameTransform": "camelCase",
           "rendererOptions": {
             "sass": {
-              "includePaths": ["shared/styles"]
+              "includePaths": [
+                "shared/styles"
+              ]
             }
           }
         }
       }
-    ]
+    ],
+    "isolatedModules": true
   },
   "typeRoots": [
     "./node_modules/@types",
@@ -42,6 +51,17 @@
     "./shared/typings/testing-library.d.ts",
     "./shared/typings/svg.d.ts"
   ],
-  "exclude": ["node_modules", ".next", "out", "public", "cypress"],
-  "include": ["types/next-env.d.ts", "**/*.ts", "**/*.tsx", "review.txt"]
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "public",
+    "cypress"
+  ],
+  "include": [
+    "types/next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "review.txt"
+  ]
 }

@@ -9,7 +9,8 @@
     "type-check": "lerna run tsc --stream",
     "lint": "lerna run lint --stream",
     "commit": "cz",
-    "new-version": "lerna version --conventional-commits --yes"
+    "new-version": "lerna version --conventional-commits --yes",
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
@@ -25,7 +26,7 @@
     "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "husky": "^4.3.8",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
     "lint-staged": "^10.3.0",
@@ -37,5 +38,19 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "npm run format"
+    ],
+    "*.json,*.md,*.yaml,*.yml": [
+      "npm run format"
+    ]
+  }
 }

@@ -12,8 +12,13 @@ export class AdminGuard implements CanActivate {
   async canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest();
     const token = request.cookies.token as string;
-    const { userId } = await this.sessionService.findOne(token);
-    const user = await this.usersService.findOne(userId);
+    const loginUser = await this.sessionService.findOne(token);
+
+    if (!loginUser) {
+      return false;
+    }
+
+    const user = await this.usersService.findOne(loginUser.userId);
     return user && user.role === 'ADMIN' ? true : false;
   }
 }

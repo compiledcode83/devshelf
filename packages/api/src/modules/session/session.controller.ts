@@ -1,9 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
-import { Cookies } from '@nestjsplus/cookies';
-import { SessionService } from './session.service';
-import { CookiesType } from 'src/common/types/types';
-import { UsersService } from '../users/users.service';
+import { Controller, Get, Req } from '@nestjs/common';
 import { User } from '@prisma/client';
+import type { Request } from 'express';
+import { SessionService } from './session.service';
+import { UsersService } from '../users/users.service';
 
 @Controller('session')
 export class SessionController {
@@ -13,8 +12,8 @@ export class SessionController {
   ) {}
 
   @Get('/me')
-  async findOne(@Cookies() cookies: CookiesType) {
-    const token = await this.sessionService.findOne(cookies.token);
+  async findOne(@Req() req: Request) {
+    const token = await this.sessionService.findOne(req.cookies.token);
     const { id, username, email } = (await this.userService.findBy<'id'>({
       by: 'id',
       value: token!.userId,

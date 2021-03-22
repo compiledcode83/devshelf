@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module, CacheInterceptor } from '@nestjs/common';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { BooksModule } from 'src/modules/books/books.module';
 import { CategoriesModule } from 'src/modules/categories/categories.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
@@ -9,6 +10,7 @@ import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
+    CacheModule.register(),
     BooksModule,
     CategoriesModule,
     AuthModule,
@@ -18,6 +20,11 @@ import { UsersModule } from './modules/users/users.module';
     UsersModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheInterceptor,
+    },
+  ],
 })
 export class AppModule {}

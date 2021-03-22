@@ -1,5 +1,11 @@
-import { ImATeapotException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ImATeapotException,
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import * as zxcvbn from 'zxcvbn';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/modules/users/users.service';
@@ -14,18 +20,23 @@ export class AuthService {
     private readonly sessionService: SessionService,
   ) {}
 
-  async hashPassword(password: string) {
+  private async hashPassword(password: string) {
     const SALT_ROUNDS = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     return hashedPassword;
   }
 
+  private isPasswordStrongEnough(password: string) {
+    const result = zxcvbn(password);
+    return result.score >= 3;
+  }
+
   async login({ email, password }: LoginDto) {
     const foundUser = await this.usersService.findBy<'email'>({ by: 'email', value: email });
     const hashedPassword = await this.hashPassword(password);
-    const isPasswordValid = bcrypt.compare(foundUser && foundUser.password, hashedPassword);
+    const arePasswordsEqual = bcrypt.compare(foundUser && foundUser.password, hashedPassword);
 
-    if (!foundUser || !isPasswordValid) {
+    if (!foundUser || !arePasswordsEqual) {
       throw new NotFoundException('Invalid credentials');
     }
 
@@ -34,9 +45,15 @@ export class AuthService {
 
   async register({ username, email, password }: RegisterDto) {
     const foundUser = await this.usersService.findBy<'email'>({ by: 'email', value: email });
+
     if (foundUser) {
       throw new ImATeapotException('Account already exists');
     }
+
+    if (!this.isPasswordStrongEnough(password)) {
+      throw new BadRequestException('Password is too easy');
+    }
+
     const hashedPassword = await this.hashPassword(password);
 
     this.usersService.create({ username, email, password: hashedPassword });
