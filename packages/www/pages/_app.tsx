@@ -10,8 +10,9 @@ import { ReactQueryCacheProvider, QueryCache, ReactQueryConfigProvider } from 'r
 import { ReactQueryDevtools } from 'react-query-devtools';
 import type { DehydratedState } from 'react-query/hydration';
 import { Hydrate } from 'react-query/hydration';
-import ErrorBoundary from 'components/app/errorBoundary/ErrorBoundary';
+import { ErrorBoundary } from 'components/app/errorBoundary/ErrorBoundary';
 import 'styles/main.scss';
+
 const isProduction = process.env.NODE_ENV === 'production';
 const isBrowser = typeof window !== 'undefined';
 
@@ -62,33 +63,6 @@ const App = ({ Component, pageProps, err }: AppPageProps) => {
           content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
         />
         <meta property="og:type" content="website" />
-        <meta name="apple-mobile-web-app-title" content="DevFeedback" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            // Optimize loading local fonts with Critical foft with preload. Read more https://www.zachleat.com/web/comprehensive-webfonts/#critical-foft-preload;
-              (() => {
-                if( "fonts" in document ) {
-                // Optimization for Repeat Views
-                if( sessionStorage.fontsLoadedCriticalFoftPreload ) {
-                  document.documentElement.className += " fonts-loaded-2";
-                  return;
-                }
-                document.fonts.load("1em Criteria").then(function () {
-                  document.documentElement.className += " fonts-loaded-1";
-                  Promise.all([
-                    document.fonts.load("500 1em Criteria Demi"),
-                  ]).then(function () {
-                    document.documentElement.className += " fonts-loaded-2";
-                    // Optimization for Repeat Views
-                    sessionStorage.fontsLoadedCriticalFoftPreload = true;
-                  });
-              });
-              }
-            })();
-        `,
-          }}
-        />
       </Head>
       <ReactQueryCacheProvider queryCache={queryCache}>
         <ReactQueryConfigProvider config={reactQueryConfigOverrides}>

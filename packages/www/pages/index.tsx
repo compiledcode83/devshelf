@@ -1,13 +1,5 @@
-import { Layout } from 'components/app/layout/Layout';
-import React, { useEffect } from 'react';
-import { Navigation } from '../components/app/navigation/Navigation';
-
 const Home = () => {
-  return (
-    <Layout>
-      <Navigation />
-    </Layout>
-  );
+  return <h1>DevShelf</h1>;
 };
 
 export default Home;

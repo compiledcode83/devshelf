@@ -14,11 +14,11 @@ export class SessionController {
   @Get('/me')
   async findOne(@Req() req: Request) {
     const token = await this.sessionService.findOne(req.cookies.token);
-    const { id, username, email } = (await this.userService.findBy<'id'>({
+    const { id, username, email, role } = (await this.userService.findBy<'id'>({
       by: 'id',
       value: token!.userId,
     })) as User;
 
-    return { id, username, email };
+    return { id, username, email, role };
   }
 }
