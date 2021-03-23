@@ -33,9 +33,9 @@ export class BooksService {
   async findOne(bookWhereUniqueInput: Prisma.BookWhereUniqueInput) {
     return this.prisma.book.findUnique({
       where: bookWhereUniqueInput,
-      include: { 
+      include: {
         reviews: true,
-      }
+      },
     });
   }
 
