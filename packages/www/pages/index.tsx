@@ -1,22 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { fetcher } from '../utils/fetcher';
+import { Components } from '@devshelf/types';
+
+async function fetchDataWithFetcher() {
+  const data = await fetcher('/books', 'get');
+  return data;
+}
 
 const Home = () => {
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('http://api.devshelf.localhost:3002/books');
-      const data = await res.json();
-      console.log(data);
-    }
-
-    async function fetchDataWithFetcher() {
-      const res = await fetcher('/books/{id}', 'get', { id: 4 });
-      console.log(res);
-    }
-
-    fetchDataWithFetcher();
-  }, []);
-  return <h1>DevShelf</h1>;
+  const { data, isLoading } = useQuery<Components['schemas']['BookDto'][]>(
+    'books',
+    fetchDataWithFetcher,
+  );
+  return (
+    <>
+      {!isLoading &&
+        data &&
+        data.map(({ title, description }) => (
+          <>
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </>
+        ))}
+    </>
+  );
 };
 
 export default Home;
