@@ -6,8 +6,6 @@ import type { Paths } from '@devshelf/types';
 
 type MethodType<CurrentPath extends keyof Paths> = keyof Paths[CurrentPath];
 
-const b = `/books => get => {parameters: {path}} ? typeof <-this : {}`;
-
 type ParamsType<
   CurrentPath extends keyof Paths,
   CurrentMethod extends MethodType<CurrentPath>
