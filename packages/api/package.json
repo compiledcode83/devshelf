@@ -32,6 +32,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "docker:seed": "docker exec -it nest-api npm run seed",
+    "docker:migrate": "docker-compose -f docker-compose.migrate.yml up -d",
     "docker": "docker-compose up -d",
     "docker:build": "docker-compose build"
   },
