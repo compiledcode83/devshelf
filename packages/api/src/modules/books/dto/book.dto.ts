@@ -33,4 +33,7 @@ export class BookDto {
 
   @ApiProperty()
   isPublic!: boolean;
+
+  @ApiProperty()
+  isRecommended!: boolean;
 }

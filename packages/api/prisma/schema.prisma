@@ -51,6 +51,8 @@ model Category {
   id    Int    @id @default(autoincrement())
   name  String
   books Book[]
+  isRecommended Boolean   @default(false)
+
 }
 
 enum UserRole {

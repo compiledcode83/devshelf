@@ -6,7 +6,6 @@ import type { Request } from 'express';
 import { UsersService } from '../users/users.service';
 import { SessionService } from '../session/session.service';
 import { UpdateReviewDto } from './dto/updateReview.dto';
-import { Nil } from '@devshelf/types';
 
 @Injectable()
 export class ReviewsService {
@@ -45,7 +44,7 @@ export class ReviewsService {
     return this.prisma.review.findMany(params);
   }
 
-  private isUserOwnership(review: Nil<Review>, session: Nil<Session>) {
+  private isUserOwnership(review: Review | null, session: Session | null) {
     if (!review || !session) {
       return false;
     }

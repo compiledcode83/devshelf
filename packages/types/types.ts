@@ -61,6 +61,7 @@ export interface operations {
         search: string;
         orderBy: string;
         page: string;
+        isRecommended: string;
       };
     };
     responses: {
@@ -120,6 +121,7 @@ export interface operations {
         search: string;
         orderBy: string;
         page: string;
+        isRecommended: string;
       };
     };
     responses: {
@@ -146,9 +148,7 @@ export interface operations {
       'application/json': components['schemas']['LoginDto'];
     };
     responses: {
-      201: {
-        'application/json': { [key: string]: any };
-      };
+      201: unknown;
     };
   };
   AuthController_register: {
@@ -157,9 +157,7 @@ export interface operations {
       'application/json': components['schemas']['RegisterDto'];
     };
     responses: {
-      201: {
-        'application/json': { [key: string]: any };
-      };
+      201: unknown;
     };
   };
   SessionController_findOne: {
@@ -258,7 +256,7 @@ export interface components {
       title: string;
       description?: string;
       authorId: number;
-      publishedDate?: { [key: string]: any };
+      publishedDate?: string;
       categoryId?: number;
       averageRating?: number;
       ratingsCount?: number;
@@ -266,10 +264,12 @@ export interface components {
       language?: string;
       linkToRead: string;
       isPublic: boolean;
+      isRecommended: boolean;
     };
     CategoryDto: {
       title: string;
       books: components['schemas']['BookDto'][];
+      isRecommended: boolean;
     };
     LoginDto: {
       email: string;

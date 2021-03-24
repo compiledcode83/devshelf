@@ -18,6 +18,7 @@ export class CategoriesController {
     @Query('sortBy') sortBy?: keyof Prisma.CategoryOrderByInput,
     @Query('orderBy') orderBy?: Prisma.SortOrder,
     @Query('page') page?: string,
+    @Query('isRecommended') isRecommended?: string,
   ) {
     const PER_PAGE = 1;
     const PAGE_QUERY = page ? parseInt(page) : undefined;
@@ -26,6 +27,7 @@ export class CategoriesController {
       take: PAGE_QUERY && PER_PAGE,
       where: {
         name: { contains: search },
+        isRecommended: isRecommended && isRecommended === 'true' ? true : false,
       },
       orderBy: sortBy ? { [sortBy]: orderBy || 'asc' } : undefined,
     });

@@ -57,6 +57,7 @@ export class BooksController {
     @Query('sortBy') sortBy?: keyof Prisma.BookOrderByInput,
     @Query('orderBy') orderBy?: Prisma.SortOrder,
     @Query('page') page?: string,
+    @Query('isRecommended') isRecommended?: string,
   ) {
     const PER_PAGE = 1;
     const PAGE_QUERY = page ? parseInt(page) : undefined;
@@ -65,6 +66,7 @@ export class BooksController {
       take: PAGE_QUERY && PER_PAGE,
       where: {
         title: { contains: search },
+        // isRecommended: isRecommended && isRecommended === 'true' ? true : false,
       },
       orderBy: sortBy ? { [sortBy]: orderBy || 'asc' } : undefined,
     });

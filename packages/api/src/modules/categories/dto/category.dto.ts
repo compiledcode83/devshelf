@@ -7,4 +7,7 @@ export class CategoryDto {
 
   @ApiProperty({ type: [BookDto] })
   books!: BookDto[];
+
+  @ApiProperty()
+  isRecommended!: boolean;
 }
